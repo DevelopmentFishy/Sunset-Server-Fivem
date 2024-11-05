@@ -1,0 +1,78 @@
+ESX INSTALL QUIDE
+
+If u use ox_inventory please open install_OX.md and close this file!
+
+1. Download all dependencies!
+    Dependencies:
+    ox_lib | https://github.com/overextended/ox_lib
+    es_extended / qb-core
+    qtarget / qb-target
+    memorygame | https://github.com/pushkart2/memorygame
+
+ITEMS 
+
+2. Add Item to your server
+    Use this insert in your database or use esx_items.sql!
+
+INSERT INTO `items` (`name`, `label`, `weight`, `rare`, `can_remove`) VALUES
+('trowel', 'Trowel', 1, 0, 1),
+('coke_leaf', 'Coca Leaf', 1, 0, 1),
+('coke_access', 'Access card', 1, 0, 1),
+('coke_box', 'Box with Coke', 1, 0, 1),
+('coke_raw', 'Raw Coke', 1, 0, 1),
+('coke_pure', 'Pure Coke', 1, 0, 1),
+('coke_figure', 'Action Figure', 1, 0, 1),
+('coke_figureempty', 'Action Figure', 1, 0, 1),
+('coke_figurebroken', 'Pieces of Action Figure', 1, 0, 1),
+('meth_amoniak', 'Ammonia', 1, 0, 1),
+('meth_pipe', 'Meth Pipe', 1, 0, 1),
+('meth_syringe', 'Meth Syringe', 1, 0, 1),
+('heroin_syringe', 'Heroin Syringe', 1, 0, 1),
+('syringe', 'Syringe', 1, 0, 1),
+('meth_sacid', 'Sodium Benzoate Canister', 1, 0, 1),
+('meth_emptysacid', 'Empty Canister', 1, 0, 1),
+('meth_access', 'Access card', 1, 0, 1),
+('meth_glass', 'Tray with meth', 1, 0, 1),
+('meth_sharp', 'Tray with smashed meth', 1, 0, 1),
+('meth_bag', 'Meth bag', 1, 0, 1),
+('weed_package', 'Weed Bag', 1, 0, 1),
+('weed_access', 'Access card', 1, 0, 1),
+('weed_bud', 'Weed Bud', 1, 0, 1),
+('weed_blunt', 'Blunt', 1, 0, 1),
+('weed_wrap', 'Blunt wraps', 1, 0, 1),
+('weed_papers', 'Weed papers', 1, 0, 1),
+('weed_joint', 'Joint', 1, 0, 1),
+('weed_budclean', 'Weed Bud', 1, 0, 1),
+('plastic_bag', 'Plastic bag', 1, 0, 1),
+('scissors', 'Scissors', 1, 0, 1),
+('ecstasy1', 'Ecstasy', 1, 0, 1),
+('ecstasy2', 'Ecstasy', 1, 0, 1),
+('ecstasy3', 'Ecstasy', 1, 0, 1),
+('ecstasy4', 'Ecstasy', 1, 0, 1),
+('ecstasy5', 'Ecstasy', 1, 0, 1),
+('lsd1', 'LSD', 1, 0, 1),
+('lsd2', 'LSD', 1, 0, 1),
+('lsd3', 'LSD', 1, 0, 1),
+('lsd4', 'LSD', 1, 0, 1),
+('lsd5', 'LSD', 1, 0, 1),
+('xanaxplate', 'Plate of Xanax', 1, 0, 1),
+('xanaxpack', 'Pack of Xanax', 1, 0, 1),
+('magicmushroom', 'Mushroom', 1, 0, 1),
+('xanaxpill', 'Xanax pill', 1, 0, 1),
+('glue', 'Glue', 1, 0, 1),
+('hammer', 'Hammer', 1, 0, 1),
+('crack', 'Crack', 1, 0, 1),
+('baking_soda', 'Baking Soda', 1, 0, 1),
+('heroin', 'Heroin', 1, 0, 1),
+('poppyplant', 'Poppy Plant', 1, 0, 1),
+('crack_pipe', 'Crack Pipe', 1, 0, 1);
+
+
+3. Add Images to your inventory
+    if your are using esx_inventory then 
+    esx_inventoryhud > html > images
+    Paste images from folder images to esx_inventoryhud > html > images
+
+4. add ensure drc_drugs into your server.cfg (make sure to start it after ox_lib and your target system!)
+
+5. Enjoy your new drugs script from DRC SCRIPTS!

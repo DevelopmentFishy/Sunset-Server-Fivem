@@ -1,0 +1,149 @@
+{
+    "error" : "Fout", 
+    "success" : "Success", 
+    "info" : "Info", 
+    "fail" : "Gefaald", 
+
+    "RequiredItems" : "Je hebt de juiste items niet!", 
+    "RequiredCops" : "Niet genoeg politie",
+    "RequiredTrowel" : "Je hebt een schepje nodig!",
+    "RequiredCard" : "Je hebt een toegangskaart nodig!",
+    "IvalidAmount" : "Ongeldig aantal",
+    "HasBought" : "Heeft %sx %s gekocht voor €%s ",
+    "HasSold" : "Heeft %sx %s gekocht voor €%s ",
+
+    "enter" : "Ga naar binnen", 
+    "entering" : "Binnengaan...", 
+    "leave" : "Ga naar buiten", 
+    "leaving" : "Buitengaan...", 
+
+    "turnonelt" : "Zet de elektriciteit aan", 
+    "turnoffelt" : "Zet de elektriciteit af", 
+    "turnonel" : "Elektriciteit aanzetten...", 
+    "turnoffel" : "Elektriciteit afzetten...", 
+    "turnonact" : "Zet airconditioning aan", 
+    "turnoffact" : "Zet airconditioning af", 
+    "turnonac" : "Airco aanzetten...", 
+    "turnoffac" : "Airco afzetten...", 
+    "needac" : "Je moet de airconditioning aanzetten", 
+
+    "Oven" : "Ketel", 
+    "table" : "Tafel", 
+    "pickup" : "Pluk", 
+    "pickingup" : "Plukken...", 
+
+    "shop" : "Winkel", 
+    "Buying" : "Kopen...", 
+    "Amount" : "Aantal ? ", 
+    "Range" : "Bereik: ", 
+    "Pricefor" : "Prijs voor 1x: € ", 
+    "BreakFigure" : "Figuurtje breken...", 
+    "LocatingDealer" : "Drugdealer lokaliseren", 
+    "LocationInGPS" : "Locatie is verstuurd naar je GPS", 
+
+    "Pharmacist" : "Apotheker", 
+    "PharmacistBreak" : "Ik ben momenteel in pauze, komt terug tussen 18:00 en 23:00",
+
+    "Gerald" : "Gerald", 
+    "Listening" : "Horen of er iemand thuis is", 
+    "LocateDealer" : "Drugdealer lokaliseren", 
+    "GeraldNotHome" : "Gerald lijkt niet thuis te zijn, kom later terug", 
+
+    "Madrazo" : "Mr. Madrazo", 
+    "MadrazoNotHome" : "Mr. Madrazo lijkt niet thuis te zijn, kom later terug",
+
+    "Coke" : "Cocaïne", 
+
+    "CokeClean" : "Zuiver Cocaïne", 
+    "CokeCleaning" : "Cocaïne aan het zuiveren...", 
+
+    "CokePack" : "Verpak cocaïne ", 
+    "CokePacking" : "Popje aan het vullen met coke", 
+
+    "CokeBox" : "Strooi cocaïnepoeder uit", 
+    "CokeBoxProg" : "Cocaïnepoeder aan het uitstrooien", 
+
+    "CokeProcess" : "Giet cocaïne in de doos", 
+    "CokeProcessing" : "Cocaïne in de doos aan het gieten", 
+
+    "CokeFigure" : "Actiefiguur",
+    "CokeCarryFigure" : "Dragen/Neerzetten actiefiguur", 
+    "CokeBreakigure" : "Breek actiefiguur", 
+    "CokeRepairFigure" : "Repareer actiefiguur",
+    "RepairingFigure" : "Actiefiguur repareren",
+    "CokeRepairFigureDesc" : "Benodigdheden: Lijm",
+
+    "WeedPack" : "Verpak wiet", 
+    "WeedPacking" : "Wiet verpakken", 
+    "WeedColecting" : "Wietknop verzamelen", 
+    "WeedClean" : "Wietknop kuisen", 
+    "WeedCleaning" : "Wietknop aan het kuisen", 
+    "WeedColectedAlready" : "Je hebt deze plant al geplukt", 
+
+    "BluntWraps" : "Blunt papier", 
+    "BluntRoll" : "Rol een blunt", 
+    "BluntRolling" : "Blunt aan het rollen", 
+    "BluntDesc" : "1x Wietzakje, 1x Blunt papier", 
+
+    "JointPapers" : "Rolblaadje", 
+    "JointRoll" : "Rol een joint", 
+    "JointRolling" : "Joint aan het rollen", 
+    "JointDesc" : "1x Wietzakje, 1x Rolblaadje", 
+
+    "PrepairingSyringe" : "Spuit maken", 
+    "UnpackingXanax" : "Xanax uitpakken", 
+
+    "MakeCrack" : "Maak Crack",
+    "CrackMaking" : "Crack aan het maken",
+
+    "HeroinProcess" : "Papaver verwerken!",
+    "HeroinProcessing" : "Papaver verwerken!",
+
+    "Meth" : "Meth", 
+    "MethHeat" : "Verhitten", 
+    "MethHeating" : "Verhitten", 
+    "MethHeated" : "Succesvol verhit", 
+    "MethAlready" : "Je hebt dit al gedaan", 
+    "MethNeedHeat" : "Je moet de oven opwarmen", 
+
+    "MethGoFinish" : "Ga deze batch afwerken", 
+    "MethFinish" : "Lot afwerken", 
+    "MethFinishing" : "Lot afwerken", 
+    "MethNeedFinish" : "Je moet dit lot afwerken", 
+    "MethStartCook" : "Je moet beginnen koken", 
+    "MethCook" : "Start met koken", 
+    "MethCooking" : "Koken", 
+
+    "MethPack" : "Verpak Meth", 
+    "MethPacking" : "Meth aan het verpakken", 
+
+    "MethRefuel" : "Bidon hervullen", 
+    "MethRefueling" : "Bidon hervullen", 
+
+    "MethBreaking" : "Meth breken", 
+    "MethBreak" : "Meth breken",
+
+    "Syringe" : "Spuit", 
+    "InsertHeroin" : "Heroïne toevoegen",
+    "InsertHeroinDesc" : "Ingredienten: 1x Heroïne",
+    "InsertMeth" : "Meth toevoegen",
+    "InsertMethDesc" : "Ingredienten: 1x Meth",
+    "Inserting" : "Toevoegen...",
+
+    "SellCooldown" : "Je moet even wachten",
+    "StartSell" : "Start met drugs verkopen",
+    "ChooseSell" : "Kies welke drugs je wilt verkopen!",
+    "SellPrice" : "Prijs: Van € %s tot € %s",
+    "SellDrugs" : "Drugs verkopen",
+    "SellCancelDeal" : "Annuleer Deal",
+    "SellCancelingDeal" : "Deal Annuleren",
+    "ClientFinding" : "Klanten zoeken",
+    "Client" : "Klant",
+    "ClientGPS" : "Klant heeft je de GPS coördinaten gestuurd",
+    "ClientOffer" : "De klant biedt je € %s voor %s %s",
+    "ClientDeclined" : "De klant heeft jouw aanbod geweigerd",
+    "Sell" : "Verkoop",
+    "Cancel" : "Annuleer",
+    "Negotiate" : "Onderhandel",
+    "Negotiating" : "Onderhandelen..."
+}

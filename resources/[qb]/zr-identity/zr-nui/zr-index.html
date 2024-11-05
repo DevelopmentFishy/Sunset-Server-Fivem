@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="zr-design.css">
+    <link href="zr-assets/select2.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="zr-container">
+        <div id="zr-logo"></div>
+        <div id="zr-left">
+            <div class="zr-input">
+                <div class="zr-input-cont">
+                    <div class="zr-input-holder">
+                        <input type="text" class="zr-input-inpt" placeholder="FIRST NAME" id="zr-fname">
+                        <div class="zr-input-disc" id="maxch"></div>
+                    </div>
+                </div>
+                <div class="zr-triple" style="right: 1.563vw;"><div class="zr-triple-ele"></div><div class="zr-triple-ele"></div><div class="zr-triple-ele"></div></div>
+                <div class="zr-line"></div>
+            </div>
+            <div class="zr-input">
+                <div class="zr-input-cont">
+                    <div class="zr-input-holder">
+                        <input type="text" class="zr-input-inpt" placeholder="LAST NAME" id="zr-lname">
+                        <div class="zr-input-disc" id="maxch2"></div>
+                    </div>
+                </div>
+                <div class="zr-triple" style="right: 1.563vw;"><div class="zr-triple-ele"></div><div class="zr-triple-ele"></div><div class="zr-triple-ele"></div></div>
+                <div class="zr-line"></div>
+            </div>
+            <div class="zr-input">
+                <div class="zr-input-cont">
+                    <div class="zr-input-holder">
+                        <input id="zr-cl-date" type="text" class="zr-input-inpt" placeholder="DATE OF BIRTH">
+                        <div class="zr-input-disc" id="miny"></div>
+                    </div>
+                </div>
+                <div class="zr-triple" style="right: 1.563vw;"><div class="zr-triple-ele"></div><div class="zr-triple-ele"></div><div class="zr-triple-ele"></div></div>
+                <div class="zr-line"></div>
+            </div>
+
+            <div id="zr-gender">
+                <div class="zr-gender-box" id="zr-female">
+                    <div class="zr-gender-img zr-female"></div>
+                </div>
+                <div class="zr-gender-or" id="org"></div>
+                <div class="zr-gender-box" id="zr-male">
+                    <div class="zr-gender-line"></div>
+                    <div class="zr-gender-img zr-male"></div>
+                </div>
+            </div>
+
+            <div class="zr-input">
+                <div class="zr-input-cont">
+                    <div class="zr-input-holder zr-input-holder-nat">
+                        <select class="zr-input-inpt" id="zr-nat-qb" required>
+                        </select> 
+                        <input type="text" class="zr-input-inpt" placeholder="HEIGHT" id="zr-nat">
+                        <div class="zr-input-disc" id="nat"></div>
+                    </div>
+                </div>
+                <div class="zr-triple" style="right: 1.563vw;"><div class="zr-triple-ele"></div><div class="zr-triple-ele"></div><div class="zr-triple-ele"></div></div>
+                <div class="zr-line"></div>
+            </div>
+        </div>
+
+        <div id="zr-right">
+            <div class="zr-triple" style="right: 1.563vw;"><div class="zr-triple-ele"></div><div class="zr-triple-ele"></div><div class="zr-triple-ele"></div></div>
+            <div id="zr-rules">
+                <div class="zr-rules-title">1. <span class="zr-clr" id="grul"></span></div>
+                <div class="zr-rules-text" id="grult"></div>
+                <div class="zr-rules-title">2. <span class="zr-clr" id="rrul"></span></div>
+                <div class="zr-rules-text" id="rrult"></div>
+            </div>
+            <div id="zr-rules-confirm">
+                <div id="zr-rc-cirle"></div>
+                <div id="zr-rules-conftext"></div>
+            </div>            
+        </div>
+
+        <div id="zr-buttons">
+            <button class="zr-button" id="zr-cancel"></button>
+            <button class="zr-button" id="zr-create"></button>
+            <button class="zr-button" id="zr-discord"></button>
+        </div>
+
+    </div>
+    <script src="./zr-assets/datedropper-jquery.js"></script>
+    <script src="zr-assets/select2.full.min.js"></script>
+	<script src="zr-app.js" type="text/javascript"></script>
+</body>
+</html>

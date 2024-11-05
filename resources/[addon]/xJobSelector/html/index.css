@@ -1,0 +1,471 @@
+@font-face {
+    font-family: Helvetica;
+    src: url(./assets/fonts/Helvetica.ttf);
+}
+
+/* Track */
+::-webkit-scrollbar {
+    width: 0.25rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    border-radius: 6.25rem;
+    background: #FFF;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    border-radius: 6.25rem;
+    background: #0062FF;
+}
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    width: 70.625rem;
+    height: 50rem;
+    border-radius: 1.25rem;
+    border: 0.0625rem solid #FFF;
+    background: radial-gradient(40.36% 50% at 50% 0%, rgba(255, 255, 255, 0.20) 0%, rgba(255, 255, 255, 0.04) 0.01%, rgba(255, 255, 255, 0.00) 100%), radial-gradient(50% 50% at 50% 50%, rgba(22, 22, 22, 0.00) 0%, rgba(19, 19, 19, 0.53) 100%), radial-gradient(50% 43.92% at 50% 43.92%, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.98) 100%);
+    position: relative;
+}
+
+.jobselect {
+    padding: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.5rem;
+}
+
+.container[page="main"] {
+    display: none;
+}
+
+.container[page="jobselect"] {
+    display: none;
+}
+
+.container[page="main"] .wrapper {
+    padding: 1.35rem;
+    position: relative;
+    z-index: 33;
+    width: 100%;
+    height: 100%;
+
+
+
+}
+
+.container[page="main"] .main-content {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8rem;
+    width: 100%;
+    height: 100%;
+    padding-top: 4rem;
+    align-items: center;
+}
+
+.container[page="main"] .main-container {
+    border-radius: 0.625rem;
+    border: 0.0625rem solid rgba(82, 82, 82, 0.75);
+    background: rgba(117, 117, 117, 0.10);
+    backdrop-filter: blur(0.3125rem);
+    width: 18.8125rem;
+    height: 23.1875rem;
+    padding: 0 2.5rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.5rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.container[page="main"] .main-container h1 {
+    color: #FFF;
+    text-align: center;
+    font-family: Helvetica;
+    font-size: 1.625rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.container[page="main"] .main-container div {
+    width: 9.1875rem;
+    height: 2.375rem;
+    border-radius: 6.25rem;
+    background: #0062FF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFF;
+    font-family: Helvetica;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    cursor: pointer;
+    transition: all .2s ease;
+}
+
+.container[page="main"] .main-container div:hover {
+    opacity: 0.8;
+}
+
+
+.container[page="main"] .planet {
+    position: absolute;
+    left: 50%;
+    width: 70.5rem;
+    height: 49.875rem;
+    bottom: 0;
+    transform: translateX(-50%);
+}
+
+.container[page="main"] .header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    column-gap: .5rem;
+}
+
+.container[page="main"] .date {
+    color: #FFF;
+    text-align: center;
+    font-family: Helvetica;
+    font-size: 0.9375rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.container[page="main"] .main-header {
+    display: flex;
+    align-items: center;
+    column-gap: .5rem;
+}
+
+.container[page="main"] .main-header h1 {
+    color: #FFF;
+    font-family: Helvetica;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+
+}
+
+.container[page="jobselect"] {
+    padding: 2rem 0;
+    display: flex;
+    display: none;
+    flex-direction: column;
+    row-gap: 1.5rem;
+}
+
+.container[page="jobselect"] .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 3rem;
+
+}
+
+.container[page="jobselect"] .seperator {
+    width: 100%;
+    height: 0.125rem;
+    background: #5C5C5C;
+}
+
+.container[page="jobselect"] .left-header {
+    display: flex;
+    align-items: center;
+    column-gap: 2.5rem;
+}
+
+
+.container[page="jobselect"] .input-wrapper {
+    position: relative;
+    width: 17.375rem;
+    height: 2.9375rem;
+    border-radius: 6.25rem;
+    border: 0.0625rem solid #5C5C5C;
+}
+
+.container[page="jobselect"] .input-wrapper img {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.container[page="jobselect"] .input-wrapper input {
+    appearance: none;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: #c5c5c5;
+    font-family: Helvetica;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding-left: 3rem;
+    padding-right: 1rem;
+    width: 100%;
+    height: 100%;
+}
+
+.container[page="jobselect"] .input-wrapper input::placeholder {
+    color: #5C5C5C;
+    font-family: Helvetica;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.container[page="jobselect"] .pp-wrapper {
+    width: 3.0625rem;
+    height: 3.0625rem;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 0.125rem solid white;
+    cursor: pointer;
+    transition: all .2s ease;
+}
+
+.container[page="jobselect"] .pp-wrapper:hover {
+    opacity: 0.8;
+}
+
+.container[page="jobselect"] .pp-wrapper img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+
+.container[page="jobselect"] .header-wrapper {
+    display: flex;
+    align-items: center;
+    column-gap: .5rem;
+}
+
+.container[page="jobselect"] .header-wrapper h1 {
+    color: #FFF;
+    font-family: Helvetica;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+
+.container[page="jobselect"] .jobs-header-small {
+
+    color: #FFF;
+    font-family: Helvetica;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    display: flex;
+    column-gap: .3rem;
+}
+
+.container[page="jobselect"] .jobs-header-small span {
+    color: #5C5C5C;
+    text-align: right;
+    font-family: Helvetica;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.container[page="jobselect"] .jobs-container {
+    padding: 0 3rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.5rem;
+
+}
+
+.container[page="jobselect"] .recommended-jobs-container {
+    display: flex;
+    column-gap: 2rem;
+    align-items: center;
+}
+
+.container[page="jobselect"] .recommended-jobs-container h1 {
+    color: #FFF;
+    font-family: Helvetica;
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.container[page="jobselect"] .job-counter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFF;
+    font-family: Helvetica;
+    font-size: 0.9375rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    min-width: 2.875rem;
+    padding: 0 0.9375rem;
+    height: 2.3125rem;
+    border-radius: 6.25rem;
+    border: 0.0625rem solid #5C5C5C;
+}
+
+.container[page="jobselect"] .jobs-wrapper {
+    width: 100%;
+    height: 34.375rem;
+    overflow: auto;
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+
+.container[page="jobselect"] .job {
+    width: 14.375rem;
+    height: 16.8125rem;
+    border-radius: 0.625rem;
+    border: 0.0625rem solid #5C5C5C;
+    padding: .55rem;
+    position: relative;
+}
+
+.container[page="jobselect"] .job-start {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    padding: 0 .55rem;
+    bottom: .65rem;
+    justify-content: space-between;
+
+}
+
+.container[page="jobselect"] .job-start-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6.25rem;
+    background: #0062FF;
+    width: 5.8125rem;
+    height: 2rem;
+    color: #FFF;
+    text-align: center;
+    font-family: Helvetica;
+    font-size: 0.75rem;
+    font-style: normal;
+    cursor: pointer;
+    font-weight: 400;
+    line-height: normal;
+    transition: all .2s ease;
+}
+
+.container[page="jobselect"] .job-start-button:hover {
+    opacity: 0.8;
+}
+
+.container[page="jobselect"] .job-start h1 {
+    color: #FFF;
+    font-family: Helvetica;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.container[page="jobselect"] .job .job-container {
+    border-radius: 0.625rem;
+    width: 100%;
+    height: 12.75rem;
+    background: #ADFFB5;
+    padding: .75rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+
+}
+
+.container[page="jobselect"] .job .job-players {
+    display: flex;
+    align-items: center;
+    column-gap: .25rem;
+    color: #151515;
+
+}
+
+.container[page="jobselect"] .job .job-players p {
+    text-align: center;
+    font-family: Helvetica;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.container[page="jobselect"] .job .job-name {
+    color: #151515;
+    font-family: Helvetica;
+    font-size: 1.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.container[page="jobselect"] .job .job-desc {
+    color: #151515;
+    font-family: Helvetica;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    overflow: auto;
+}
+
+.container[page="jobselect"] .job .job-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.container[page="jobselect"] .job .job-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.625rem;
+    background: #151515;
+    width: 3.4375rem;
+    height: 3.4375rem;
+}
+
+.test{}

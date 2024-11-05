@@ -1,0 +1,40 @@
+{
+    "4": {
+        "reason": "Detected String On Screen: trigger",
+        "xbl": "Invalid",
+        "ip": "109.36.132.60",
+        "live": "Invalid",
+        "discord": "1220501510182408225",
+        "manual": false,
+        "tokens": [
+            "3:e992358fcf50f19848071ef6efc8690e5ca1748dce79d26ad0973909e39564dc",
+            "2:c7707c396fa836f999e5e644a7d757fd4c099cbe643b0febe9311696f1097e29",
+            "5:4c49ad64b248f92050a315038d9f90c02d1f185e6ed4a1c9b4f17130282872f9",
+            "4:07f214599e31244f626f33cfc588d1ec3068a5ede9c08c710e74dddc2348af74",
+            "4:98c3bf5b18f48ba56c6cb757413f1b129f6175cece44cd03e6012156adb7499a",
+            "4:733244cfa1a68d2feba8270eed13b26f80407ff626419b8c1e5b2f0f98f643e0"
+        ],
+        "steam": "steam:110000164c2792c",
+        "license": "license:aacaa814a4be32c3a4a65153ff6568e1a7536058",
+        "name": "swippez.piotr"
+    },
+    "2": {
+        "reason": "Noclip Detected (1), flags: 3",
+        "steam": "steam:11000015bfb849c",
+        "ip": "78.23.181.185",
+        "xbl": "Invalid",
+        "discord": "797135498933305376",
+        "manual": false,
+        "tokens": [
+            "2:9572c9cde171c49449b4c93055684709d7cfc29119103951e48b4e428b259662",
+            "5:225b95c7182ad8e9dacc1c18fd347ddc000cf662bbb2c35ea1386fe97bb5bedb",
+            "3:b1c0003d9fe859d0f87b56fffd293a77fecae6d30d131269af96f5f389c72403",
+            "4:822d79ad89e0a5da549e24854d8516ebf0de2eacf0835083b158b68afb87bdc6",
+            "4:28f1437ca32fa2d8984b417385e6222d543a813595703d2c5f0e0fb4515c1652",
+            "4:9192b9c5f2798322dd4a3d1332c4fc5e0370a5505d8bed2aeef1059334dd12cb"
+        ],
+        "live": "Invalid",
+        "license": "license:827e0984cab73a3259721e1c02e1f1df15f11d78",
+        "name": "x1d"
+    }
+}

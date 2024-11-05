@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="index.css" /> 
+    <link rel="stylesheet" type="text/css" href="responsive.css" /> 
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+    <div class="container" page="main">
+        <img class="planet" src="./assets/images/planet.png">
+        <div class="wrapper">
+            <div class="header">
+                <h1 class="date">Nov. 16 9:35 PM</h1>
+                <img src="./assets/images/right.png">
+            </div>
+            <div class="main-content">
+                <div class="main-header">
+                    <img src="./assets/images/job-icon.png">
+                    <h1>Jobs</h1>
+                </div>
+                <div class="main-container">
+                    <img src="./assets/images/search.png">
+                    <h1>Vind nu jouw droombaan</h1>
+                    <div class="change-page" data-to-page="jobselect">
+                        Start search
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container" page="jobselect">
+        <div class="header">
+            <div class="left-header">
+                <div class="header-wrapper">
+                    <img src="./assets/images/job-icon.png">
+                    <h1>Jobs</h1>
+                </div>
+                <div class="input-wrapper">
+                    <img src="./assets/images/search-small.png">
+                    <input class="search" placeholder="Search something here">
+                </div>
+            </div>
+            <div class="pp-wrapper">
+                <img src="./assets/images/test-pp.png">
+            </div>
+        </div>
+        <div class="seperator"></div>
+        <div class="jobs-container">
+
+            <h1 class="jobs-header-small">
+                <span>Jobs /</span> Aanbevolen
+            </h1>
+            <div class="recommended-jobs-container">
+                <h1>Aanbevolen banen</h1>
+                <div class="job-counter">142</div>
+            </div>
+            <div class="jobs-wrapper">
+                <div class="job">
+                    <div class="job-container">
+                        <div class="job-header">
+                            <div class="job-logo">
+                                <img src="./assets/jobicons/farmer.svg">
+                            </div>
+                            <div class="job-players">
+                                <img src="./assets/images/User_fill.svg">
+                                <p>1</p>
+
+                            </div>
+                        </div>
+                        <h1 class="job-name">Farmer</h1>
+                        <p class="job-desc">Lorem ipsum dolor sit amet consectetur. Parturient laoreet ultrices sed vel
+                            nunc in in aliquam.</p>
+                    </div>
+                    <div class="job-start">
+                        <h1>€150/hr</h1>
+                        <div class="job-start-button">
+                            Start Werk
+                        </div>
+                    </div>
+                </div>
+              
+            </div>
+        </div>
+    </div>
+
+</body>
+<script src="./index.js"></script>
+
+</html>

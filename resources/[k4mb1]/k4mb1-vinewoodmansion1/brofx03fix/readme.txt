@@ -1,0 +1,1 @@
+Optional collision file to add support for BroFX Mansion 03. Make sure to overwrite the file from both maps.

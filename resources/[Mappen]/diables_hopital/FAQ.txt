@@ -1,0 +1,26 @@
++ This resource is encrypted ?
+Yes, this resource is lock by CFX escrow system.
+
++ Can i change logos etc.. ?
+Yes, you can change logos in YTD file.
+
++ Where is located ?
+On Pillbox avenue.
+
++ Can i move the MLO in Codewalker etc.. ?
+No, isn’t possible because files are locked.
+
++ I don't have all props..
+Because you don’t have last server build.
+
++ Where i can download package ?
+You need to connect to your keymaster and download your package under the “Purchased assets”.
+
++ I don't want the script ?
+No problem, you can use the MLO without script.
+
++ I have old Pillbox ?
+You need to disable Pillbox IPL in your IPL script (like bob74_ipl etc..).
+
++ MRI and XRAY dont work/move
+You must have someone to lay on it.

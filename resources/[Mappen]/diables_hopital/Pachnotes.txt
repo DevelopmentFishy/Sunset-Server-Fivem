@@ -1,0 +1,48 @@
+Version 1.0.0 :
+
+- Launch
+
+
+Version 1.0.1 - Patch Day One :
+
+- Fixed the disappearing chairs
+- Resolved collisions in the laboratory and archive room
+- Adjusted the baseboards in the Asylum room
+- Fixed the occasional disappearing structure when rotating the view in the morgue, asylum room, and top floor
+- Resolved the basement door flag
+- Fixed door misalignments in the laboratory and archive room
+- Fixed light changes when entering and exiting the MLO
+- Removed prop sounds
+- QTarget support added
+
+
+Version 1.0.2 :
+
+- Collisions garden Japanese are made
+- Collision outside at the entrance fixed
+- Timecycle in the upper hallway glitched at night fixed
+- Ped in the boss's office deleted
+- Box in the scripts for qtarget fixed
+
+Version 1.0.3 :
+
+- Audio occlusion in operation room fixed
+- Door bugs fixed
+- Invisible mapping when dropping down stairs fixed
+- Hashs Props added
+- The YDRs of the frames are unlocked
+
+Version 1.0.3b :
+
+- Dark exterior on entrance
+
+Version 1.0.3c :
+
+- Dark exterior on entrance (on 3 other .ytyp)
+- LOD Light on parking deleted
+- Distance of MLO fixed
+- Distance LOD emissive deleted 
+
+Version 1.0.3d :
+
+- Poly Edge Fixed (You will no longer have these errors : https://imgur.com/a/pwthft6)

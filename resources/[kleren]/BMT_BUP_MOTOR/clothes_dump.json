@@ -1,0 +1,298 @@
+[
+  {
+    "DlcCollectionName": "mp_m_bmt_bup_motor",
+    "PedName": "mp_m_freemode_01",
+    "ComponentVariations": [
+      {
+        "NameHash": "CLO_DCT_BAG_0_0_M",
+        "ComponentType": "PV_COMP_HAND",
+        "ComponentId": 5,
+        "DrawableId": 111,
+        "TextureId": 0,
+        "RelativeCollectionDrawableId": 0
+      },
+      {
+        "NameHash": "CLO_DCT_DECAL_0_0_M",
+        "ComponentType": "PV_COMP_DECL",
+        "ComponentId": 10,
+        "DrawableId": 146,
+        "TextureId": 0,
+        "RelativeCollectionDrawableId": 0
+      },
+      {
+        "NameHash": "CLO_DCT_DECAL_0_1_M",
+        "ComponentType": "PV_COMP_DECL",
+        "ComponentId": 10,
+        "DrawableId": 146,
+        "TextureId": 1,
+        "RelativeCollectionDrawableId": 0
+      },
+      {
+        "NameHash": "CLO_DCT_DECAL_0_2_M",
+        "ComponentType": "PV_COMP_DECL",
+        "ComponentId": 10,
+        "DrawableId": 146,
+        "TextureId": 2,
+        "RelativeCollectionDrawableId": 0
+      },
+      {
+        "NameHash": "CLO_DCT_DECAL_0_3_M",
+        "ComponentType": "PV_COMP_DECL",
+        "ComponentId": 10,
+        "DrawableId": 146,
+        "TextureId": 3,
+        "RelativeCollectionDrawableId": 0
+      },
+      {
+        "NameHash": "CLO_DCT_DECAL_0_4_M",
+        "ComponentType": "PV_COMP_DECL",
+        "ComponentId": 10,
+        "DrawableId": 146,
+        "TextureId": 4,
+        "RelativeCollectionDrawableId": 0
+      },
+      {
+        "NameHash": "CLO_DCT_DECAL_0_5_M",
+        "ComponentType": "PV_COMP_DECL",
+        "ComponentId": 10,
+        "DrawableId": 146,
+        "TextureId": 5,
+        "RelativeCollectionDrawableId": 0
+      },
+      {
+        "NameHash": "CLO_DCT_DECAL_0_6_M",
+        "ComponentType": "PV_COMP_DECL",
+        "ComponentId": 10,
+        "DrawableId": 146,
+        "TextureId": 6,
+        "RelativeCollectionDrawableId": 0
+      },
+      {
+        "NameHash": "CLO_DCT_DECAL_0_7_M",
+        "ComponentType": "PV_COMP_DECL",
+        "ComponentId": 10,
+        "DrawableId": 146,
+        "TextureId": 7,
+        "RelativeCollectionDrawableId": 0
+      },
+      {
+        "NameHash": "CLO_DCT_DECAL_0_8_M",
+        "ComponentType": "PV_COMP_DECL",
+        "ComponentId": 10,
+        "DrawableId": 146,
+        "TextureId": 8,
+        "RelativeCollectionDrawableId": 0
+      },
+      {
+        "NameHash": "CLO_DCT_DECAL_0_9_M",
+        "ComponentType": "PV_COMP_DECL",
+        "ComponentId": 10,
+        "DrawableId": 146,
+        "TextureId": 9,
+        "RelativeCollectionDrawableId": 0
+      },
+      {
+        "NameHash": "CLO_DCT_DECAL_0_10_M",
+        "ComponentType": "PV_COMP_DECL",
+        "ComponentId": 10,
+        "DrawableId": 146,
+        "TextureId": 10,
+        "RelativeCollectionDrawableId": 0
+      },
+      {
+        "NameHash": "CLO_DCT_DECAL_0_11_M",
+        "ComponentType": "PV_COMP_DECL",
+        "ComponentId": 10,
+        "DrawableId": 146,
+        "TextureId": 11,
+        "RelativeCollectionDrawableId": 0
+      },
+      {
+        "NameHash": "CLO_DCT_DECAL_0_12_M",
+        "ComponentType": "PV_COMP_DECL",
+        "ComponentId": 10,
+        "DrawableId": 146,
+        "TextureId": 12,
+        "RelativeCollectionDrawableId": 0
+      },
+      {
+        "NameHash": "CLO_DCT_DECAL_0_13_M",
+        "ComponentType": "PV_COMP_DECL",
+        "ComponentId": 10,
+        "DrawableId": 146,
+        "TextureId": 13,
+        "RelativeCollectionDrawableId": 0
+      },
+      {
+        "NameHash": "CLO_DCT_DECAL_1_0_M",
+        "ComponentType": "PV_COMP_DECL",
+        "ComponentId": 10,
+        "DrawableId": 147,
+        "TextureId": 0,
+        "RelativeCollectionDrawableId": 1
+      },
+      {
+        "NameHash": "CLO_DCT_DECAL_1_1_M",
+        "ComponentType": "PV_COMP_DECL",
+        "ComponentId": 10,
+        "DrawableId": 147,
+        "TextureId": 1,
+        "RelativeCollectionDrawableId": 1
+      },
+      {
+        "NameHash": "CLO_DCT_DECAL_1_2_M",
+        "ComponentType": "PV_COMP_DECL",
+        "ComponentId": 10,
+        "DrawableId": 147,
+        "TextureId": 2,
+        "RelativeCollectionDrawableId": 1
+      },
+      {
+        "NameHash": "CLO_DCT_DECAL_1_3_M",
+        "ComponentType": "PV_COMP_DECL",
+        "ComponentId": 10,
+        "DrawableId": 147,
+        "TextureId": 3,
+        "RelativeCollectionDrawableId": 1
+      },
+      {
+        "NameHash": "CLO_DCT_DECAL_1_4_M",
+        "ComponentType": "PV_COMP_DECL",
+        "ComponentId": 10,
+        "DrawableId": 147,
+        "TextureId": 4,
+        "RelativeCollectionDrawableId": 1
+      },
+      {
+        "NameHash": "CLO_DCT_DECAL_1_5_M",
+        "ComponentType": "PV_COMP_DECL",
+        "ComponentId": 10,
+        "DrawableId": 147,
+        "TextureId": 5,
+        "RelativeCollectionDrawableId": 1
+      },
+      {
+        "NameHash": "CLO_DCT_DECAL_1_6_M",
+        "ComponentType": "PV_COMP_DECL",
+        "ComponentId": 10,
+        "DrawableId": 147,
+        "TextureId": 6,
+        "RelativeCollectionDrawableId": 1
+      },
+      {
+        "NameHash": "CLO_DCT_DECAL_1_7_M",
+        "ComponentType": "PV_COMP_DECL",
+        "ComponentId": 10,
+        "DrawableId": 147,
+        "TextureId": 7,
+        "RelativeCollectionDrawableId": 1
+      },
+      {
+        "NameHash": "CLO_DCT_DECAL_1_8_M",
+        "ComponentType": "PV_COMP_DECL",
+        "ComponentId": 10,
+        "DrawableId": 147,
+        "TextureId": 8,
+        "RelativeCollectionDrawableId": 1
+      },
+      {
+        "NameHash": "CLO_DCT_DECAL_1_9_M",
+        "ComponentType": "PV_COMP_DECL",
+        "ComponentId": 10,
+        "DrawableId": 147,
+        "TextureId": 9,
+        "RelativeCollectionDrawableId": 1
+      },
+      {
+        "NameHash": "CLO_DCT_DECAL_1_10_M",
+        "ComponentType": "PV_COMP_DECL",
+        "ComponentId": 10,
+        "DrawableId": 147,
+        "TextureId": 10,
+        "RelativeCollectionDrawableId": 1
+      },
+      {
+        "NameHash": "CLO_DCT_DECAL_1_11_M",
+        "ComponentType": "PV_COMP_DECL",
+        "ComponentId": 10,
+        "DrawableId": 147,
+        "TextureId": 11,
+        "RelativeCollectionDrawableId": 1
+      },
+      {
+        "NameHash": "CLO_DCT_DECAL_1_12_M",
+        "ComponentType": "PV_COMP_DECL",
+        "ComponentId": 10,
+        "DrawableId": 147,
+        "TextureId": 12,
+        "RelativeCollectionDrawableId": 1
+      },
+      {
+        "NameHash": "CLO_DCT_DECAL_1_13_M",
+        "ComponentType": "PV_COMP_DECL",
+        "ComponentId": 10,
+        "DrawableId": 147,
+        "TextureId": 13,
+        "RelativeCollectionDrawableId": 1
+      },
+      {
+        "NameHash": "CLO_DCT_LEGS_0_0_M",
+        "ComponentType": "PV_COMP_LOWR",
+        "ComponentId": 4,
+        "DrawableId": 160,
+        "TextureId": 0,
+        "RelativeCollectionDrawableId": 0
+      },
+      {
+        "NameHash": "CLO_DCT_TOP_0_0_M",
+        "ComponentType": "PV_COMP_JBIB",
+        "ComponentId": 11,
+        "DrawableId": 442,
+        "TextureId": 0,
+        "RelativeCollectionDrawableId": 0
+      },
+      {
+        "NameHash": "CLO_DCT_TOP_0_1_M",
+        "ComponentType": "PV_COMP_JBIB",
+        "ComponentId": 11,
+        "DrawableId": 442,
+        "TextureId": 1,
+        "RelativeCollectionDrawableId": 0
+      }
+    ],
+    "Props": [
+      {
+        "NameHash": "CLO_DCT_PROPHEAD_0_0_M",
+        "AnchorPoint": "ANCHOR_HEAD",
+        "ComponentId": 0,
+        "DrawableId": 187,
+        "TextureId": 0,
+        "RelativeCollectionDrawableId": 0
+      },
+      {
+        "NameHash": "CLO_DCT_PROPHEAD_0_1_M",
+        "AnchorPoint": "ANCHOR_HEAD",
+        "ComponentId": 0,
+        "DrawableId": 187,
+        "TextureId": 1,
+        "RelativeCollectionDrawableId": 0
+      },
+      {
+        "NameHash": "CLO_DCT_PROPHEAD_1_0_M",
+        "AnchorPoint": "ANCHOR_HEAD",
+        "ComponentId": 0,
+        "DrawableId": 188,
+        "TextureId": 0,
+        "RelativeCollectionDrawableId": 1
+      },
+      {
+        "NameHash": "CLO_DCT_PROPHEAD_1_1_M",
+        "AnchorPoint": "ANCHOR_HEAD",
+        "ComponentId": 0,
+        "DrawableId": 188,
+        "TextureId": 1,
+        "RelativeCollectionDrawableId": 1
+      }
+    ]
+  }
+]

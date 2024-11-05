@@ -1,0 +1,31 @@
+{
+  "language": "English",
+  "ui": {
+    "shop": {
+      "title" : "Bumpton shop",
+      "wantBuy" : "Select the amount of bumpton you want buy",
+      "price": "Price : $",
+      "paymentMethod": "Select a payment method",
+      "cash": "Cash",
+      "bank": "Bank"
+    },
+    "rent": {
+      "title": "Start a race",
+      "wantUse": "Select the amount of bumpton you want use",
+      "raceFor": "Race for : ",
+      "time": " minute(s)"
+    },
+    "entitySet": {
+      "title": "Bumpercar scene editor",
+      "wantScene": "Select the scene you wany play"
+    },
+    "respawnVehicle": "Respawn all Vehicles"
+  },
+  "shopMenu": "Press ~input_context~ to open the shop",
+  "rentMenu": "Press ~input_context~ to insert coin",
+  "entitySetMenu": "Press ~input_context~ to access the entitySet Menu!",
+  "noCoin": "You don't have any coin",
+  "notEnoughCoins": "You don't have enough coins",
+  "noInventorySpace": "You don't have enough space in your inventory",
+  "noEnoughMoney": "You don't have enough money!"
+}

@@ -1,0 +1,114 @@
+<html>
+<head>
+<script>
+    window.addEventListener('message', (event) => {
+        switch (event.data.type) {
+            case 'prml':
+                let prml = event.data.state;
+                document.getElementById("prml").style.backgroundColor = prml ? "var(--activation-color)" : "var(--base-color)";
+                break;
+            case 'secl':
+                let secl = event.data.state;
+                document.getElementById("secl").style.backgroundColor = secl ? "var(--activation-color)" : "var(--base-color)";
+                break;
+            case 'wrnl':
+                let wrnl = event.data.state;
+                document.getElementById("wrnl").style.backgroundColor = wrnl ? "var(--activation-color)" : "var(--base-color)";
+                break;
+            case 'prml-pattern':
+                let prmPat = document.getElementById('prmltext')
+                prmPat.innerText = event.data.state == null ? '--' : 'E-' + String(event.data.state).padStart(3, '0');
+                break;
+            case 'secl-pattern':
+                let secPat = document.getElementById('secltext')
+                secPat.innerText = event.data.state == null ? '--' : 'E-' + String(event.data.state).padStart(3, '0');
+                break;
+            case 'wrnl-pattern':
+                let wrnPat = document.getElementById('wrnltext')
+                wrnPat.innerText = event.data.state == null ? '--' : 'E-' + String(event.data.state).padStart(3, '0');
+                break;
+        }
+    })
+</script>
+<style>
+:root {
+    --base-color: #e6e6e6;
+    --activation-color: #3691fe;
+}
+
+.panel {
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+    background-color: rgba(0,0,0,1);
+    color: black;
+    font-size: 14pt;
+    width: 15vw;
+}
+
+#buttonwrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: stretch;
+    align-content: stretch;
+}
+
+#header {
+    border-top: black solid 2px;
+    border-bottom: black solid 2px;
+    height: 25px;
+    background-color: #222;
+    color: var(--base-color);
+    text-align: center;
+    width: 100%;
+    display: block;
+    grid-row: 1;
+    grid-column-start: 1;
+    grid-column-end: 4;
+}
+
+.button {
+    background-color: black;
+    color: var(--base-color);
+    height: 60px;
+    width: 100%;
+    margin: 1vw 1vh;
+    text-align: center;
+    display: block;
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: auto;
+    align-self: auto;
+    order: 0;
+}
+
+.label {
+    margin-top: 5px;
+    background-color: var(--base-color);
+    color: black;
+    height: 25px;
+}
+</style>
+</head>
+<body>
+<div class="panel">
+    <span id="header"></span>
+    <div id="buttonwrapper">
+        <div class="button">
+            <div id="prml" class="label">Prim</div>
+            <span id="prmltext">--</span>
+        </div>
+        <div class="button">
+            <div id="secl" class="label">Sec</div>
+            <span id="secltext">--</span>
+        </div>
+        <div class="button">
+            <div id="wrnl" class="label">Warn</div>
+            <span id="wrnltext">--</span>
+        </div>
+    </div>
+</div>
+</body>
+</html>

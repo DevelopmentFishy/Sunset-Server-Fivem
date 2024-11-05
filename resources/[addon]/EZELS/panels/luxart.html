@@ -1,0 +1,300 @@
+<html>
+
+<head>
+    <script>
+        window.addEventListener('message', (event) => {
+            let state = event.data.state;
+            switch (event.data.type) {
+                case 'activation-color':
+                    if (state == null) return;
+                    let root = document.querySelector(':root');
+                    root.style.setProperty('--activation-color', `rgba(${state.r}, ${state.g}, ${state.b})`);
+                    break;
+
+                case 'stage':
+                    let stage1 = document.getElementById('stage1label');
+                    let stage2 = document.getElementById('stage2label');
+                    let stage3 = document.getElementById('stage3label');
+                    stage1.style.backgroundColor = state == 1 ? "var(--activation-color)" : "var(--base-color)";
+                    stage2.style.backgroundColor = state == 2 ? "var(--activation-color)" : "var(--base-color)";
+                    stage3.style.backgroundColor = state == 3 ? "var(--activation-color)" : "var(--base-color)";
+                    break;
+
+                case 'prml':
+                    let prmlElem = document.getElementById('prmlabel')
+                    prmlElem.style.backgroundColor = state == true ? "var(--activation-color)" : "var(--base-color)";
+                    break;
+
+                case 'secl':
+                    let seclElem = document.getElementById('seclabel')
+                    seclElem.style.backgroundColor = state == true ? "var(--activation-color)" : "var(--base-color)";
+                    break;
+
+                case 'wrnl':
+                    let wrnlElem = document.getElementById('wrnlabel')
+                    wrnlElem.style.backgroundColor = state == true ? "var(--activation-color)" : "var(--base-color)";
+                    break;
+
+                case 'prml-pattern':
+                    let prmPat = document.getElementById('prmpattern')
+                    prmPat.innerText = state == null ? '--' : 'E-' + String(state).padStart(3, '0');
+                    break;
+
+                case 'secl-pattern':
+                    let secPat = document.getElementById('secpattern')
+                    secPat.innerText = state == null ? '--' : 'E-' + String(state).padStart(3, '0');
+                    break;
+
+                case 'wrnl-pattern':
+                    let wrnPat = document.getElementById('wrnpattern')
+                    wrnPat.innerText = state == null ? '--' : 'E-' + String(state).padStart(3, '0');
+                    break;
+
+                case 'siren1':
+                    let siren1label = document.getElementById('siren1label')
+                    let siren1data = document.getElementById('siren1data')
+                    siren1label.style.backgroundColor = state != null ? "var(--activation-color)" : "var(--base-color)";
+                    siren1data.innerText = state == null ? '--' : state;
+                    break;
+
+                case 'siren2':
+                    let siren2label = document.getElementById('siren2label')
+                    let siren2data = document.getElementById('siren2data')
+                    siren2label.style.backgroundColor = state != null ? "var(--activation-color)" : "var(--base-color)";
+                    siren2data.innerText = state == null ? '--' : state;
+                    break;
+
+                case 'horn':
+                    let hornlabel = document.getElementById('hornlabel');
+                    hornlabel.style.backgroundColor = state != null ? "var(--activation-color)" : "var(--base-color)";
+                    break;
+
+                case 'crsl':
+                    let crs = document.getElementById('crs');
+                    crs.style.backgroundColor = state ? "var(--activation-color)" : "var(--base-color)";
+                    break;
+
+                case 'tkdl':
+                    let tkd = document.getElementById('tkd');
+                    tkd.style.backgroundColor = state ? "var(--activation-color)" : "var(--base-color)";
+                    break;
+
+                case 'scnl':
+                    let scl = document.getElementById('scl');
+                    scl.style.backgroundColor = state ? "var(--activation-color)" : "var(--base-color)";
+                    break;
+
+                case 'blkt':
+                    let bkt = document.getElementById('bkt');
+                    bkt.style.backgroundColor = state ? "var(--activation-color)" : "var(--base-color)";
+                    break;
+
+                case 'arrowboard':
+                    let brd = document.getElementById('brd');
+                    brd.style.backgroundColor = state ? "var(--activation-color)" : "var(--base-color)";
+                    break;
+
+                case 'ntl':
+                    let ntl = document.getElementById('ntl');
+                    ntl.style.backgroundColor = state ? "var(--activation-color)" : "var(--base-color)";
+                    break;
+
+                case 'activation-type':
+                    let main = document.getElementById('header-main');
+                    main.style.display = state == 'EURO' ? 'none' : 'block';
+                    let euro = document.getElementById('euro');
+                    euro.style.display = state == 'EURO' ? 'flex' : 'none';
+                    break;
+
+                    case 'wigwag':
+                        let wigwag = document.getElementById('wigwag')
+                        wigwag.style.backgroundColor = state ? "var(--activation-color)" : "var(--base-color)";
+                        break
+
+                    case 'strobes':
+                        let strobes = document.getElementById('strobes')
+                        strobes.style.backgroundColor = state ? "var(--activation-color)" : "var(--base-color)";
+                        break
+            }
+        });
+    </script>
+    <style>
+        :root {
+            --base-color: lightgrey;
+            --activation-color: blue;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .panel {
+            position: absolute;
+            bottom: 25px;
+            right: 25px;
+            background-color: #101010;
+            color: black;
+            width: 25vw;
+            /*height: 19vh;*/
+            font-size: 14pt;
+            padding: 5pt;
+        }
+
+        #header {
+            border: black solid 2px;
+            height: 25px;
+            background-color: #212121;
+            color: black;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            padding: 5pt 10pt;
+        }
+
+        #header div>* {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .button {
+            background-color: black;
+            color: var(--base-color);
+            height: 50px;
+            border: black solid 2px;
+            text-align: center;
+            display: inline-block;
+        }
+
+        #subpanel {
+            margin-top: 5px;
+            padding: 2px;
+            border: black solid 2px;
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            column-gap: .5vw;
+            row-gap: .5vh;
+        }
+
+        #subpanel>label:last-of-type {
+            margin-right: -.5vh;
+        }
+
+        .label {
+            background-color: var(--base-color);
+            color: black;
+            height: 25px;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .button>.label+.label {
+            height: 20px;
+            margin-top: 5px;
+        }
+
+        #header div>.label {
+            width: 40pt;
+        }
+
+        #header div> :first-child {
+            margin-right: 10pt;
+        }
+
+        #text {
+            grid-column-start: 1;
+            grid-column-end: 7;
+            font-size: 8pt;
+        }
+
+        #text>span {
+            display: inline-block;
+        }
+
+        #text> :last-child {
+            float: right;
+            color: grey;
+        }
+
+        #euro-wrapper {
+            display: flex;
+            flex-direction: column;
+            background-color: black;
+            height: 50px;
+            border: 2px solid black;
+        }
+
+        #euro {
+            display: none;
+            background-color: var(--base-color);
+            color: black;
+            justify-content: center;
+            align-content: center;
+            flex-direction: column;
+            text-align: center;
+            height: 100%;
+            font-size: 20pt;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="panel">
+        <div id="header">
+            <div id="header-main" style="grid-column: 1;">
+                <span>MAIN</span>
+                <div id="stage1label" class="label">S-1</div>
+                <div id="stage2label" class="label">S-2</div>
+                <div id="stage3label" class="label">S-3</div>
+            </div>
+            <span style="text-align: right; grid-column: 2;">Luxart Systems</span>
+        </div>
+        <div id="subpanel">
+            <div class="button">
+                <div id="wrnlabel" class="label">WRN</div>
+                <div id="wrnpattern" class="data">E-005</div>
+            </div>
+            <div class="button">
+                <div id="prmlabel" class="label">PRM</div>
+                <div id="prmpattern" class="data">E-005</div>
+            </div>
+            <div class="button">
+                <div id="seclabel" class="label">SEC</div>
+                <div id="secpattern" class="data">E-005</div>
+            </div>
+            <div class="button">
+                <div id="wigwag" class="label">WW</div>
+                <div id="strobes" class="label">STR</div>
+            </div>
+            <div id="euro-wrapper" style="grid-column-start: 5; grid-column-end: 7;">
+                <div id="euro">999</div>
+            </div>
+            <div class="button">
+                <div id="hornlabel" class="label">HRN</div>
+                <div id="horndata" class="data">--</div>
+            </div>
+            <div class="button">
+                <div id="siren1label" class="label">SRN1</div>
+                <div id="siren1data" class="data">WAIL</div>
+            </div>
+            <div class="button">
+                <div id="siren2label" class="label">SRN2</div>
+                <div id="siren2data" class="data">YELP</div>
+            </div>
+            <div class="button">
+                <div id="crs" class="label">CRS</div>
+                <div id="brd" class="label">BRD</div>
+            </div>
+            <div class="button">
+                <div id="tkd" class="label">TKD</div>
+                <div id="scl" class="label">SCL</div>
+            </div>
+            <div class="button">
+                <div id="bkt" class="label">BKT</div>
+                <div id="ntl" class="label">NTL</div>
+            </div>
+            <div id="text">
+                <span>EMERGENCY LIGHTING SYSTEM</span>
+                <span>READ MANUAL BEFORE USE</span>
+                <span>MODEL 1.00</span>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

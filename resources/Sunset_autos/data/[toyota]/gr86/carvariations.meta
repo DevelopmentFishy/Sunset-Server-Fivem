@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<CVehicleModelInfoVariation>
+  <variationData>
+	<Item>
+      <modelName>toygr86</modelName>
+      <colors>
+        <Item>
+          <indices content="char_array">
+            31
+            3
+            9
+			      9
+            9
+			      9
+          </indices>
+        </Item>
+      </colors>
+      <kits>
+        <Item>1373_toygr86_modkit</Item>
+      </kits>
+      <windowsWithExposedEdges />
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>Standard White</Name>
+            <Value value="100" />
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="1739" />
+      <sirenSettings value="0" />
+    </Item>
+
+    <Item>
+      <modelName>subbrz22</modelName>
+      <colors>
+        <Item>
+          <indices content="char_array">
+            79
+            3
+            9
+			      9
+            9
+			      9
+          </indices>
+        </Item>
+      </colors>
+      <kits>
+        <Item>1374_subbrz22_modkit</Item>
+      </kits>
+      <windowsWithExposedEdges />
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>Standard White</Name>
+            <Value value="100" />
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="1739" />
+      <sirenSettings value="0" />
+    </Item>
+  </variationData>
+</CVehicleModelInfoVariation>

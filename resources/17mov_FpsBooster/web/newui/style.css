@@ -1,0 +1,161 @@
+body {
+    color:white;
+    padding: 0;
+    margin: 0;
+}
+
+* {
+    user-select: none;
+}
+
+.hider {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+}
+
+@font-face {
+	font-family: "Gilroy";
+	src: url("assets/Gilroy-SemiBold.ttf");
+	font-weight: 100;
+	font-style: normal;
+    font-display: swap; 
+}
+
+@font-face {
+	font-family: "Gilroy";
+	src: url("assets/Gilroy-Bold.ttf");
+	font-weight: 200;
+	font-style: normal;
+    font-display: swap; 
+}
+
+.mainMenu {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(180deg, rgba(10, 11, 18, 0.9) .5%, rgba(10, 11, 18, 0) 100%);
+    display: flex;
+    justify-content: center;
+    overflow: scroll;
+}
+
+.mainMenu::-webkit-scrollbar {
+    display: none;
+}
+
+.options {
+    margin-right: 15px;
+    margin-top: 15px;
+    height: fit-content;
+}
+
+.optionsLabel {
+    margin-bottom: 10px;
+}
+
+.child {
+    padding: 10px;
+    padding-right: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(123, 144, 183, 0.15);
+    border-radius: 5px;
+    font-family: "Gilroy";
+    font-weight: 200;
+    font-size: 20px;
+}
+
+.child .text {
+    margin-left: 6px;
+}
+
+.switch {
+    background: linear-gradient(270deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.05) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.247);
+    border-radius: 6px;
+    margin-right: 6px;
+    width: 75px;
+    height: 25px;
+}
+
+.switch .flex {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.switchOption {
+    font-family: 'Gilroy';
+    font-weight: 100;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+    z-index: 11;
+    transition: 0.2s;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.selectedON {
+    color: #ffffff;
+}
+
+.selectedOFF {
+    color: #ffffff;
+}
+
+.switchIndicator {
+    position: absolute;
+    background: linear-gradient(295.75deg, rgba(255, 26, 53, 0.27) 0%, rgba(255, 26, 53, 0) 100%);
+    border: 1px solid #FF1A35;
+    border-radius: 6px;
+    height: 25px;
+    width: 35px;
+    margin-top: -26px;
+    /* margin-left: -1px; */
+    margin-left: 39px;
+    z-index: 10;
+    transition: 0.35s;
+}
+
+small {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 10px;
+    margin-left: 5px;
+}
+
+@media screen and (max-width: 1185px) {
+    .optionLabel img {
+        width: 300px;
+    }
+
+    .child {
+        font-size: 15px;
+        padding: 5px;
+        padding-right: 5px;
+    }
+
+    small {
+        font-size: 8px;
+    }
+
+}
+
+@media screen and (max-width: 950px) {
+    .mainMenu {
+        flex-wrap: wrap;
+        align-content: flex-start;
+        background-color: rgba(10, 11, 18, 0.7);
+    }
+
+    #center {
+        order: 3;
+    }
+}

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="newui/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+
+    <div class="hider">
+        <div class="mainMenu">
+            <div class="gradient"></div>
+            <div class="options">
+                <div class="optionLabel"><img src="newui/assets/mainOptions.png"></div>
+    
+                <div class="child">
+                    <div class="text">Optimize Peds</div>
+                    <div class="switch">
+                        <div class="flex">
+                            <div class="switchOption" id="pedsON">ON</div>
+                            <div class="switchOption selectedOFF" id="pedsOFF">OFF</div>
+                        </div>
+                        <div class="switchIndicator" id="peds"></div>
+                    </div>
+                </div>
+    
+                <div class="child">
+                    <div class="text">Optimize Vehicles</div>
+                    <div class="switch">
+                        <div class="flex">
+                            <div class="switchOption" id="vehiclesON">ON</div>
+                            <div class="switchOption selectedOFF" id="vehiclesOFF">OFF</div>
+                        </div>
+                        <div class="switchIndicator" id="vehicles"></div>
+                    </div>
+                </div>
+    
+                <div class="child">
+                    <div class="text">Optimize Objects</div>
+                    <div class="switch">
+                        <div class="flex">
+                            <div class="switchOption" id="objectsON">ON</div>
+                            <div class="switchOption selectedOFF" id="objectsOFF">OFF</div>
+                        </div>
+                        <div class="switchIndicator" id="objects"></div>
+                    </div>
+                </div>
+                
+                <div class="child">
+                    <div class="text">Remove Particles</div>
+                    <div class="switch">
+                        <div class="flex">
+                            <div class="switchOption" id="particlesON">ON</div>
+                            <div class="switchOption selectedOFF" id="particlesOFF">OFF</div>
+                        </div>
+                        <div class="switchIndicator" id="particles"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="options" id="center"> 
+                <div class="optionLabel"><img src="newui/assets/otherOptions.png"></div>
+    
+                <div class="child">
+                    <div class="text">Disable Broken Glass</div>
+                    <div class="switch">
+                        <div class="flex">
+                            <div class="switchOption" id="brokenON">ON</div>
+                            <div class="switchOption selectedOFF" id="brokenOFF">OFF</div>
+                        </div>
+                        <div class="switchIndicator" id="broken"></div>
+                    </div>
+                </div>
+    
+                <div class="child">
+                    <div class="text">Clearing Ped dirt</div>
+                    <div class="switch">
+                        <div class="flex">
+                            <div class="switchOption" id="pedON">ON</div>
+                            <div class="switchOption selectedOFF" id="pedOFF">OFF</div>
+                        </div>
+                        <div class="switchIndicator" id="ped"></div>
+                    </div>
+                </div>
+    
+                <div class="child">
+                    <div class="text">Turn various optimizations</div>
+                    <div class="switch">
+                        <div class="flex">
+                            <div class="switchOption" id="unnecessaryON">ON</div>
+                            <div class="switchOption selectedOFF" id="unnecessaryOFF">OFF</div>
+                        </div>
+                        <div class="switchIndicator" id="unnecessary"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="options" style="margin-right: 0;">
+                <div class="optionLabel"><img src="newui/assets/worldOptions.png"></div>
+    
+                <div class="child">
+                    <div class="text">Disable Rain and Wind</div>
+                    <div class="switch">
+                        <div class="flex">
+                            <div class="switchOption" id="rainON">ON</div>
+                            <div class="switchOption selectedOFF" id="rainOFF">OFF</div>
+                        </div>
+                        <div class="switchIndicator" id="rain"></div>
+                    </div>
+                </div>
+                
+                <div class="child" >
+                    <div class="text">Optimize Shadows</div>
+                    <div class="switch">
+                        <div class="flex">
+                            <div class="switchOption" id="shadowsON">ON</div>
+                            <div class="switchOption selectedOFF" id="shadowsOFF">OFF</div>
+                        </div>
+                        <div class="switchIndicator" id="shadows"></div>
+                    </div>
+                </div>
+                
+                <div class="child">
+                    <div class="text">Optimize Lights</div>
+                    <div class="switch">
+                        <div class="flex">
+                            <div class="switchOption" id="lightsON">ON</div>
+                            <div class="switchOption selectedOFF" id="lightsOFF">OFF</div>
+                        </div>
+                        <div class="switchIndicator" id="lights"></div>
+                    </div>
+                </div>
+    
+                <div class="child">
+                    <div class="text">Set Textures to Low<small>(experimental)</small></div>
+                    <div class="switch">
+                        <div class="flex">
+                            <div class="switchOption" id="lowTextureON">ON</div>
+                            <div class="switchOption selectedOFF" id="lowTextureOFF">OFF</div>
+                        </div>
+                        <div class="switchIndicator" id="lowTexture"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="newui/script.js"></script>
+</html>

@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+body {
+    color:white;
+    font-family: 'Poppins', sans-serif;
+    display: none;
+}
+
+.hider {
+    display: none;
+}
+
+.mainMenu {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    background-color: rgba(0,0,0,0.7);
+    border-radius: 1vh;
+    display: flex;
+}
+
+.options {
+    width: 15vw;
+    background-color: rgba(0,0,0,0.5);
+    margin: 1vh 0.5vw;
+    border-radius: 1vh;
+}
+
+.optionLabel {
+    background-color: rgb(125, 21, 21);
+    text-align: center;
+    font-size: 2.5vh;
+    border-top-left-radius: 1vh;
+    border-top-right-radius: 1vh;
+    margin-bottom: 0.5vh;
+}
+
+.child {
+    background-color: rgba(0,0,0,0.5);
+    padding: 1.5vh 1vw;
+    text-align: center;
+    margin-bottom: 0.5vh;
+    font-size: 1.5vh;
+}
+
+.child:hover {
+    transition: 0.3s;
+    background-color: rgb(125, 21, 21);
+}
+
+.last {
+    border-bottom-left-radius: 1vh;
+    border-bottom-right-radius: 1vh;
+    margin: 0;
+}
+
+.active {
+    background-color: rgb(125, 21, 21);
+}
+
+.active:hover {
+    background-color: rgba(66, 66, 66, 0.5);
+    transition: 0.3s;
+}

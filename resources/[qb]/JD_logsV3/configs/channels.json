@@ -1,0 +1,101 @@
+{
+  "newInstall": false,
+  "all": {
+    "channelId": "1211764619132014652",
+    "color": "#A1A1A1",
+    "embed": true
+  },
+  "system": {
+    "channelId": "1211764621216841749",
+    "icon": "🧾",
+    "color": "#A1A1A1",
+    "embed": true
+  },
+  "imageStore": {
+    "channelId": "1211764620176654347",
+    "webhookID": "1232209671264272436",
+    "webhookToken": "2FjVy2nj666S4Tjv0B8n62KE6XjMV-fDZ_1eDpNheMrTHJUPJYFIDzhQGGP9r7TdhZkQ"
+  },
+  "chat": {
+    "channelId": "1211764628603011184",
+    "icon": "💬",
+    "color": "#A1A1A1",
+    "logHistory": true,
+    "embed": true
+  },
+  "join": {
+    "channelId": "1211764631773651107",
+    "icon": "📥",
+    "color": "#3AF241",
+    "logHistory": true,
+    "embed": true
+  },
+  "leave": {
+    "channelId": "1211764635699511386",
+    "icon": "📤",
+    "color": "#F23A3A",
+    "logHistory": true,
+    "embed": true
+  },
+  "death": {
+    "channelId": "1211764637758922863",
+    "icon": "💀",
+    "color": "#000000",
+    "logHistory": true,
+    "embed": true
+  },
+  "shooting": {
+    "channelId": "1211764647842152581",
+    "icon": "🔫",
+    "color": "#2E66F2",
+    "logHistory": false,
+    "embed": true
+  },
+  "resource": {
+    "channelId": "1211764651482812438",
+    "icon": "🔧",
+    "color": "#EBEE3F",
+    "logHistory": true,
+    "embed": true
+  },
+  "nameChange": {
+    "channelId": "1211764656658718720",
+    "icon": "💠",
+    "color": "#03FC98",
+    "logHistory": true,
+    "embed": true
+  },
+  "explosion": {
+    "channelId": "1211764659095347293",
+    "icon": "🧨",
+    "color": "#03FC98",
+    "logHistory": true,
+    "embed": true
+  },
+  "permission": {
+    "channelId": "1211764661444157442",
+    "icon": "🔒",
+    "color": "#03FC98",
+    "logHistory": true,
+    "embed": true
+  },
+  "screenshot": {
+    "channelId": "1211764667924348949",
+    "icon": "📸",
+    "color": "#A1A1A1",
+    "logHistory": false,
+    "embed": true
+  },
+  "txAdmin": {
+    "channelId": "1211764664493674557",
+    "icon": "💻",
+    "color": "#FFFFFF",
+    "embed": true
+  },
+  "damage": {
+    "channelId": "1211764642125316108",
+    "icon": "🩸",
+    "color": "#FF0000",
+    "embed": true
+  }
+}

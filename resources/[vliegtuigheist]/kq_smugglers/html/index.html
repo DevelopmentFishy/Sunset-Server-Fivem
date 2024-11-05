@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="js/jquery.js"></script>
+    <script src="js/card.js"></script>
+</head>
+<body>
+<div class="UI-CONTAINER">
+    <div id="phone" class="phone tab">
+        <div class="screen">
+            <h1 class="title">FIREWALL BR34KR</h1>
+            <h2 class="tutorial">FIND MISMATCHES HASHES</h2>
+            <div id="screen"></div>
+            <h3 id="timer" class="timer">20:00</h3>
+        </div>
+    </div>
+    <div id="hint" class="hint tab card">
+        <div class="inner-card">
+            <img src="img/hint.png">
+            <span class="glare"></span>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+<script>
+    $(document).ready(function () {
+        const characters       = 'ABCDEFGHIJKLMNOPQRSTUVWYZ0123456789*/$%@!#()[];:|';
+
+        let activeType = '';
+
+        let active = false;
+
+        let difficulty = 8;
+        let maxTime = 30;
+
+        let correctAnswers = 0;
+        let failed = false;
+        let gameHash = 0;
+
+        let timeLeft = -1;
+
+        window.addEventListener('message', ({data}) => {
+            if (data.event === 'show') {
+
+                if (data.state) {
+                    $('.tab').hide();
+                } else {
+                    toggleUI(data.state)
+                }
+
+                activeType = data.type;
+                if (data.type === 'hack') {
+                    toggleUI(data.state)
+                    $('#phone').show();
+                    if (data.state) {
+                        difficulty = parseInt(data.lockCount || 8);
+                        maxTime = parseInt(data.maxTime || 30);
+
+                        startHack();
+                    }
+                }
+
+                if (data.type === 'hint') {
+                    toggleUI(data.state, '0')
+                    $('#hint').show();
+                }
+            }
+        });
+
+        function toggleUI(state, margin) {
+            if (state) {
+                $(".UI-CONTAINER").css('display', 'flex');
+                $("body").animate({
+                    marginTop: margin || "10vh"
+                }, 500);
+                active = true;
+            } else {
+                $("body").animate({
+                    marginTop: "100vh"
+                }, 500, function () {
+                    $(".UI-CONTAINER").hide();
+                });
+                active = false;
+            }
+        }
+
+        document.addEventListener('keyup', logKey);
+        function logKey(e) {
+            if (e.key === 'Escape' || e.key === 'Backspace' || e.key === 'e' || e.key === 'E' || e.key === ' ') {
+                let type = activeType === 'hack' ? 'HackFailed' : 'HintClosed'
+
+                fetch(`https://${GetParentResourceName()}/${type}`, {
+                    method: 'POST',
+                })
+            }
+        }
+
+
+        function startHack() {
+            gameHash = getRandomInt(100000, 9999999999);
+            correctAnswers = 0;
+
+            let html = ''
+            for (let i = 0; i < difficulty; i++) {
+                html += '<div class="lock">';
+
+                const keyword = makeString(getRandomInt(7, 8));
+                const answer = getRandomInt(0,3);
+
+                for (let k = 0; k < 3; k++) {
+                    let word = keyword
+                    const pos = getRandomInt(1, word.length);
+
+                    if (k === answer) {
+                        let newChar = characters[getRandomInt(0, characters.length)];
+                        const char = word.charAt(pos);
+
+                        let timeout = 20;
+                        while (char === newChar && timeout > 0) {
+                            timeout--;
+                            let newChar = characters[getRandomInt(0, characters.length)];
+                        }
+
+                        if (timeout <= 1) {
+                            newChar = 'X';
+                        }
+
+                        word = setCharAt(word, pos, newChar);
+                    }
+
+                    html += '<div class="line" correct="' + (k === answer ? 1 : 0) + '"><span class="word">' + word + '</span></div>'
+                }
+
+                html += '</div>'
+            }
+
+            timeLeft = maxTime;
+            triggerTimer(gameHash);
+            $('#screen').html(html);
+        }
+
+        function makeString(length) {
+            let result           = '';
+            let charactersLength = characters.length;
+            for (let i = 0; i < length; i++) {
+                result += characters.charAt(Math.floor(Math.random() * charactersLength));
+            }
+            return result;
+        }
+
+        function setCharAt(str, index, chr) {
+            if(index > str.length-1) return str;
+            return str.substring(0,index) + chr + str.substring(index+1);
+        }
+
+        function getRandomInt(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
+        }
+
+        function triggerTimer(hash) {
+            if (active && gameHash === hash) {
+                timeLeft -= 0.1;
+
+                $('#timer').html((timeLeft.toFixed(1) + 's'));
+
+                if (timeLeft <= 0) {
+                    startHack();
+                } else {
+                    setTimeout(triggerTimer, 100, hash)
+                }
+            }
+        }
+
+        $(document).on('click', '.line', function () {
+            if (failed) {
+                return;
+            }
+            const correct = $(this).attr('correct');
+            if (correct === '1') {
+                $(this).addClass('selected');
+                correctAnswers++;
+
+                if (correctAnswers >= difficulty) {
+                    fetch(`https://${GetParentResourceName()}/HackSuccess`, {
+                        method: 'POST',
+                    });
+                }
+            } else {
+                $(this).addClass('wrong');
+                failed = true;
+                setTimeout(() => {
+                    startHack();
+                    failed = false;
+                }, 1000)
+            }
+        });
+
+        $("body").animate({
+            marginTop: "100vh"
+        }, 500);
+
+        fetch(`https://${GetParentResourceName()}/NUILoaded`, {
+            method: 'POST',
+        });
+    });
+</script>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap');
+
+    @font-face {
+        font-family: "FjallaOne";
+        src: url('fonts/FjallaOne.ttf') format('truetype');
+    }
+
+    body {
+        font-family: 'Lato', sans-serif !important;
+        user-select: none;
+        overflow: hidden;
+    }
+
+    .UI-CONTAINER {
+        display: none;
+        width: 100vw;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        user-select: none;
+        overflow: hidden;
+        transition-duration: 1s;
+    }
+
+    .phone {
+        background-color: rgb(174, 174, 174);
+        width: 35vh;
+        height: 65vh;
+        position: fixed;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: inset 0.1vw 0.1vw 0.6vw rgba(255, 255, 255, 0.6);
+        border-radius: 3vh;
+        transition-duration: 0.5s;
+    }
+
+    .screen {
+        background: #141814; /* Old browsers */
+        width: calc(100% - 3vw);
+        height: calc(100% - 3vw);
+        box-shadow: inset 0 0 0.9vw rgba(0, 0, 0, 0.3);
+        position: relative;
+        overflow: hidden;
+        border-radius: 1vh;
+        padding: 1vh;
+    }
+
+    .title {
+        color: lime;
+        font-weight: lighter;
+        font-size: 3rem;
+        text-align: center;
+        width: 100%;
+    }
+
+    .tutorial {
+        color: #206b01;
+        font-size: 1rem;
+        text-align: center;
+        width: 100%;
+    }
+
+    .lock {
+        display: flex;
+    }
+
+    .lock:hover {
+        background-color: #173117;
+    }
+
+    .line {
+        width: 33.3%;
+        border: inset lime 1px ;
+        padding: 8px;
+    }
+
+    .line:hover {
+        border: inset lime 3px;
+        padding: 6px;
+    }
+
+    .selected {
+        background-color: lime;
+    }
+
+    .wrong {
+        background-color: red;
+    }
+
+    .wrong .word {
+        color: red;
+    }
+
+    .word {
+        color: lime;
+        font-size: 1rem;
+    }
+
+    .timer {
+        color: lime;
+        font-weight: lighter;
+        font-size: 2rem;
+        text-align: center;
+        width: 100%;
+    }
+
+    .hint {
+        display: flex;
+        justify-content: center;
+        height: 100%;
+        width: 100%;
+    }
+
+
+    .hint img {
+        height: 97%;
+        object-fit: contain;
+    }
+
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #CBCBCB;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #A90101;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #820000;
+    }
+
+    ::-moz-selection { /* Code for Firefox */
+        color: red;
+        background: yellow;
+    }
+
+    ::selection {
+        color: #FFFFFF;
+        background: #E80000;
+    }
+
+
+    .card {
+        box-shadow: none;
+        backface-visibility: visible;
+        background: transparent;
+        font-family: Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        transform-style: preserve-3d;
+        padding: 0;
+        margin: 0 2rem 0 0;
+        width: auto;
+        height: 100%;
+        float: left;
+        transition: all 0.3s ease-out;
+        border: none;
+        letter-spacing: 1px;
+    }
+
+    .inner-card {
+        transition: all 0.3s ease-out;
+    }
+</style>

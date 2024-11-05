@@ -1,0 +1,3 @@
+Hello, ignore me
+
+This file needs to be here for the `json_areas` folder to exists after keymaster processing

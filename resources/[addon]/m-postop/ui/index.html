@@ -1,0 +1,1667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;1,600&display=swap" rel="stylesheet">
+    <script src="nui://game/ui/jquery.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.1.1/howler.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <script src="./javascript.js" type="text/javascript"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mPostop</title>
+    <style>
+    @font-face {
+        font-family: Proxima Bold ;
+        src: url("./fonts/PROXIMA_NOVA_BOLD.OTF");
+    }
+
+    @font-face {
+        font-family: Proxima Regular;
+        src: url("./fonts/ProximaNovaFont.otf");
+    }
+    * {
+    user-select: none;
+    
+}
+
+    .reference{
+        position: absolute;
+        background-size: 100% 100%;
+        width: 100vw;
+        height: 100vh;
+        z-index: -1;
+    }
+
+    .logotext{
+        font-family: Proxima Bold;
+        color: white;
+        font-size: 1.4vw;
+        line-height: 10%;
+    }
+
+    .middletext{
+        font-family: Proxima Bold;
+        font-size: 1.4vw;
+        line-height: 10%;
+        letter-spacing: .2vw;
+        color: white;
+    }
+
+    h1{
+        font-family: Proxima Bold;
+    }
+    p {
+        font-family: Proxima Bold;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 1.2vh;
+        letter-spacing: 0.01em;
+    }
+    .testotaylan img {
+        padding: 0;
+        min-height: 100%;
+        min-width: 100%;
+    }
+    .select-work-text {
+        font-family: Proxima Bold;
+        font-weight: 700;
+        font-size: 2.5vh;
+        letter-spacing: 0.10em;
+        color: #FFFFFF;
+    }
+    .daily-title p{
+        font-family: Proxima Bold;
+        font-weight: 700;
+        font-size: 1.4vh;
+        letter-spacing: 0.11em;
+        color: #FFFFFF;
+        text-shadow: 0px 0px 21px #FFFFFF;
+        border-bottom: 3px solid rgb(254, 253, 254);
+    }
+    .mission-title {
+        font-family: Proxima Regular;
+        font-weight: 700;
+        font-size: 1.1vh;
+        letter-spacing: 0.11em;
+        color: #FFFFFF;
+        overflow: hidden;
+        white-space: nowrap; 
+        word-wrap:break-word;
+        text-overflow:ellipsis; 
+    }
+    .gold {
+        color: #F69401;
+    }
+    .mission-xp {
+        font-family: Proxima Bold;
+        font-weight: 700;
+        font-size: 1.1vh;
+        letter-spacing: 0.11em;
+        overflow: hidden;
+        white-space: nowrap; 
+        word-wrap:break-word;
+        text-overflow:ellipsis; 
+        color: #F69401;
+    }
+    .missions-resettime {
+        color: gray;
+        text-align: center;
+    }
+    .missin-desc {
+        font-family: Proxima Bold;
+        font-size: 0.89vh;
+        letter-spacing: 0.11em;
+        color: rgba(255, 255, 255, 0.5);
+    }
+    .mission-status {
+        color: #F69401;
+        font-family: Proxima Bold;
+        font-size: 1.05vh;
+    }
+    .status-text {
+        font-family:Proxima Bold;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 1vh;
+        line-height: 99.5%;
+        letter-spacing: 0.11em;
+        text-align: right;
+        color: #F69401;
+    }
+    .statusbar {
+        background: rgba(246, 148, 1, 0.21);
+        border-radius: 0.3vw;
+        overflow: hidden;
+    }
+    .status-desc-text {
+        font-family: Proxima Bold;
+        font-style: normal;
+        font-size: 1.4vh;
+        letter-spacing: 0.11em;
+        text-transform: uppercase; 
+        color: #ffffff8f;
+        text-shadow: 0px 0px 14px #000000;
+
+    }
+    .check-circle-container {
+        font-size: 2.49vh;
+        color: #D2BA98;
+    }
+    .leaderboard-number{
+        font-family: Proxima Bold;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 1.7vh;
+        line-height: 99.5%;
+        letter-spacing: 0.11em;
+        color: #F69401;
+    }
+    .leaderboard-playername {
+        font-family: Proxima Regular;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 1.3vh;
+        line-height: 99.5%;
+        letter-spacing: 0.11em;
+        color: #FFFFFF;
+    }
+    .leaderboard-level {
+        font-family: Proxima Regular;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 1.3vh;
+        line-height: 99.5%;
+        letter-spacing: 0.11em;
+        color: rgba(255, 255, 255, 0.34);
+    }
+    .player-info-box-username {
+        font-family: Proxima Regular;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 1.35vh;
+        line-height: 99.5%;
+        color: #FFFFFF;
+        letter-spacing: 0.11em;
+    }
+    .player-info-box-playerlevel {
+        font-family: Proxima Bold;
+        font-style: normal;
+        font-size: 1.25vh;
+        line-height: 99.5%;
+        color: rgba(255, 255, 255, 0.5);
+        letter-spacing: 0.11em;
+    }
+    .player-info-box-grade i{
+        color: white;
+        font-size: 1.7vh;
+    }   
+    .player-info-box-grade p{
+        font-family: Proxima Bold;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 1.15vh;
+        line-height: 99.5%;
+        /* identical to box height, or 14px */
+
+        letter-spacing: 0.11em;
+
+        color: rgba(255, 255, 255, 0.5);
+    }  
+    .statics-title {
+        font-family: Proxima Bold;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 1.4vh;
+        line-height: 99.5%;
+        letter-spacing: 0.11em;
+        color: #FFFFFF;
+    } 
+    img {
+        padding: 0;
+        min-height: 100%;
+    }
+    .nextclasstext {
+        font-family: Proxima Bold;
+        font-style: normal;
+        font-weight: 800;
+        font-size: 1.3vh;
+        line-height: 100%;
+
+        color: #FFFFFF;
+    }
+    .compworkstitle {
+        font-family: Proxima Bold;
+        font-style: normal;
+        font-weight: 800;
+        font-size: 1.3vh;
+        line-height: 100%;
+        color: white;
+    }
+    .compworksindex {
+        font-family: Proxima Bold;
+        font-style: normal;
+        font-weight: 800;
+        font-size: 3vh;
+        line-height: 100%;
+        color: white;
+    }
+    .levelindex {
+        font-family: Proxima Bold;
+        font-style: normal;
+        font-weight: 800;
+        line-height: 100%;
+        color: white;
+    }
+    .lastwork-list {
+        background: rgba(0, 0, 0, 0.63); border-radius: 0.3vw;
+        margin-top: 1vh;
+    }
+    .overflow-menu::-webkit-scrollbar {
+        display: none;
+        
+    } 
+    .work-name {
+        font-family: Proxima Bold;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 2vh;
+        line-height: 99.5%;
+        letter-spacing: 0.11em;
+        color: white;
+        text-transform: uppercase;
+    }
+    .work-time {
+        font-family: Proxima Bold;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 1.3vh;
+        line-height: 99.5%;
+        letter-spacing: 0.11em;
+        color: rgba(255, 255, 255, 0.2);
+    }
+    .work-xp {
+        font-family: Proxima Bold;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 1.8vh;
+        line-height: 99.5%;
+        /* identical to box height, or 20px */
+        letter-spacing: 0.11em;
+        color: #D3BB9A;
+    }
+    .work-earned {
+        font-family: Proxima Bold;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 1.8vh;
+        line-height: 99.5%;
+        /* identical to box height, or 20px */
+
+        letter-spacing: 0.11em;
+
+        color: #F69401;
+    }
+    .cargo-work-text {
+        font-family: Proxima Bold;
+        font-style: normal;
+        font-weight: 800;
+        font-size: 1.9vh;
+        line-height: 99.5%;
+        letter-spacing: 0.11em;
+        color: #FFFFFF;
+    }
+    .transport-work-requiredtext {
+        font-family: Proxima Bold;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 1.3vh;
+        line-height: 99.5%;
+
+        letter-spacing: 0.03em;
+        color: rgba(255, 255, 255, 0.34);
+        }
+    .area-text-title {
+        font-family: Proxima Bold;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 2.2vh;
+        line-height: 99.5%;
+        /* or 24px */
+
+        letter-spacing: 0.11em;
+
+        color: #FFFFFF;
+    }    
+    .area-text {
+        font-family: Proxima Bold;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 1.5vh;
+        line-height: 99.5%;
+        /* or 24px */
+
+        letter-spacing: 0.11em;
+
+        color: gray;
+    }  
+    .gobackbtn {
+        background: #F69401;
+        border-radius: 0.5vw;
+        font-size: 1.6vh;
+        font-weight: 700;
+        font-family: Proxima Bold;
+        font-style: normal;
+        letter-spacing: 0.01em;
+        color: white;
+    }
+    #airport-area {
+        background: url(./img/airport-area.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+    #airport-area:hover {
+        background: url(./img/airport-area-selected.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+    #downtown-area {
+        background: url(./img/downtown-area.png);
+        background-size: contain;
+        background-repeat: no-repeat; 
+    }
+    #downtown-area:hover {
+        background: url(./img/downtown-area-selected.png);
+        background-size: contain;
+        background-repeat: no-repeat; 
+    }
+    #sandy-area {
+        background: url(./img/sandy-area.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+    #sandy-area:hover {
+        background: url(./img/sandy-area-selected.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+    #paleto-area {
+        background: url(./img/paleto-area.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+    #paleto-area:hover {
+        background: url(./img/paleto-area-selected.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+    .area-name {
+        font-family: Proxima Bold;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 3.2vh;
+        line-height: 99.5%;
+        letter-spacing: 0.11em;
+
+        color: #FFFFFF;
+    }
+    .item-info-header {
+        font-family: Proxima Bold;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 1.6vh;
+        line-height: 99.5%;
+
+        letter-spacing: 0.11em;
+
+        color: #FFFFFF;
+    }
+    .item-info {
+        font-family: Proxima Bold;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 1.2vh;
+        line-height: 99.5%;
+        letter-spacing: 0.01em;
+        color: #F69401;
+    }
+    .transporttopnav {
+        font-family: Proxima Bold;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 1.8vh;
+        line-height: 99.5%;
+        letter-spacing: 0.11em;
+        color: #FFFFFF;
+    }
+    .transporttopnavindex {
+        font-family: Proxima Bold;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 1.4vh;
+        line-height: 99.5%;
+        letter-spacing: 0.11em;
+        color: gray;
+    }
+    .route-name {
+        font-family: Proxima Bold;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 2vh;
+        line-height: 99.5%;
+        letter-spacing: 0.11em;
+        color: #FFFFFF;
+    }
+    .delivery-amount {
+        font-family: Proxima Bold;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 1.3vh;
+        line-height: 99.5%;
+        letter-spacing: 0.01em;
+        color: #FFFFFF;
+    }
+    .delivery-amount-index {
+        font-family: Proxima Bold;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 1.1vh;
+        line-height: 99.5%;
+        /* identical to box height, or 10px */
+
+        letter-spacing: 0.01em;
+
+        color: #F69401;
+
+    }
+    .cargo-mission {
+        font-family: Proxima Bold;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 0.9vh;
+        line-height: 99.5%;
+        /* identical to box height, or 8px */
+
+        letter-spacing: 0.11em;
+
+        color: #F69401;
+    }
+    .route-package {
+        font-family: Proxima Bold;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 1.2vh;
+        line-height: 99.5%;
+        /* identical to box height, or 15px */
+
+        letter-spacing: 0.11em;
+
+        color: #FFFFFF;
+    }
+    .uniformcont {
+        background: url('./img/uniform-bg.png');
+        /* border: 3px solid #F69401; */
+        border: 3px solid white;
+        border-radius: 6px;
+        opacity: 90%;
+    }    .uniformcont:hover {
+        opacity: 100%;
+    }
+    .routescont {
+        background: url('./img/routes-bg.png');
+        /* border: 3px solid #F69401; */
+        border: 3px solid white;
+        border-radius: 6px;
+        opacity: 90%;
+    }.routescont:hover {
+        opacity: 100%;
+    }
+
+    .vehiclescont {
+        background: url('./img/vehicles-bg.png');
+        /* border: 3px solid #F69401; */
+        border: 3px solid white;
+        border-radius: 6px;
+        opacity: 90%;
+    }.vehiclescont:hover {
+        opacity: 100%;
+    }
+    #hsnloadbar {
+        display: none;
+    }
+
+    .vehicles {
+        transition: border 0.2s;
+        border: 3px solid rgba(255, 255, 255, 0.21);
+    }
+    .vehicles:hover {
+        
+        border: 3px solid rgb(202, 202, 202);
+    }
+    .gopostbtn {
+        transition: opacity 0.2s;
+        opacity: 90%;
+    }
+    .gopostbtn:hover {
+        opacity: 100%;
+    }
+    </style>
+</head>
+<body >
+    <div class="flex w-screen h-screen items-end justify-end jobinfo" style="display: none;">
+        <div class="flex w-[15%] h-[30%] flex-col justify-center" >
+            <!-- PROGRESS -->
+            <div class="flex w-[95%] h-[13vh] relative bottom-[20vh] bg-center bg-contain bg-no-repeat flex-col" style="background-image: url(./img/progress-bg.png); ">
+                <div class="flex w-full h-1/2 flex-col gap-[1vh] items-end justify-center " >
+                    <div class="h-full w-[90%] flex flex-col justify-center gap-[1vh]">
+                        <p id="job-remaining-title " style="font-family: Proxima Bold;
+                        font-style: normal;
+                        font-weight: 700;
+                        font-size: 0.9vh;
+                        line-height: 99.5%;
+                        letter-spacing: 0.11em;
+                        color: #F69401;">PROGRESS</p>
+                        <p id="job-remaining-index" style="font-family: Proxima Bold;
+                        font-style: normal;
+                        font-weight: 700;
+                        font-size: 1.4vh;
+                        line-height: 99.5%;
+                        letter-spacing: 0.11em;
+                        color: white;">90 / 200</p>
+                        </div>
+                    </div>
+
+                    
+                <div class="flex w-full h-1/2 flex-col gap-[1vh] items-end justify-center" >
+                    <div class="h-full w-[90%] flex flex-col justify-center gap-[1vh]">
+                        <p id="job-remaining-title " style="font-family: Proxima Bold;
+                        font-style: normal;
+                        font-weight: 700;
+                        font-size: 0.9vh;
+                        line-height: 99.5%;
+                        letter-spacing: 0.11em;
+                        color: #F69401;">VEHICLE CAPACITY</p>
+                        <p id="vehicle-capacity-index" style="font-family: Proxima Bold;
+                        font-style: normal;
+                        font-weight: 700;
+                        font-size: 1.4vh;
+                        line-height: 99.5%;
+                        letter-spacing: 0.11em;
+                        color: white;">200 / 200</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="flex w-[90%] h-[30%]" style="border-top-left-radius: 6px; border-top-right-radius: 6px">
+                <div class="w-[80%] h-full flex-col">
+                    <div class="w-full h-1/2 flex items-center justify-center">
+                        <p id="job-remaining-title" style="font-family: Proxima Bold;
+                         font-style: normal;
+                         font-weight: 700;
+                         font-size: 1.2vh;
+                         line-height: 99.5%;
+                         letter-spacing: 0.11em;
+                         color: #F69401;">Progress</p>
+                    </div>
+                    <div class="w-full h-1/2 flex items-center justify-center" >
+                        <p id="job-remaining-index" style="font-family: Proxima Bold;
+                        font-style: normal;
+                        font-weight: 700;
+                        font-size: 1.4vh;
+                        line-height: 99.5%;
+                        letter-spacing: 0.11em;
+                        color: white;">90 / 200</p>
+                    </div>
+                </div>
+                <div class="w-[20%] h-full flex justify-center items-center">
+                    <i class="fas fa-box" style="font-size: 1.8vh; color: white;"></i>
+                </div>
+            </div>
+            <div class="flex w-[90%] h-[30%]" style="border-bottom-left-radius: 6px; border-bottom-right-radius: 6px;">
+                <div class="w-[80%] h-full flex-col">
+                    <div class="w-full h-1/2 flex items-center justify-center">
+                        <p id="job-remaining-title" style="font-family: Proxima Bold;
+                         font-style: normal;
+                         font-weight: 700;
+                         font-size: 1.2vh;
+                         line-height: 99.5%;
+                         letter-spacing: 0.11em;
+                         color: #F69401;">Vehicle Capacity</p>
+                    </div>
+                    <div class="w-full h-1/2 flex items-center justify-center" >
+                        <p id="vehicle-capacity-index" style="font-family: Proxima Bold;
+                        font-style: normal;
+                        font-weight: 700;
+                        font-size: 1.4vh;
+                        line-height: 99.5%;
+                        letter-spacing: 0.11em;
+                        color: white;">90 / 200</p>
+                    </div>
+                </div>
+                <div class="w-[20%] h-full flex justify-center items-center">
+                    <i class="fas fa-truck" style="font-size: 1.8vh; color: white;"></i>
+                </div>
+            </div> -->
+        </div>
+    </div>
+    <div class="flex w-screen h-screen justify-center items-center general bg-cover bg-center" style=" height: 100vh; display: none; background-image: url(./img/bg-overlay.png);" >
+        <div class="flex w-[95.4%] h-full flex-col   gen-marg">
+            <div class="flex justify-center items-center w-full h-[8vh] topnv" style="border-bottom: 2px solid rgba(255, 255, 255, 0.338);">
+                <div class="flex gap-5 justify-start items-center w-1/3 h-full left" >
+                    <div class="flex justify-center items-center logo w-[7%] h-[60%]">
+                        <img src="./img/logo.png" alt="">
+                    </div>
+                    <div class="flex justify-start items-center text w-[52%] h-[60%]">
+                        <h1 class="logotext">POST OP. TRANSPORT</h1>
+                    </div>
+                </div>
+                <div class="flex justify-center items-center w-1/3 h-full middle" style="border-bottom: 3px solid rgb(254, 253, 254);">
+                    <h1 class="middletext">OPERATION PAGE</h1>
+                </div>
+                <div class="flex gap-4 justify-end items-center w-1/3 h-full right" onclick="HSN.Select('infopage')">
+                    <div class="flex flex-col  w-[50%] h-[45%] justify-center items-end profiletext">
+                        <h1 style="font-family: Proxima Bold; font-size: 1.1vw; color: white; letter-spacing: .05vw;">Brian O'Neil</h1>
+                        <h1 style="font-family: Proxima Bold; font-size: .9vw; line-height: 60%; color: white; opacity: 50%;">Lv.1</h1>
+                        
+                    </div>
+                    <div class="flex justify-center items-center w-[8.8%] h-[60%] profile overflow-hidden" style="border: 3.5px solid rgb(255, 145, 0); border-radius: 100%;">
+                        <img src="./img/profile.png" alt="">
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="flex justify-center w-full h-[92vh] main" >
+                <div class="flex flex-col mainleft w-[16.6%]" >
+                    <div class="flex justify-center items-center w-full h-[8%] toptext1" >
+                        <h1 style="font-size: 1vw; line-height: 90%; color: white; letter-spacing: .02vw;">Welcome to Post Op. Transport <span>Mr. Dan Mayers</span></h1>
+                    </div>
+                    <div class="flex w-full h-[4%] class" >
+                        <div class="flex justify-center items-center w-[73%] h-full leftclassbg" style=" background-image: url(./img/classbg.png);">
+                            <h1 style="letter-spacing: .08em; font-size: .8vw;">POST OP.</h1>
+                        </div>
+                        <div class="flex justify-center items-center w-[27%] clastext" >
+                            <h1 style="color: rgba(255, 255, 255, 0.24); letter-spacing: .08vw; font-size: .8vw;">· CLASS</h1>
+                        </div>
+                    </div>
+                    <div class="flex justify-start items-start w-full h-[9.8%] steps" >
+                        <h1 style="color: white; font-size: 4.5vw; letter-spacing: .53vw; ">STEPS</h1>
+                    </div>
+                    <div class="flex justify-start items-center w-full h-[6%] uniformtext" >
+                        <h1 style="color: white; letter-spacing: .07vw; font-size: .9vw;"> · Wear your Post Op. uniform.</h1>
+                    </div>
+                        <div class="flex flex-col w-full h-[17.5%] bg-no-repeat bg-bottom bg-cover uniformcont" onclick="HSN.StartJob('uniform')">
+                            <div class="flex justify-center items-end w-[100%] h-[40%] uniforminnertexts">
+                                <div class="flex justify-start items-center w-[86%] h-[66%]">
+                                    <h1 style="color: white; width: 50%; font-size: 1.04vw; letter-spacing: .25vw; line-height: 100%;">POST OP. BADGE</h1>
+                                </div>
+                            </div>
+                            <div class="flex w-[61%] h-[40%] uniforminnertexts">
+                                <h1 style="color: gray; width: 100%; font-size: 1.15vh;  padding-top:0.5vh; letter-spacing: 0.11em; padding-left:1.9vh; font-weight: 700; line-height: 100%;">You need to take your badge to start job.</h1>
+                            </div>
+                             
+                            <div class="flex w-[100%] h-[20%] items-center justify-center uniforminnertexts" id="bottomtextbg-wardrobe" style="background: #fff" >
+                                <h1 style="font-size: 0.7vw; text-align: center; letter-spacing: 0.01em;  color: #3F3F3F;">SELECT TO GO POST OP. BADGE</h1>
+                            </div>
+                        </div>
+                    <div class="flex w-full h-[5.7%] routetext  justify-start items-center" >
+                        <h1 style="color: white; letter-spacing: .07vw; font-size: .9vw;"> · Select a permited route.</h1>
+                    </div>
+                    <div class="flex flex-col w-full h-[17.5%] bg-no-repeat bg-bottom bg-cover routescont" onclick="HSN.Select('route')">
+                        <div class="flex justify-center items-end w-[100%] h-[40%] uniforminnertexts" >
+                            <div class="flex justify-start items-center w-[86%] h-[66%]">
+                                <h1 style="color: white; width: 50%; font-size: 1.04vw; letter-spacing: .25vw; line-height: 100%;">POST OP. ROUTES</h1>
+                            </div>
+                        </div>
+                        <div class="flex w-[61%] h-[40%] uniforminnertexts">
+                            <h1 style="color: gray; width: 100%; font-size: 1.15vh;  padding-top:0.5vh; letter-spacing: 0.11em; padding-left:1.9vh; font-weight: 700; line-height: 100%;">More than 5 different routes to do your job.</h1>
+                        </div>
+                         
+                        <div class="flex flex-col w-[100%] h-[20%] items-center justify-center uniforminnertexts " id="bottomtextbg-route" style="background: #fff" >
+                            <h1 style="font-size: 0.7vw; text-align: center; letter-spacing: 0.01em;  color: #3F3F3F;;">SELECT A POST OP ROUTE!</h1>
+                        </div>
+                    </div>
+                    <div class="flex w-full h-[5.6%] justify-start items-center vehicletext" >
+                        <h1 style="color: white; letter-spacing: .07vw; font-size: .9vw;"> · Select a permited vehicle.</h1>
+                        
+                    </div>
+                    <div class="flex flex-col w-full h-[17.5%] bg-no-repeat bg-bottom bg-cover vehiclescont" onclick="HSN.Select('vehicle')">
+                        <div class="flex justify-center items-end w-[100%] h-[40%] uniforminnertexts" >
+                            <div class="flex justify-start items-center w-[86%] h-[66%]">
+                                <h1 style="color: white; width: 50%; font-size: 1.04vw; letter-spacing: .25vw; line-height: 100%;">POST OP. VEHICLES</h1>
+                            </div>
+                        </div>
+                        <div class="flex w-[61%] h-[40%] uniforminnertexts">
+                            <h1 style="color: gray; width: 100%; font-size: 1.15vh;  padding-top:0.5vh; letter-spacing: 0.11em; padding-left:1.9vh; font-weight: 700; line-height: 100%;">You need to wear this to go on a job.</h1>
+                        </div>
+                         
+                        <div class="flex w-[100%] h-[20%] items-center justify-center uniforminnertexts" id="bottomtextbg-vehicle" style="background: #fff" >
+                            <h1 style="font-size: 0.7vw; text-align: center; letter-spacing: 0.01em;  color: #3F3F3F;">SELECT VEHICLE</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="mainmiddle flex justify-center items-end w-[67%]">
+                    <div class="w-full h-[97.5%] flex  items-center flex-col vehiclemain" style="display:none" >
+                        <div class="w-[90%] h-[9vh] bg-no-repeat flex flex-wrap bg-cover justify-center items-center gap-[1vh]" style="background-image: url(./img/vehicles-main-bg.png);">
+                            <div class="w-[20vh] h-[90%] bg-no-repeat bg-contain flex justify-center items-center  vehicles" onclick="HSN.ShowVehicleInfo('boxville')" id="boxville" style="background-color: rgba(246, 148, 1, 0.37);
+                                
+                                border-radius: 6px;
+                                background-image: url(./img/boxville.png);
+                                ">
+                                <h1 class="vehicle-name" style="color: white; letter-spacing: 0.151rem;">BOXVILLE</h1>
+                            </div>
+                            <div class="w-[20vh] h-[90%] bg-no-repeat bg-contain flex justify-center items-center flex-col vehicles" onclick="HSN.ShowVehicleInfo('mule')" id="mule" style="background-color: rgba(0, 0, 0, 0.37);
+
+                                border-radius: 6px;
+                                background-image: url(./img/mule.png);
+                                ">
+                                
+                                <h1 class="vehicle-name" style="color: rgba(255, 255, 255, 0.33); letter-spacing: 0.151rem;">MULE <i class="fas fa-lock" style="color: rgba(255, 255, 255, 0.39);"></i></h1>
+                            </div>
+                            <div class="w-[20vh] h-[90%] bg-no-repeat bg-contain flex justify-center items-center vehicles" id="benson" onclick="HSN.ShowVehicleInfo('benson')" style="background-color: rgba(0, 0, 0, 0.37);
+                            border-radius: 6px;
+                            background-image: url(./img/benson.png);
+                            ">
+                                <h1 class="vehicle-name" style="color: rgba(255, 255, 255, 0.33); letter-spacing: 0.151rem;" >BENSON <i class="fas fa-lock" style="color: rgba(255, 255, 255, 0.39);"></i></h1>
+                            </div>
+                            <div class="w-[20vh] h-[90%] bg-no-repeat bg-contain flex justify-center items-center vehicles" id="yourtruck" onclick="HSN.ShowVehicleInfo('yourtruck')" style="background-color: rgba(0, 0, 0, 0.37);
+                            border-radius: 6px;
+                            background-image: url(./img/yourtruck.png);
+                            "
+                            >
+                            <h1 class="vehicle-name" style="color: rgb(179, 179, 179); letter-spacing: 0.151rem; font-size: 0.9vh;">YOUR TRUCK <i class="fas fa-lock" style="color: rgba(255, 255, 255, 0.39);"></i></h1>
+                            </div>
+                        </div>
+                        <div class="w-full h-[83%] flex flex-col justify-end items-center vehicleinfo gap-3"  style="display: none;">
+                            <div class="flex justify-center items-center w-[75%] h-[17%]  ">
+                                <div class="flex w-1/2 h-full items-end" >
+                                    <div class="w-[20vh] h-[6vh] flex justify-end" style="background: rgba(246, 148, 1, 0.29);border: 3px solid rgba(246, 148, 1, 0.21);border-radius: 6px;">
+                                        <div class="w-[65%] h-full flex flex-col" >
+                                            <div class="w-full h-1/2 flex  items-center" >
+                                                <p id="vehicle-capacity-s" style="font-family: Proxima Bold;
+                                                font-style: normal;
+                                                font-weight: 700;
+                                                font-size: 0.7vh;
+                                                line-height: 99.5%;
+                                                /* identical to box height, or 8px */
+                
+                                                letter-spacing: 0.11em;
+                                                
+                                                color: #F69401;">VEHICLE CAPACITY</p>
+                                            </div>
+                                            <div class="w-full h-1/2 flex items-center">
+                                                <p id="vehicle-info-pckamount" style="font-family: Proxima Bold;
+                                                font-style: normal;
+                                                font-weight: 700;
+                                                font-size: 1.2vh;
+                                                line-height: 99.5%;
+                                                /* identical to box height, or 8px */
+                
+                                                letter-spacing: 0.11em;
+                                                color: white;">100 PACKAGE</p>
+                                            </div>
+                                        </div>
+                                        <div class="w-[30%] h-full flex justify-center items-center" >
+                                            <i class="fas fa-box" style="color: white; font-size: 2.5vh;"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex w-1/2 h-full justify-end" >
+                                    <div class="w-[25vh] h-full flex flex-col" style="background: rgba(246, 148, 1, 0.29);border: 3px solid rgba(246, 148, 1, 0.21);border-radius: 6px;">
+                                        <div class="w-full h-1/2 flex justify-end" >
+                                            <div class="w-[75%] h-full flex flex-col justify-center gap-1" >
+                                                <p class="cargo-mission">CARGO MISSION</p>
+                                                <p class="route-package" id="veh-main-route-name">DOWNTOWN ROUTE</p>
+                                            </div>
+                                            <div class="w-[20%] h-full flex justify-center items-center" style="color: white; font-size: 2.8vh;">
+                                                <i class="fas fa-map-marker-alt"></i>
+                                            </div>
+                                        </div>
+                                        <div class="w-full h-1/2 flex justify-end">
+                                            <div class="w-[75%] h-full flex flex-col justify-center gap-1" >
+                                                <p class="cargo-mission">DELIVERY</p>
+                                                <p class="route-package">150 PACKAGE</p>
+                                            </div>
+                                            <div class="w-[20%] h-full flex justify-center items-center" style="color: white; font-size: 2.8vh;">
+                                                <i class="fas fa-box"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex justify-center items-center w-[75%] h-[10%]" onclick="HSN.Select('select-vehicle')" style="background: linear-gradient(180deg, #FF9900 0%, #814D00 100%);border-radius: 6px;">
+                                <p class="select-work-text">SELECT VEHICLE</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col  gap-[2%] w-full h-[97.5%] items-center workmain" style="display: none;">
+                        <div class="flex flex-col w-[75%] h-[79%]" style=" line-height: 90%; border-radius: 6px; overflow: hidden;" id="workmain">
+                            <div class="flex w-full h-[3.5vh]  bg-no-repeat bg-bottom bg-cover items-center justify-between" style="background-image: url('./img/operation-page-top-nav.png'); color: #8B5504;">
+                                <div class="flex w-[50%] h-full justify-end" >
+                                    <div class="flex justify-left items-center w-[97%] h-full">
+                                        <p>OPERATION PANEL</p>
+                                    </div>
+                                </div>
+                                <div class="w-[50%] h-full justify-end">
+                                    <div class="flex justify-end items-center w-[97%] h-full">
+                                        <p>POST OP. TRANSPORT</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex- w-full h-full bg-no-repeat bg-bottom bg-cover" style="background-image: url('./img/operation-page-bg.png');">
+                                <div class="flex w-full gap-[5%] flex-col items-end h-full bg-no-repeat bg-bottom bg-cover route-firstselect" style="background-image: url('./img/operation-page-bg.png');">
+                                    <div class="flex w-[80vh] h-[8vh] items-end">
+                                        <p class="w-[60vh] h-[2vh] " style="letter-spacing: 0.11em; color: white;  font-size: 4vh;">SELECT A WORK</p>
+                                    </div>
+                                    <div class="flex w-full gap-[5vh] justify-center h-full works-main-panel" >
+                                        
+                                        <div class="flex w-[35.2vh] h-[54vh] bg-no-repeat bg-cover bg-center items-end cargoworkmain opacity-90 hover:opacity-100" onclick="HSN.Select('cargo-work')" style="background-image: url('./img/cargo-work-bg.png'); ">
+                                            <div class="flex justify-center  w-full h-[20%]" >
+                                                <p class="cargo-work-text">CARGO WORK</p>
+                                            </div>
+                                        </div>
+                                        <div class="w-[37.2vh] h-[54vh] flex bg-no-repeat bg-contain bg-center items-end transportwork-main opacity-90 hover:opacity-100" onclick="HSN.Select('transport-work')" style="background-image: url('./img/transport-work-bg.png');">
+                                            <div class="flex items-center gap-[2vh] flex-col w-full h-[21%]">
+                                                <p class="cargo-work-text">TRANSPORT WORK</p>
+                                                <p class="transport-work-requiredtext">Requires Professional Class</p>
+                                                 
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex w-full  flex-col items-end h-full bg-no-repeat bg-bottom bg-cover" id="transport-work-route" style="background-image: url('./img/operation-page-bg.png'); display: none;">
+                                    <div class="w-full h-[9vh] flex bg-cover bg-center bg-no-repeat" style="background-image: url(./img/area-select-bg.png)">
+                                        <div class="w-1/2 h-full flex justify-end">
+                                            <div class="w-[95%] h-full flex  gap-2 justify-center flex-col">
+                                                <p class="transporttopnav">TRANSPORT WORK ROUTE SELECTION</p>
+                                                <p class="transporttopnavindex">SELECT A ROUTE</p>
+                                            </div>
+                                        </div>
+                                        <div class="w-1/2 h-full flex ">
+                                            <div class="w-[95%] h-full flex justify-end items-center">
+                                                <div class="w-1/3 h-[70%] gap-2 flex justify-center items-center" onclick="HSN.GoBack('areaselect')" style="background-color: #F69401;
+                                                border-radius: 13px;
+                                                font-size: 1.4vh;
+                                                color: white;
+                                                letter-spacing: 0.01em;
+                                                font-weight: 700;
+                                                font-family: Proxima Bold;">
+                                                    <i class="fas fa-chevron-left fa-sm"></i>
+                                                    GO BACK
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex w-full h-full bg-cover bg-center items-center justify-center gap-[3.5vh] flex-wrap bg-no-repeat" style="background-image: url(./img/mapp.png);">
+                                        <div class="flex w-[40vh] h-[22vh] flex-col" id="transport-airport" onclick="HSN.Select('transport-airport')" style="border: 2px solid #F69401; border-radius: 0.3vw;">
+                                            <div class="w-[100%] h-[2vh] flex" style="background: #F69401;"></div>
+                                            <div class="w-full h-full flex bg-cover bg-no-repeat" style="background-image: url(./img/transport-work-route-airport.png);">
+                                                <div class="w-[55%] h-full" ></div>
+                                                <div class="flex flex-col items-center justify-center w-[50%] h-full bg-center bg-cover" style="background-image: url(./img/airport-route.png);">
+                                                    <div class="flex w-full h-1/2 items-center justify-center">
+                                                        <p class="route-name">LSIA HANGARS</p>
+                                                    </div>
+                                                    <div class="flex w-full h-1/2 justify-center items-center flex-col gap-[1vh]">
+                                                        <p class="delivery-amount" id="amount">1 Time Delivery</p>
+                                                        <p class="delivery-amount-index">100 Packages</p>
+                                                        <p class="delivery-amount" id="amount">Estimated Revenue</p>
+                                                        <p class="delivery-amount-index" id="delivery-amount-price" style="font-size: 1.4vh;">$3000</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="flex w-[40vh] h-[22vh] flex-col" id="transport-downtown" onclick="HSN.Select('transport-downtown')" style="border: 2px solid #F69401; border-radius: 0.3vw;">
+                                            <div class="w-full h-[2vh] flex" style="background: #F69401;"></div>
+                                            <div class="w-full h-full flex bg-cover bg-no-repeat" style="background-image: url(./img/transport-work-route-downtown.png);">
+                                                <div class="w-[55%] h-full"></div>
+                                                <div class="flex flex-col items-center justify-center w-[50%] h-full bg-center bg-cover" style="background-image: url(./img/downtown-route.png);">
+                                                    <div class="flex w-full h-1/2 items-center justify-center" >
+                                                        <p class="route-name">DOWNTOWN</p>
+                                                    </div>
+                                                    <div class="flex w-full h-1/2 justify-center items-center flex-col gap-[1vh]" >
+                                                        <p class="delivery-amount" id="amount">1 Time Delivery</p>
+                                                        <p class="delivery-amount-index">150 Packages</p>
+                                                        <p class="delivery-amount" id="amount">Estimated Revenue</p>
+                                                        <p class="delivery-amount-index" id="delivery-amount-price" style="font-size: 1.4vh;">$4500</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="flex w-[40vh] h-[22vh] flex-col" id="transport-sandy" onclick="HSN.Select('transport-sandy')" style="border: 2px solid #F69401; border-radius: 0.3vw;">
+                                            <div class="w-full h-[2vh] flex" style="background: #F69401;"></div>
+                                            <div class="w-full h-full flex bg-cover bg-no-repeat" style="background-image: url(./img/transport-work-route-sandy.png);">
+                                                <div class="w-[55%] h-full" ></div>
+                                                <div class="flex flex-col items-center justify-center w-[50%] h-full bg-center bg-cover" style="background-image: url(./img/sandy-route.png);">
+                                                    <div class="flex w-full h-1/2 items-center justify-center" >
+                                                        <p class="route-name">SANDY SHORES</p>
+                                                    </div>
+                                                    <div class="flex w-full h-1/2 justify-center items-center flex-col gap-[1vh]" >
+                                                        <p class="delivery-amount" id="amount">1 Time Delivery</p>
+                                                        <p class="delivery-amount-index">300 Packages</p>
+                                                        <p class="delivery-amount" id="amount">Estimated Revenue</p>
+                                                        <p class="delivery-amount-index" id="delivery-amount-price" style="font-size: 1.4vh;">$7500</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="flex w-[40vh] h-[22vh] flex-col" id="transport-paleto" onclick="HSN.Select('transport-paleto')" style="border: 2px solid #F69401; border-radius: 0.3vw;">
+                                            <div class="w-full h-[2vh] flex" style="background: #F69401;"></div>
+                                            <div class="w-full h-full flex bg-cover bg-no-repeat" style="background-image: url(./img/transport-work-route-paleto.png);">
+                                                <div class="w-[55%] h-full" ></div>
+                                                <div class="flex flex-col items-center justify-center w-[50%] h-full bg-center bg-cover" style="background-image: url(./img/paleto-route.png);">
+                                                    <div class="flex w-full h-1/2 items-center justify-center" >
+                                                        <p class="route-name">PALETO BAY</p>
+                                                    </div>
+                                                    <div class="flex w-full h-1/2 justify-center items-center flex-col gap-[1vh]" >
+                                                        <p class="delivery-amount" id="amount">1 Time Delivery</p>
+                                                        <p class="delivery-amount-index">400 Packages</p>
+                                                        <p class="delivery-amount" id="amount">Estimated Revenue</p>
+                                                        <p class="delivery-amount-index" id="delivery-amount-price" style="font-size: 1.4vh;">$12500</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex w-full gap-[5%] justify-between  h-full bg-no-repeat bg-center bg-cover map-main" style="background-image: url('./img/map.png'); display: none;">
+                                    <div class="absolute w-[84vh] h-[7vh] flex justify-end items-center" id="topnav-job">
+                                        <div class="w-[12vh] h-[70%] flex items-center gap-2 justify-center" onclick="HSN.GoBack('areaselect')" style="background-color: #F69401;
+                                        border-radius: 13px;
+                                        font-size: 1.4vh;
+                                        color: white;
+                                        letter-spacing: 0.01em;
+                                        font-weight: 700;
+                                        font-family: Proxima Bold;">
+                                            <i class="fas fa-chevron-left fa-sm"></i>
+                                            GO BACK
+                                        </div>
+                                    </div>
+                                    <div class="w-1/2 h-full flex" >
+                                        <div class="flex flex-col h-full w-[40%]" >
+                                            <div class="w-full h-[20%]" ></div>
+                                            <div class="w-full h-[26%] flex justify-center items-center " id="airport-area" onclick="HSN.Select('area-select-airport')">
+                                            </div>
+                                        </div>
+                                        <div class="h-full w-[16vh] flex flex-col" >
+                                            <div class="w-full h-[35%]" ></div>
+                                            <div class="w-full h-[25%] bg-no-repeat bg-cover bg-center" id="downtown-area" onclick="HSN.Select('area-select-downtown')">
+                                                
+                                            </div>
+                                        </div>
+    
+                                    </div>
+                                    <div class="w-1/2 h-full flex justify-end" >
+                                        <div class="flex flex-col h-full w-[40%]" >
+                                            <div class="w-full h-[68%]" ></div>
+                                            <div class="w-full h-[25%] flex justify-center items-center bg-no-repeat bg-cover bg-center" id="sandy-area" onclick="HSN.Select('area-select-sandy')">
+                                            </div>
+                                        </div>    
+                                        <div class="flex flex-col h-full w-[40%]" >
+                                            <div class="w-full h-[35%]" ></div>
+                                            <div class="w-full h-[26%] flex justify-center items-center bg-no-repeat bg-cover bg-center" id="paleto-area" onclick="HSN.Select('area-select-paleto')">
+                                            </div>
+                                        </div>        
+                                    </div>
+                                </div>
+                                <!-- airport -->
+                                    <div class="flex w-full h-full bg-no-repeat gap-[2vh] bg-cover flex-col justify-end" id="map-airport" style="background-image: url('./img/map-airport.png'); display: none;" >
+                                        <div class="flex  w-full h-[7vh] bg-center bg-cover bg-no-repeat" style="background-image: url(./img/area-select-bg.png);">
+                                            <div class="flex w-[98%] h-full justify-end items-center">
+                                                <div class="w-[12vh] h-[70%] flex items-center gap-2 justify-center" onclick="HSN.GoBack('areas-airport')" style="background-color: #F69401;
+                                            border-radius: 13px;
+                                            font-size: 1.4vh;
+                                            color: white;
+                                            letter-spacing: 0.01em;
+                                            font-weight: 700;
+                                            font-family: Proxima Bold;">
+                                                <i class="fas fa-chevron-left fa-sm"></i>
+                                                GO BACK
+                                            </div>
+                                            </div>
+                                        </div>
+                                        <div class="flex w-full h-[97.5%] justify-end" >
+                                            <div class="w-1/3 h-full flex flex-col items-center gap-[4vh] " style="background: rgba(0, 0, 0, 0.27); backdrop-filter: blur(26px); ">
+                                                <div class="flex w-full h-1/4 gap-[3vh] flex-col items-center justify-end bg-cover bg-no-repeat bg-center" style="background-image: url(./img/airport-bg-image.png);">
+                                                    <div class="flex w-[90%] h-[5vh]" >
+                                                        <div class="flex justify-center items-center w-full h-full bg-no-repeat  bg-contain " style=" background-image: url(./img/class-bg-2.png);">
+                                                            <h1 style="letter-spacing: .08em; font-size: .8vw;">POST OP. <span>SKILLED</span></h1>
+                                                        </div>
+                                                    </div>
+    
+                                                    <div class="flex justify-center items-center w-[27%] clastext" >
+                                                        <h1 style="color: rgba(255, 255, 255, 0.24); letter-spacing: .08vw; font-size: .8vw;">· CLASS</h1>
+                                                    </div>
+                                                </div>
+                                                <div class="flex w-full h-full flex-col items-center gap-[3vh]" >
+                                                    <p class="area-name" id="area-name-airport">AIRPORT</p>
+                                                    <div class="flex w-[80%] h-[25vh] flex-col" style="background: rgba(217, 217, 217, 0.18);border: 4px solid rgba(255, 255, 255, 0.2); border-radius: 10px;">
+                                                        <div class="flex w-full h-1/2 justify-center items-center flex-col gap-[3vh]" >
+                                                            <p class="item-info-header">TOTAL DELIVERY</p>
+                                                            <p class="item-info" id="area-packageinfo-airport">200 Packages</p>
+                                                        </div>
+                                                        <div class="flex w-full h-1/2 justify-center items-center flex-col gap-[3vh]">
+                                                            <p class="item-info-header">ESTIMATED REVENUE</p>
+                                                            <p class="item-info" id="area-revenueinfo-airport">$2000-7500</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex w-[80%] h-[5.8vh] justify-center items-center cargo-area-index" onclick="HSN.Select('select-airport')" style="border-radius: 0.4vw; font-family: Proxima Bold;
+                                                    font-style: normal;
+                                                    font-weight: 700;
+                                                    font-size: 1.2vh;
+                                                    line-height: 99.5%;
+                                                    /* identical to box height, or 15px */
+    
+                                                    letter-spacing: 0.01em;
+                                                    background: #F69401;
+                                                    color: #7D4B00;">
+                                                        SELECT THIS AREA
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+    
+                                    <!-- downtown -->
+    
+                                    <div class="flex w-full h-full bg-no-repeat gap-[2vh] bg-cover flex-col justify-end" id="map-downtown" style="background-image: url('./img/map-downtown.png'); display: none;" >
+                                        <div class="flex  w-full h-[7vh] bg-center bg-cover bg-no-repeat" style="background-image: url(./img/area-select-bg.png);">
+                                            <div class="flex w-[98%] h-full justify-end items-center">
+                                                <div class="w-[12vh] h-[70%] flex items-center gap-2 justify-center" onclick="HSN.GoBack('areas-downtown')" style="background-color: #F69401;
+                                            border-radius: 13px;
+                                            font-size: 1.4vh;
+                                            color: white;
+                                            letter-spacing: 0.01em;
+                                            font-weight: 700;
+                                            font-family: Proxima Bold;">
+                                                <i class="fas fa-chevron-left fa-sm"></i>
+                                                GO BACK
+                                            </div>
+                                            </div>
+                                        </div>
+                                        <div class="flex w-full h-[97.5%] justify-end" >
+                                            <div class="w-1/3 h-full flex flex-col items-center gap-[4vh] " style="background: rgba(0, 0, 0, 0.27); backdrop-filter: blur(26px); ">
+                                                <div class="flex w-full h-1/4 gap-[3vh] flex-col items-center justify-end bg-cover bg-no-repeat bg-center" style="background-image: url(./img/downtown-bg-image.png);">
+                                                    <div class="flex w-[90%] h-[5vh]" >
+                                                        <div class="flex justify-center items-center w-full h-full bg-no-repeat  bg-contain" style=" background-image: url(./img/class-bg-2.png);">
+                                                            <h1 style="letter-spacing: .08em; font-size: .8vw;">POST OP. <span>BEGINNER</span></h1>
+                                                        </div>
+                                                    </div>
+        
+                                                    <div class="flex justify-center items-center w-[27%] clastext" >
+                                                        <h1 style="color: rgba(255, 255, 255, 0.24); letter-spacing: .08vw; font-size: .8vw;">· CLASS</h1>
+                                                    </div>
+                                                </div>
+                                                <div class="flex w-full h-full flex-col items-center gap-[3vh]" >
+                                                    <p class="area-name" id="area-name-downtown">DOWNTOWN</p>
+                                                    <div class="flex w-[80%] h-[25vh] flex-col" style="background: rgba(217, 217, 217, 0.18);border: 4px solid rgba(255, 255, 255, 0.2); border-radius: 10px;">
+                                                        <div class="flex w-full h-1/2 justify-center items-center flex-col gap-[3vh]" >
+                                                            <p class="item-info-header">TOTAL DELIVERY</p>
+                                                            <p class="item-info" id="area-packageinfo-downtown" >100 Packages</p>
+                                                        </div>
+                                                        <div class="flex w-full h-1/2 justify-center items-center flex-col gap-[3vh]">
+                                                            <p class="item-info-header">ESTIMATED REVENUE</p>
+                                                            <p class="item-info" id="area-revenueinfo-downtown">$1000-5000</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex w-[80%] h-[5.8vh] justify-center items-center cargo-area-index" onclick="HSN.Select('select-downtown')" style="border-radius: 0.4vw; font-family: Proxima Bold;
+                                                    font-style: normal;
+                                                    font-weight: 700;
+                                                    font-size: 1.2vh;
+                                                    line-height: 99.5%;
+                                                    /* identical to box height, or 15px */
+                                                    
+                                                    letter-spacing: 0.01em;
+                                                    background: #F69401;
+                                                    color: #7D4B00;">
+                                                        SELECT THIS AREA
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+    
+                                    <!-- sandy -->
+                                    <div class="flex w-full h-full bg-no-repeat gap-[2vh] bg-cover flex-col justify-end" id="map-sandy" style="background-image: url('./img/map-sandy.png'); display: none; " >
+                                        <div class="flex  w-full h-[7vh] bg-center bg-cover bg-no-repeat" style="background-image: url(./img/area-select-bg.png);">
+                                            <div class="flex w-[98%] h-full justify-end items-center">
+                                                <div class="w-[12vh] h-[70%] flex items-center gap-2 justify-center" onclick="HSN.GoBack('areas-sandy')"  style="background-color: #F69401;
+                                            border-radius: 13px;
+                                            font-size: 1.4vh;
+                                            color: white;
+                                            letter-spacing: 0.01em;
+                                            font-weight: 700;
+                                            font-family: Proxima Bold;">
+                                                <i class="fas fa-chevron-left fa-sm"></i>
+                                                GO BACK
+                                            </div>
+                                            </div>
+                                        </div>
+                                        <div class="flex w-full h-[97.5%] " >
+                                            <div class="w-1/3 h-full flex flex-col items-center gap-[4vh] " style="background: rgba(0, 0, 0, 0.27); backdrop-filter: blur(26px); ">
+                                                <div class="flex w-full h-[50%] gap-[3vh] flex-col items-center justify-end bg-cover bg-no-repeat bg-center" style="background-image: url(./img/sandy-bg-image.png);">
+                                                    <div class="flex w-[90%] h-[5vh]" >
+                                                        <div class="flex justify-center items-center w-full h-full bg-no-repeat  bg-contain " style=" background-image: url(./img/class-bg-2.png);">
+                                                            <h1 style="letter-spacing: .08em; font-size: .8vw;">POST OP. <span>PROFESSIONAL</span></h1>
+                                                        </div>
+                                                    </div>
+        
+                                                    <div class="flex justify-center items-center w-[27%] clastext" >
+                                                        <h1 style="color: rgba(255, 255, 255, 0.24); letter-spacing: .08vw; font-size: .8vw;">· CLASS</h1>
+                                                    </div>
+                                                    <p class="area-name" id="area-name-sandy">SANDY SHORES</p>
+                                                </div>
+                                                <div class="flex w-full h-full flex-col items-center gap-[3vh]" >
+                                                    <div class="flex w-[80%] h-[25vh] flex-col" style="background: rgba(217, 217, 217, 0.18);border: 4px solid rgba(255, 255, 255, 0.2); border-radius: 10px;">
+                                                        <div class="flex w-full h-1/2 justify-center items-center flex-col gap-[3vh]" >
+                                                            <p class="item-info-header">TOTAL DELIVERY</p>
+                                                            <p class="item-info" id="area-packageinfo-sandy">300 Packages</p>
+                                                        </div>
+                                                        <div class="flex w-full h-1/2 justify-center items-center flex-col gap-[3vh]">
+                                                            <p class="item-info-header">ESTIMATED REVENUE</p>
+                                                            <p class="item-info" id="area-revenueinfo-sandy">$3000-10.000</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex w-[80%] h-[5.8vh] justify-center items-center cargo-area-index" onclick="HSN.Select('select-sandy')" style="border-radius: 0.4vw; font-family: Proxima Bold;
+                                                    font-style: normal;
+                                                    font-weight: 700;
+                                                    font-size: 1.2vh;
+                                                    line-height: 99.5%;
+                                                    /* identical to box height, or 15px */
+                                                    
+                                                    letter-spacing: 0.01em;
+                                                    background: #F69401;
+                                                    color: #7D4B00;">
+                                                        SELECT THIS AREA
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- paleto -->
+                                    <div class="flex w-full h-full bg-no-repeat gap-[2vh] bg-cover flex-col justify-end" id="map-paleto" style="background-image: url('./img/map-paleto.png'); display: none;" >
+                                        <div class="flex  w-full h-[7vh] bg-center bg-cover bg-no-repeat" style="background-image: url(./img/area-select-bg.png);">
+                                            <div class="flex w-[98%] h-full justify-end items-center">
+                                                <div class="w-[12vh] h-[70%] flex items-center gap-2 justify-center" onclick="HSN.GoBack('areas-paleto')" style="background-color: #F69401;
+                                            border-radius: 13px;
+                                            font-size: 1.4vh;
+                                            color: white;
+                                            letter-spacing: 0.01em;
+                                            font-weight: 700;
+                                            font-family: Proxima Bold;">
+                                                <i class="fas fa-chevron-left fa-sm"></i>
+                                                GO BACK
+                                            </div>
+                                            </div>
+                                        </div>
+                                        <div class="flex w-full h-[97.5%] " >
+                                            <div class="w-1/3 h-full flex flex-col items-center gap-[4vh] " style="background: rgba(0, 0, 0, 0.27); backdrop-filter: blur(26px); ">
+                                                <div class="flex w-full h-[50%] gap-[3vh] flex-col items-center justify-end bg-cover bg-no-repeat bg-center" style="background-image: url(./img/paleto-bg-image.png);">
+                                                    <div class="flex w-[90%] h-[5vh]" >
+                                                        <div class="flex justify-center items-center w-full h-full bg-no-repeat  bg-contain " style=" background-image: url(./img/class-bg-2.png);">
+                                                            <h1 style="letter-spacing: .08em; font-size: .8vw;">POST OP. <span>GURU</span></h1>
+                                                        </div>
+                                                    </div>
+        
+                                                    <div class="flex justify-center items-center w-[27%] clastext" >
+                                                        <h1 style="color: rgba(255, 255, 255, 0.24); letter-spacing: .08vw; font-size: .8vw;">· CLASS</h1>
+                                                    </div>
+                                                    <p class="area-name" id="area-name-paleto">PALETO BAY</p>
+                                                </div>
+                                                <div class="flex w-full h-full flex-col items-center gap-[3vh]" >
+                                                    <div class="flex w-[80%] h-[25vh] flex-col" style="background: rgba(217, 217, 217, 0.18);border: 4px solid rgba(255, 255, 255, 0.2); border-radius: 10px;">
+                                                        <div class="flex w-full h-1/2 justify-center items-center flex-col gap-[3vh]" >
+                                                            <p class="item-info-header">TOTAL DELIVERY</p>
+                                                            <p class="item-info" id="area-packageinfo-paleto">400 Packages</p>
+                                                        </div>
+                                                        <div class="flex w-full h-1/2 justify-center items-center flex-col gap-[3vh]">
+                                                            <p class="item-info-header">ESTIMATED REVENUE</p>
+                                                            <p class="item-info" id="area-revenueinfo-paleto">$6000-15.000</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex w-[80%] h-[5.8vh] justify-center items-center cargo-area-index" onclick="HSN.Select('select-paleto')" style="border-radius: 0.4vw; font-family: Proxima Bold;
+                                                    font-style: normal;
+                                                    font-weight: 700;
+                                                    font-size: 1.2vh;
+                                                    line-height: 99.5%;
+                                                    /* identical to box height, or 15px */
+                                                    
+                                                    letter-spacing: 0.01em;
+                                                    background: #F69401;
+                                                    color: #7D4B00;">
+                                                        SELECT THIS AREA
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                            </div>
+                            </div>
+                            
+                        <div class="flex justify-center items-center w-[75%] h-[10%] select-main-div" onclick="HSN.Select('select-main')" style="background: linear-gradient(180deg, #FF9900 0%, #814D00 100%);border-radius: 6px;">
+                            <p class="select-work-text">SELECT A WORK</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-center items-end mainright w-[16.4%]" >
+                    <div class="flex flex-col gap-[1%] w-full h-[97.5%] mainright" >
+                        <div class="flex w-full flex-col h-[47%] bg-center bg-cover daily" style="background-image: url('./img/daily-background.png');">
+                            <div class="flex h-[6vh] w-full daily-title justify-center items-center" style="border-bottom: 1px solid gray">
+                                <p class="flex justify-center items-center w-[70%] h-full" style="text-align: center;">DAILY MISSIONS</p>
+                            </div>
+                            <div class="flex w-full gap-[2vh] flex-col h-full justify-center items-center">
+                                <div class="flex  flex-col w-[95%] h-[9vh] bg-center bg-cover " style="background-image: url('./img/first-cargo-bg.png'); border-radius: 0.3vw;">
+                                    <div class="toptext flex w-full h-[3vh] justify-end">
+                                        <div class="w-[40%] h-full flex items-center " >
+                                            <p class="mission-title">First Cargo!</p>
+                                        </div>
+                                        <div class="w-1/3 h-full flex">
+                                            <div class="w-[95%] flex h-full items-center justify-end">
+                                                <p class="mission-xp" id="missionxp-firstcargo">1000XP</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex w-full h-[3vh] justify-end">
+                                        <div class="w-[40%] h-full flex items-center " >
+                                            <p class="missin-desc">Deliver your first cargo in any route.</p>
+                                        </div>
+                                        <div class="w-1/3 h-full flex">
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col gap-[5%] items-center justify-center w-full h-[8vh]" >
+                                        <div class="flex w-full justify-start">
+                                            <div class="w-[97.5%] status-text" id="statustext-firstcargo">
+                                                0/1
+                                            </div>
+                                        </div>
+                                        <div class="flex status-bar-container w-full h-[1vh] justify-end">
+                                            <div class="statusbar w-[70%] h-[0.8vh]" id="statusbar-firstcargo">
+                                                <!-- <div class="w-[50%] h-full" style="background: linear-gradient(90deg, #FFFFFF 0%, #F69401 101.3%); border-radius: 3vw;"></div> -->
+                                            </div>                                        
+                                            <div class="w-[2.5%]"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col w-[95%] h-[10vh] bg-center bg-cover " style="background-image: url('./img/deliver-bg.png'); border-radius: 0.3vw;">
+                                    <div class="toptext flex w-full h-[3vh] justify-end">
+                                        <div class="w-[40%] h-full flex items-center " >
+                                            <p class="mission-title">Deliver Mission!</p>
+                                        </div>
+                                        <div class="w-1/3 h-full flex">
+                                            <div class="w-[95%] flex h-full items-center justify-end">
+                                                <p class="mission-xp" id="missionxp-deliver">5000XP</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex w-full h-[3vh] justify-end">
+                                        <div class="w-[40%] h-full flex items-center " >
+                                            <p class="missin-desc">Deliver 50 cargo in any route today.</p>
+                                        </div>
+                                        <div class="w-1/3 h-full flex">
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col gap-[5%] items-center justify-center w-full h-[8vh]" >
+                                        <div class="flex w-full justify-start">
+                                            <div class="w-[97.5%] status-text"  id="statustext-delivermission">
+                                                21/50
+                                            </div>
+                                        </div>
+                                        <div class="flex status-bar-container w-full h-[1vh] justify-end">
+                                            <div class="statusbar w-[70%] h-[0.8vh]" id="statusbar-delivermission">
+                                            </div>                                        
+                                            <div class="w-[2.5%]"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex w-[95%] flex-col h-[10vh] bg-center bg-cover " style="background-image: url('./img/end-of-work-bg.png'); border-radius: 0.3vw;">
+                                    <div class="toptext flex w-full h-[3vh] justify-end">
+                                        <div class="w-[40%] h-full flex items-center " >
+                                            <p class="mission-title">End of Work!</p>
+                                        </div>
+                                        <div class="w-1/3 h-full flex">
+                                            <div class="w-[95%] flex h-full items-center justify-end">
+                                                <p class="mission-xp" id="missionxp-endofwork">1500XP</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex w-full h-[3vh] justify-end">
+                                        <div class="w-[40%] h-full flex items-center " >
+                                            <p class="missin-desc">Park your vehicle to garage after delivery.</p>
+                                        </div>
+                                        <div class="w-1/3 h-full flex">
+
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col gap-[5%] items-center justify-center w-full h-[8vh]" >
+                                        <div class="flex w-full justify-start">
+                                            <div class="w-[97.5%] status-text" id="statustext-endofwork">
+                                                1/0
+                                            </div>
+                                        </div>
+                                        <div class="flex status-bar-container w-full h-[1vh] justify-end">
+                                            <div class="statusbar w-[70%] h-[0.8vh]" id="statusbar-endofwork">
+                                            </div>                                        
+                                            <div class="w-[2.5%]"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- justify-self-center self-end -->
+                            <div class="w-full h-[3vh] flex missions-resettime justify-end" >
+                                <div class="w-[40%]">
+                                    <h1>
+                                        23h 22m
+                                        <i class="fas fa-clock"></i>
+                                    </h1>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex w-full h-[30.5%] status bg-center bg-cover justify-center flex-col" style=" background-image: url('./img/state-background.png');">
+                            <div class="flex items-center w-full h-[30%] statuslist">
+                                <div class="w-[40%] flex h-full justify-center items-center" >
+                                    <div class="w-[2vw] h-[3.5vh] check-circle-container flex items-center  bg-center bg-no-repeat justify-center" id="circle-1" style="border-radius: 3vw; border: 2px solid #D2BA98;">
+                                        
+                                    </div>
+                                </div>
+                                <div class="w-full h-full flex justify-start items-center" >
+                                    <p class="status-desc-text" id="circle-text-1">TAKE YOUR BADGE!</p>
+                                </div>
+                            </div>
+                            <div class="w-full h-[30%] flex items-center w-full h-[30%] statuslist" >
+                                <div class="w-[40%] flex h-full justify-center items-center" >
+                                    <div class="w-[2vw] h-[3.5vh] check-circle-container flex bg-center bg-no-repeat bg-auto items-center justify-center" id="circle-2" style="  border-radius: 3vw; border: 2px solid #D2BA98;">
+                                        
+                                    </div>
+                                </div>
+                                <div class="w-full h-full flex justify-start items-center" >
+                                    <p class="status-desc-text" id="circle-text-2">Select your ROUTE!</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center w-full h-[30%] statuslist" >
+                                <div class="w-[40%] flex h-full justify-center items-center" >
+                                    <div class="w-[2vw] h-[3.5vh] check-circle-container flex bg-center bg-no-repeat bg-auto items-center justify-center" id="circle-3" style="border-radius: 3vw; border: 2px solid #D2BA98;">
+                                        <!-- <i class="fas fa-check-circle"></i> -->
+                                    </div>
+                                </div>
+                                <div class="w-full h-full flex justify-start items-center">
+                                    <p class="status-desc-text" id="circle-text-3">Select your VEHICLE!</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center w-full h-[30%] statuslist" >
+                                <div class="w-[40%] flex h-full justify-center items-center" >
+                                    <div class="w-[2vw] h-[3.5vh] check-circle-container flex bg-center bg-no-repeat bg-auto items-center justify-center" id="circle-4" style="border-radius: 3vw; border: 2px solid #F69401;">
+                                        <!-- <i class="fas fa-check-circle"></i> -->
+                                    </div>
+                                </div>
+                                <div class="w-full h-full flex justify-start items-center" >
+                                    <p class="status-desc-text" id="circle-text-4">GET READY</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex w-full h-[11.5%] gopostbtn bg-center bg-cover" style="background-image: url(./img/gopostop-blocked.png);" onclick="HSN.StartJob('job')"></div>
+                        <div class="flex w-full h-[0.5%] " style="border-radius: 0.3vw; background: #F69400;opacity: 0.38;"></div>
+                        <button disabled type="button" id="hsnloadbar" class=" text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 w-[100%] inline-flex items-center" style="background: linear-gradient(180deg, #F69401 0%, #a9660187 100%);">
+                            <svg aria-hidden="true" role="status" class="inline w-4 h-4 mr-3 text-white animate-spin" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="#E5E7EB"/>
+                            <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentColor"/>
+                            </svg>
+                            Loading...
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-center w-full h-[92vh] main-user" style="display: none;">
+                <div class="flex flex-col mainleft-user w-[16.6%]"  >
+                    <div class="flex flex-col justify-center items-center w-full h-[8%] toptext1" >
+                        <h1 style="font-size: 1vw; line-height: 90%; color: white; letter-spacing: .02vw;">Welcome to Post Op. Transport <span>Mr. Dan Mayers</span></h1>
+                    </div>
+                    <div class="flex w-full h-[21%] flex-col gap-[2vh] items-center bg-cover bg-center" style="background-image: url('./img/player-info-bg.png'); ">
+                        <div class="flex w-[90%] h-[35%] items-center gap-3" >
+                            <div class="flex justify-center items-center w-[22%] h-[75%] profile overflow-hidden" style="border: 3.5px solid rgb(255, 145, 0); border-radius: 100%; ">
+                                <img src="./img/profile.png" alt="">
+                            </div>
+                            <div class="flex w-1/2 h-full flex-col gap-2 justify-center" >
+                                <p class="w-full player-info-box-username">Brian O’Neil</p>
+                                <p class="w-full player-info-box-playerlevel" id="playerLevel-index">Lv.1</p>
+                            </div>
+                            <div class="flex w-1/3 h-full flex-col gap-2 justify-center items-end player-info-box-grade" >
+                                <i class="fas fa-trophy"></i>
+                                <p class="player-info-box-playerLevel" id="playerLevel">13th</p>
+                            </div>
+                        </div>
+                        <div class="flex w-full h-[2vh] justify-end" >
+                            <div class="w-[90%] h-full" >
+                                <h1 style="color: rgba(255, 255, 255, 0.24); letter-spacing: .08vw; font-size: .8vw;">· CLASS</h1>
+                            </div>
+                        </div>
+                        <div class="flex justify-center items-center w-[73%] h-[3vh] leftclassbg" style=" background-image: url(./img/classbg.png);">
+                            <h1 style="letter-spacing: .08em; font-size: .8vw;">POST OP. <span>BEGINNER</span></h1>
+                        </div>
+                    </div>
+                    <div class="flex flex-col w-full h-[65%] bg-center bg-cover items-center" style="background-image: url('./img/statics-bg.png');">
+                        <div class="flex w-full h-[12%] items-end justify-center">
+                            <p class="statics-title">STATISTICS</p>
+                        </div>
+                        <div class="flex flex-col justify-center items-center bg-bottom w-full h-full" style="background-image: url(./img/statictics-circles.png);">
+                            <div class="flex w-full h-[50%] mt-5 flex-col gap-[3vh] items-center justify-center">
+                                <p class="compworkstitle">Completed Works</p>
+                                <p class="compworksindex">56</p>
+                            </div>
+                            <div class="flex w-full h-1/2 gap-[1.2vh] items-center justify-center flex-col" >
+                                <p class="levelindex" style="font-size: 3vh;">Level</p>
+                                <p class="levelindex" id="levelindex-level" style="font-size: 3vh;">1</p>
+                                <p class="levelindex" id="xp-progress" style="font-size: 1.3vh;">150/1500XP</p>
+                            </div>
+                            <div class="flex w-full h-1/3 justify-center items-center flex-col gap-[1.2vh]" >
+                                <p class="levelindex" id="earnedmoney" style="font-size: 3vh;">9800$</p>
+                                <p class="levelindex" style="font-size: 1.2vh;">Earned</p>
+                            </div>
+                            <div class="flex w-full h-[10%] justify-center items-center bottomtextclass" >
+                                <p class="nextclasstext">Next Class :  <p class="gold">&nbsp;Post Op. Skilled at Lv.20 </p></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="main-user flex justify-center items-end w-[67%]">
+                    <div class="flex flex-col  gap-[2%] w-full h-[97.5%] items-center "> 
+                        <div class="flex flex-col w-[75%] h-[94%]" style=" line-height: 90%; border-radius: 6px; overflow: hidden;">
+                            <div class="flex w-full h-[3.5vh]  bg-no-repeat bg-bottom bg-cover items-center justify-between" style="background: #201D1B; color: #8B5504;">
+                                <div class="flex w-[50%] h-full justify-end" >
+                                    <div class="flex justify-left items-center w-[97%] h-full" style="font-family: 'Proxima Bold';
+                                    font-style: normal;
+                                    font-weight: 700;
+                                    font-size: 1.4vh;
+                                    line-height: 99.5%;
+                                    /* identical to box height, or 15px */
+                                    
+                                    letter-spacing: 0.01em;
+                                    
+                                    color: #D3BB9A;">
+
+                                        <p>LAST WORKS</p>
+                                    </div>
+                                </div>
+                                <div class="w-[50%] h-full justify-end"  style="font-family: 'Proxima Bold';
+                                font-style: normal;
+                                font-weight: 700;
+                                font-size: 1.4vh;
+                                line-height: 99.5%;
+                                /* identical to box height, or 15px */
+                                
+                                letter-spacing: 0.01em;
+                                
+                                color: #D3BB9A;">
+                                    <div class="flex justify-end items-center w-[97%] h-full">
+                                        <p>POST OP. TRANSPORT</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex w-full gap-[3%] flex-col items-end h-full bg-no-repeat bg-bottom bg-cover  justify-end" style="background-image: url('./img/lastworks-bg.png');">
+                                <div class="w-full gap-[1vh] items-center flex justify-center flex-col flex-wrap overflow-auto itemlist-container h-[97.5%]">
+                                    <div class="overflow-menu w-[90%] h-full " style="overflow-y: auto;overflow-x: hidden;  white-space: nowrap;" >
+                                            <!-- auto generated -->
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-center items-end mainright-user w-[16.4%]" >
+                    <div class="flex flex-col gap-[1%] w-full h-[97.5%]" >
+                        <div class="flex w-full flex-col h-[46.3%] bg-center bg-cover daily" style="background-image: url('./img/daily-background.png');">
+                            <div class="flex h-[6vh] w-full daily-title justify-center items-center" style="border-bottom: 1px solid gray">
+                                <p class="flex justify-center items-center w-[70%] h-full" style="text-align: center;">DAILY MISSIONS</p>
+                            </div>
+                            <div class="flex w-full gap-[2vh] flex-col h-full justify-center items-center">
+                                <div class="flex  flex-col w-[95%] h-[9vh] bg-center bg-cover " style="background-image: url('./img/first-cargo-bg.png'); border-radius: 0.3vw;">
+                                    <div class="toptext flex w-full h-[3vh] justify-end">
+                                        <div class="w-[40%] h-full flex items-center " >
+                                            <p class="mission-title">First Cargo!</p>
+                                        </div>
+                                        <div class="w-1/3 h-full flex">
+                                            <div class="w-[95%] flex h-full items-center justify-end">
+                                                <p class="mission-xp" id="missionxp-firstcargom">1000XP</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex w-full h-[3vh] justify-end">
+                                        <div class="w-[40%] h-full flex items-center " >
+                                            <p class="missin-desc">Deliver your first cargo in any route.</p>
+                                        </div>
+                                        <div class="w-1/3 h-full flex">
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col gap-[5%] items-center justify-center w-full h-[8vh]" >
+                                        <div class="flex w-full justify-start">
+                                            <div class="w-[97.5%] status-text" id="statustext-firstcargo-m">
+                                                0/1
+                                            </div>
+                                        </div>
+                                        <div class="flex status-bar-container w-full h-[1vh] justify-end">
+                                            <div class="statusbar w-[70%] h-[0.8vh]" id="statusbar-firstcargo-m">
+                                                <!-- <div class="w-[50%] h-full" style="background: linear-gradient(90deg, #FFFFFF 0%, #F69401 101.3%); border-radius: 3vw;"></div> -->
+                                            </div>                                        
+                                            <div class="w-[2.5%]"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col w-[95%] h-[10vh] bg-center bg-cover " style="background-image: url('./img/deliver-bg.png'); border-radius: 0.3vw;">
+                                    <div class="toptext flex w-full h-[3vh] justify-end">
+                                        <div class="w-[40%] h-full flex items-center " >
+                                            <p class="mission-title">Deliver Mission!</p>
+                                        </div>
+                                        <div class="w-1/3 h-full flex">
+                                            <div class="w-[95%] flex h-full items-center justify-end">
+                                                <p class="mission-xp" id="missionxp-deliverm">5000XP</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex w-full h-[3vh] justify-end">
+                                        <div class="w-[40%] h-full flex items-center " >
+                                            <p class="missin-desc">Deliver 50 cargo in any route today.</p>
+                                        </div>
+                                        <div class="w-1/3 h-full flex">
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col gap-[5%] items-center justify-center w-full h-[8vh]" >
+                                        <div class="flex w-full justify-start">
+                                            <div class="w-[97.5%] status-text"  id="statustext-delivermission-m">
+                                                21/50
+                                            </div>
+                                        </div>
+                                        <div class="flex status-bar-container w-full h-[1vh] justify-end">
+                                            <div class="statusbar w-[70%] h-[0.8vh]" id="statusbar-delivermission-m">
+                                            </div>                                        
+                                            <div class="w-[2.5%]"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex w-[95%] flex-col h-[10vh] bg-center bg-cover " style="background-image: url('./img/end-of-work-bg.png'); border-radius: 0.3vw;">
+                                    <div class="toptext flex w-full h-[3vh] justify-end">
+                                        <div class="w-[40%] h-full flex items-center " >
+                                            <p class="mission-title">End of Work!</p>
+                                        </div>
+                                        <div class="w-1/3 h-full flex">
+                                            <div class="w-[95%] flex h-full items-center justify-end">
+                                                <p class="mission-xp" id="missionxp-endofworkm">1500XP</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex w-full h-[3vh] justify-end">
+                                        <div class="w-[40%] h-full flex items-center " >
+                                            <p class="missin-desc">Park your vehicle to garage after delivery.</p>
+                                        </div>
+                                        <div class="w-1/3 h-full flex">
+
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col gap-[5%] items-center justify-center w-full h-[8vh]" >
+                                        <div class="flex w-full justify-start">
+                                            <div class="w-[97.5%] status-text" id="statustext-endofwork-m">
+                                                1/0
+                                            </div>
+                                        </div>
+                                        <div class="flex status-bar-container w-full h-[1vh] justify-end">
+                                            <div class="statusbar w-[70%] h-[0.8vh]" id="statusbar-endofwork-m">
+                                            </div>                                        
+                                            <div class="w-[2.5%]"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- justify-self-center self-end -->
+                            <div class="w-full h-[3vh] flex missions-resettime justify-end" >
+                                <div class="w-[40%]">
+                                    <h1>
+                                        23h 22m
+                                        <i class="fas fa-clock"></i>
+                                    </h1>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex w-full h-[31%] gap-[0.5vh] status bg-center bg-cover items-center flex-col leaderboard-cont" style=" background-image: url('./img/state-background.png');">
+                            <div class="flex h-[4.5vh] w-full daily-title justify-center items-center" >
+                                <p class="flex justify-center items-center w-[70%] h-full" style="text-align: center;">LEADERBOARD</p>
+                            </div>
+
+                            <!-- <div class="flex w-[90%] h-[4vh]" style="background: rgba(0, 0, 0, 0.8); border-radius: 0.25vw;">
+                                <div class="flex justify-center items-center w-1/4 h-full"><p class="leaderboard-number">1.</p></div>
+                                <div class="flex items-center w-1/2 h-full" ><p class="leaderboard-playername">Hasan Test</p></div>
+                                <div class="flex items-center w-1/4 h-full" ><p class="leaderboard-level">Lv.89</p></div>
+                            </div>
+                            <div class="flex w-[90%] h-[4vh]" style="background: rgba(0, 0, 0, 0.8); border-radius: 0.25vw;">
+                                <div class="flex justify-center items-center w-1/4 h-full"><p class="leaderboard-number">2.</p></div>
+                                <div class="flex items-center w-1/2 h-full" ><p class="leaderboard-playername">Aiakos Test</p></div>
+                                <div class="flex items-center w-1/4 h-full" ><p class="leaderboard-level">Lv.89</p></div>
+                            </div>
+                            <div class="flex w-[90%] h-[4vh]" style="background: rgba(0, 0, 0, 0.8); border-radius: 0.25vw;">
+                                <div class="flex justify-center items-center w-1/4 h-full"><p class="leaderboard-number">3.</p></div>
+                                <div class="flex items-center w-1/2 h-full" ><p class="leaderboard-playername">ThaC Test</p></div>
+                                <div class="flex items-center w-1/4 h-full" ><p class="leaderboard-level">Lv.89</p></div>
+                            </div>
+                            <div class="flex w-[90%] h-[4vh]" style="background: rgba(0, 0, 0, 0.8); border-radius: 0.25vw;">
+                                <div class="flex justify-center items-center w-1/4 h-full"><p class="leaderboard-number">4.</p></div>
+                                <div class="flex items-center w-1/2 h-full" ><p class="leaderboard-playername">3iq Hasim</p></div>
+                                <div class="flex items-center w-1/4 h-full" ><p class="leaderboard-level">Lv.89</p></div>
+                            </div>
+                            <div class="flex w-[90%] h-[4vh]" style="background: rgba(0, 0, 0, 0.8); border-radius: 0.25vw;">
+                                <div class="flex justify-center items-center w-1/4 h-full"><p class="leaderboard-number">5.</p></div>
+                                <div class="flex items-center w-1/2 h-full" ><p class="leaderboard-playername">Test Test</p></div>
+                                <div class="flex items-center w-1/4 h-full" ><p class="leaderboard-level">Lv.89</p></div>
+                            </div> -->
+                        </div>
+                        <div class="flex w-full h-[11.5%] backtopostp bg-center bg-cover" onclick="HSN.Select('backpostop')" style="background-image: url(./img/backpostop.png);"></div>
+                        <div class="flex w-full h-[0.5%] gopostbtn" style="border-radius: 0.3vw; background: #F69400;opacity: 0.38;"></div>
+                    </div>
+                    </div>
+                    </div>
+                    
+            </div>
+        </div>
+    </div>
+</body>
+</html>

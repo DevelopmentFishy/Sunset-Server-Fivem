@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+   
+  </head>
+  <body>
+    <div id="app" >
+      <div class="notify-container">
+       
+      </div>
+      <div class="taximeter" v-if="!show">
+        <div class="taximeter-container" data-type="taximeter"  :style="positionsData['taximeter'] ? {...positionsData['taximeter']} : {} " v-if="taxiMeterMenu ">
+          <div class="taximeter-header">
+            <h2></h2>
+            <img v-if="taximeterIcon" src="./images/taxi-icon-on.png" alt="">
+            <img v-else src="./images/taxi-icon-off.png" alt="">
+            <h2></h2>
+            <!-- test et -->
+          </div>
+          <div class="taximeter-header-2">
+            <h2 :style="taximeterIcon ? {'color':'white'}:{'color':'rgba(255, 255, 255, 0.18)'}">{{languages['EARNING']}}</h2>
+          </div>
+          <div class="taximeter-middle" :style="{'color':'red'}">
+            <h2 :style="taximeterIcon ? {'color':'white'}:{'color':'rgba(255, 255, 255, 0.18)'}" >{{languages['MILE']}}</h2>
+            <h2 :style="taximeterIcon ? {'color':'#F0C700'}:{'color':'rgba(240, 199, 0, 0.18)'}">${{taximeterEarning.toFixed(0)}}</h2>
+            <h2 :style="taximeterIcon ? {'color':'white'}:{'color':'rgba(255, 255, 255, 0.18)'}">{{languages['STATUS']}}</h2>
+          </div>
+          <div class="taximeter-middle-2">
+            <h2>{{taximeterMile.toFixed(1)}}mil</h2>
+            <div class="status-bar" v-if="taximeterIcon">
+                <div class="status-bar-in" :style="{'width': ''+calculateScammer+'%'}"></div>
+            </div>
+          </div>
+          <div class="taximeter-bottom">
+            <img src="./images/time.png" alt="">
+            <h2 >{{taximeterTime}}</h2>
+          </div>
+          
+
+        </div>
+        <div class="helper-container" v-if="npcTaxiWork">
+          <div class="helper-box" v-if="addExtra">
+            <h2>{{keyControl.AddExtraKey.label}}</h2>
+            <h3>{{languages['ADDEXTRA']}}</h3>
+          </div>
+          <div class="helper-box" v-if="activeTaximeterButton">
+            <h2>{{keyControl.ActiveTaximeter.label}}</h2>
+            <h3>{{taxiMeterMenu ? ''+ languages['DEACTIVETAXIMETER'] +'' : ''+ languages['ACTIVETAXIMETER'] +''}}</h3>
+          </div>
+          <div class="helper-box">
+            <h2>{{keyControl.CabMenuKey.label}}</h2>
+            <h3>{{languages['CABMENU']}}</h3>
+          </div>
+          <div class="helper-box" v-if="!addExtra">
+            <h2>{{keyControl.ResetPrice.label}}</h2>
+            <h3>{{languages['RESETPRICE']}}</h3>
+          </div>
+        </div>
+         <div class="cab-menu animate__animated animate__fadeIn" v-if="cabMenu">
+
+          <div class="player-top-header">
+            <div class="page-2-player-account" > 
+              <div class="page-player-img">
+                <img :src="playerTaxiData[0].image">
+              </div>
+              <div class="page-2-player-account-text" @click="setPage('profile')">
+                <h2>{{playerTaxiData[0].name}}</h2>
+                <h3>Lv.{{playerTaxiData[0].level}}</h3>
+              </div>
+            </div>
+            <div class="page-2-logo">
+              <img src="./images/header-logo.png" alt="">
+            </div>
+            <div class="page-2-close">
+              <div class="page-2-text">
+                <h2>{{languages['EXITFROM']}}</h2>
+                <h2>{{languages['TAXIMENU']}}</h2>
+              </div>
+              <div class="page-2-close-button" @click="closepage">
+                <img src="./images/close-icon.png" alt="">
+              </div>
+            </div>
+          </div>
+
+          <div class="cab-menu-job-container">
+            <div class="page-2-middle-spot-wrapper" :style="buttonArray[data.mission] ? {'background-image' : 'url(./images/'+ data.spotActiveImage+'.png)'} : {'background-image' : 'url(./images/'+ data.spotImage+'.png)'} " v-for="data in spotData" @click="setHover(data.mission,data.level,playerTaxiData[0].level)">
+              <div class="spot-account">
+                <div class="spot-name">{{data.name}}</div>
+                <div class="spot-name2">{{data.name}}</div>
+                <div class="spot-text">{{data.wayText}}</div>
+                <div class="spot-earning">
+                  <h2 :style="buttonArray[data.mission] ? {'color' : 'white'} : { 'color': 'rgba(255, 255, 255, 0.28)'}">{{languages['POSSIBLEEANINGS']}}</h2>
+                  <h2 :style="buttonArray[data.mission] ? {'opacity' : '1.0'} : { 'opacity': '0.2'}">{{data.possibleEarningsMin}}$ - {{data.possibleEarningsMax}}$</h2>
+                </div>
+                <div class="spot-xp">
+                  <h2 :style="buttonArray[data.mission] ? {'color' : 'white'} : { 'color': 'rgba(255, 255, 255, 0.28)'}">{{languages['POSSIBLEXP']}}</h2>
+                  <h2 :style="buttonArray[data.mission] ? {'opacity' : '1.0'} : { 'opacity': '0.2'}">{{data.possibleEXPMin}} - {{data.possibleEXPMax}} XP</h2>
+                </div>
+                <div class="select-route-button">
+                 
+                  <div class="select-button" :style="buttonArray[data.mission] ? {'background-color' : 'white'} : { 'background-color': 'rgba(255, 255, 255, 0.28)','color' : 'gray'}" @click="newNpcRoute(playerTaxiData[0].level,data.level,data.mission)">
+                    <div class="levellock" v-if="data.level > playerTaxiData[0].level" >
+                      <img src="./images/lock.png">
+                    </div>
+                    <h2>
+                      {{playerTaxiData[0].level >= data.level ? ''+ languages['SELECTROUTE'] +'' : 'Lv.'+data.level+' '+ languages['REQUIRED'] +'' }}
+                    </h2>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="edit-taximeter-position">
+            <h2 @click="editTaximeterMode" >{{languages['EDITTAXIMETERPOS']}}</h2>
+            <h2 @click="disableNpcMode">{{npcCabbing ? ''+languages['DISABLENPCCABBING']+'' : ''+languages['ENABLENPCCABBING']+''}}</h2>
+          </div>
+
+         </div> 
+         <div class="edit-mode-text" v-if="editModeMenu">
+         
+          <div class="edit-mode-wrapper">
+            <h2>{{languages['DRAGANDDROP']}} <span>{{languages['TAXIMETERPOSITION']}}</span></h2>
+            <img src="./images/close-icon.png" @click="editModeBg">
+           
+            <div class="setbutton">
+              <h3 @click="defaultPosition">{{languages['SETTODEFAULT']}}</h3>
+            </div>
+          </div>
+         </div>
+      </div>
+    
+      
+    
+
+      <div class="app-container" v-if="show">
+
+        <div class="page-1-loading" v-if="page == 'loading' && playerTaxiData" v-for="data in playerTaxiData">
+        <div class="page-1-wrapper">
+          <div class="page-1-playerimg">
+            <img :src="data.image" >
+          </div>
+          <div class="page-1-player-text">
+            <h2>{{languages['HELLO']}} {{data.name}} {{languages['WELCOMEBACK']}}.</h2>
+          </div>
+          <div class="page-1-loading-bar">
+            <img v-if="!continuebutton" src="./images/taxi-icon.png" alt="">
+            <img v-else src="./images/check.png" alt="">
+          </div>
+          <div class="page-1-player-text-2">
+            <h2>{{languages['PLEASEWAIT']}}</h2>
+          </div>
+          <div class="page-1-player-button"  :style="continuebutton ? {'background':'white', 'color' : 'black'} : {'background' :'rgba(255, 255, 255, 0.04)'}" @click="setPage('main')"> Contiune </div>
+        </div>
+          </div>
+          <div class="page-2-main" v-if="page == 'main'">
+        <div class="player-top-header">
+          <div class="page-2-player-account" v-for="data in playerTaxiData"> 
+            <div class="page-player-img">
+              <img :src="data.image">
+            </div>
+            <div class="page-2-player-account-text" @click="setPage('profile')">
+              <h2>{{data.name}}</h2>
+              <h3>Lv.{{data.level}}</h3>
+            </div>
+          </div>
+          <div class="page-2-logo">
+            <img src="./images/header-logo.png" alt="">
+          </div>
+          <div class="page-2-close">
+            <div class="page-2-text">
+              <h2>{{languages['EXITFROM']}}</h2>
+              <h2>{{languages['TAXIMENU']}}</h2>
+            </div>
+            <div class="page-2-close-button" @click="closepage">
+              <img src="./images/close-icon.png" alt="">
+            </div>
+          </div>
+        </div>
+        <div class="page-2-middle">
+          <div class="page-2-history">
+            <div class="page-2-middle-player-name">
+              <div class="page-2-middle-player-name2">
+                <h2>{{languages['HELLO']}}</h2>
+                <h2>{{playerTaxiData[0].name}}</h2>
+              </div>
+              <div class="page-2-middle-bankbutton">
+                <div class="bank-button-dat "  @click="showMoneyMenu"  v-for="data in 3"></div>
+                <div class="withdrawmethod animate__animated" v-if="playerMoneySelectMenu" >
+                    <h2 class="withdrawtext">{{languages['WITHDRAWMETHOD']}}</h2>
+                      <div class="withdrawmethodcheck"@click="setChangeMoney('bank')">
+                        <h2>{{languages['TOMYBANK']}}</h2>
+                        <img v-if="playerTaxiData[0].paytype == 'bank'" src="./images/check.png" alt="">
+                      </div>
+                      <div class="withdrawmethodcheck2" @click="setChangeMoney('cash')">
+                        <h2>{{languages['ASCASH']}}</h2>
+                          <img v-if="playerTaxiData[0].paytype == 'cash'" src="./images/check.png" alt="">
+                      </div>
+                </div>
+              </div>
+            </div>
+            <div class="page-2-middle-player-cash">
+              <div class="cash-text-page2">
+                <h2>{{languages['CASH']}}</h2>
+                <h2>{{playerTaxiData[0].taximoney}} $</h2>
+              </div>
+            </div>
+            <div class="page-2-middle-job-history" v-if="parseDataHistory">
+              <div class="history-wrapper" v-for="data in parseDataHistory.slice().reverse()">
+                <img src="./images/taxi-icon-history.png" alt="">
+                <h2>{{data.way}}</h2>
+                <h2>{{data.mile}} mil</h2>
+                <h2>+{{data.price}}$</h2>
+              </div>
+            </div>
+            <div class="page-middle-job-withdraw-button" @click="withdrawMoney" >
+              <h2>{{languages['WITHDRAW']}}</h2>
+            </div>
+          </div>
+          <div class="page-2-middle-scroll">
+            <h2 :style="categoriesPage == 'stage1' ? {'background':'#F0C801', 'box-shadow':'0px 0px 78px #F0C801', 'transform' : 'scale(1.1)'} : {'background':'#5F512D', 'transform' : 'scale(0.8)'}" @click="setCategories('stage1')">1</h2>
+            <h2></h2>
+            <h2></h2>
+            <h2 :style="categoriesPage == 'stage2' ? {'background':'#F0C801', 'box-shadow':'0px 0px 78px #F0C801', 'transform' : 'scale(1.1)'} : {'background':'#5F512D', 'transform' : 'scale(0.8)'}" @click="setCategories('stage2')">2</h2>
+            <h2></h2>
+            <h2></h2>
+            <h2 :style="categoriesPage == 'stage3' ? {'background':'#F0C801', 'box-shadow':'0px 0px 78px #F0C801', 'transform' : 'scale(1.1)'} : {'background':'#5F512D', 'transform' : 'scale(0.8)'}" @click="setCategories('stage3')">
+              <img src="./images/taxi-icon-history.png" alt="">
+            </h2>
+          </div>
+          <div class="page-2-middle-main">
+            <div class="page-2-middle-spot-wrapper" :style="buttonArray[data.mission] ? {'background-image' : 'url(./images/'+ data.spotActiveImage+'.png)'} : {'background-image' : 'url(./images/'+ data.spotImage+'.png)'} " v-for="data in spotData" v-if="categoriesPage == 'stage1'" @click="setHover(data.mission,data.level,playerTaxiData[0].level)">
+              <div class="spot-account">
+                <div class="spot-name">{{data.name}}</div>
+                <div class="spot-name2">{{data.name}}</div>
+                <div class="spot-text">{{data.wayText}}</div>
+                <div class="spot-earning">
+                  <h2 :style="buttonArray[data.mission] ? {'color' : 'white'} : { 'color': 'rgba(255, 255, 255, 0.28)'}">{{languages['POSSIBLEEANINGS']}}</h2>
+                  <h2 :style="buttonArray[data.mission] ? {'opacity' : '1.0'} : { 'opacity': '0.2'}">{{data.possibleEarningsMin}}$ - {{data.possibleEarningsMax}}$</h2>
+                </div>
+                <div class="spot-xp">
+                  <h2 :style="buttonArray[data.mission] ? {'color' : 'white'} : { 'color': 'rgba(255, 255, 255, 0.28)'}">{{languages['POSSIBLEXP']}}</h2>
+                  <h2 :style="buttonArray[data.mission] ? {'opacity' : '1.0'} : { 'opacity': '0.2'}">{{data.possibleEXPMin}} - {{data.possibleEXPMax}} XP</h2>
+                </div>
+                <div class="select-route-button">
+                 
+                  <div class="select-button" :style="buttonArray[data.mission] ? {'background-color' : 'white'} : { 'background-color': 'rgba(255, 255, 255, 0.28)','color' : 'gray'}" @click="newRoute(playerTaxiData[0].level,data.level,'stage1',data.mission,data.mission,'stage2',data.possibleEarningsMin, data.possibleEarningsMax , data.possibleEXPMin , data.possibleEXPMax)">
+                    <div class="levellock" v-if="data.level > playerTaxiData[0].level" >
+                      <img src="./images/lock.png">
+                    </div>
+                    <h2>
+                      {{playerTaxiData[0].level >= data.level ? ''+languages['SELECTROUTE']+'' : 'Lv.'+data.level+' '+languages['REQUIRED']+'' }}
+                    </h2>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="page-2-middle-spot-wrapper-stage2" :style="buttonArray[data.mission] ? {'background-image' : 'url(./images/'+data.imageActive+'.png)'} : {'background-image' : 'url(./images/'+data.image+'.png)'} " v-for="data in vehicleData" v-if="categoriesPage == 'stage2'" @click="setHover(data.mission,data.level,playerTaxiData[0].level)">
+              <div class="spot-account">
+                <div class="spot-name">{{data.name}}</div>
+                <div class="spot-name2">{{data.name}}</div>
+                <div class="spot-text-carselect">{{data.taxiText}}</div>
+
+                <div class="select-button-car" :style="buttonArray[data.mission] ? {'background-color' : 'white'} : { 'background-color': 'rgba(255, 255, 255, 0.28)','color' : 'gray'}" @click="newRoute(playerTaxiData[0].level,data.level,'stage2',data.mission,data.mission,'stage3')">
+                  <div class="levellock" v-if="data.level > playerTaxiData[0].level" >
+                    <img src="./images/lock.png">
+                  </div>
+                  <h2>
+                    {{playerTaxiData[0].level >= data.level ? ''+languages['SELECTVEHICLE']+''  : 'Lv.'+data.level+' '+languages['REQUIRED']+'' }}
+                  </h2>
+                </div>
+              </div>
+            </div>
+            <div class="page-2-middle-spot-wrapper-stage3" :style="goCabArray['background'] ? {'background-image' : 'url('+goCabArray['background']+')'} : {'background-image' : 'url('+goCabArray['background']+')'}" v-if="categoriesPage == 'stage3'">
+              <div class="spot-account-cab">
+                <div class="spot-name-cab">{{goCabArray['way']}}</div>
+                <div class="spot-name2-cab">{{goCabArray['way']}}</div>
+                <div class="spot-cab-img">
+                  <img :src="goCabArray['vehicleImage']" alt="">
+                </div>
+                <div class="spot-text">{{goCabArray['vehicleText']}}</div>
+                <div class="spot-earning">
+                  <h2>{{languages['POSSIBLEEANINGS']}}</h2>
+                  <h2>{{goCabArray.earnmin}}$ - {{goCabArray.earnmax}}$</h2>
+                </div>
+                <div class="spot-xp">
+                  <h2>{{languages['POSSIBLEXP']}}</h2>
+                  <h2>{{goCabArray.xpmin}} - {{goCabArray.xpmax}} XP</h2>
+                </div>
+                <div class="select-route-button-gocab" :style="selectMission.route && selectMission.car ? {'opacity': '1.0'} : {'opacity':'0.5'}" >
+                  <h2 @click="newRoute(playerTaxiData[0].level,'0','stage3')" >{{languages['GOCAB']}}</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+          </div>
+          <div class="page-3-main" v-if="page == 'profile'"  >
+        <div class="player-top-header">
+          <div class="page-3-player-account">
+            <div class="page-3-img">
+              <img @click="setPage('main')" src="./images/logo.png" alt="">
+            </div>
+          </div>
+          <div class="page-3-logo">
+            <h2>{{languages['PROFILE']}}</h2>
+            <h3>{{languages['PROFILE']}}</h3>
+          </div>
+          <div class="page-2-close">
+            <div class="page-2-text">
+              <h2>{{languages['EXITFROM']}}</h2>
+              <h2>{{languages['TAXIMENU']}}</h2>
+            </div>
+            <div class="page-2-close-button" @click="closepage">
+              <img src="./images/close-icon.png" alt="">
+            </div>
+          </div>
+        </div>
+        <div class="page-3-middle-scroll">
+          <h2 :style="categoriesPage == 'profile1' ? {'background':'#F0C801', 'box-shadow':'0px 0px 78px #F0C801'} : {'background':'#5F512D'}" @click="changeCategoriesPage('profile1')">
+            <img src="./images/profile.png" alt="">
+          </h2>
+          <h2></h2>
+          <h2></h2>
+          <h2 :style="categoriesPage == 'profile2' ? {'background':'#F0C801', 'box-shadow':'0px 0px 78px #F0C801'} : {'background':'#5F512D'}" @click="changeCategoriesPage('profile2')">
+            <img src="./images/rank-icon.png" alt="">
+          </h2>
+          <h2></h2>
+          <h2></h2>
+          <h2 :style="categoriesPage == 'profile3' ? {'background':'#F0C801', 'box-shadow':'0px 0px 78px #F0C801'} : {'background':'#5F512D'}" @click="changeCategoriesPage('profile3')">
+            <img src="./images/taxi-icon-history.png" alt="">
+          </h2>
+        </div>
+        <div class="page-2-middle-overflow" @wheel="onWheel">
+        
+          <div class="page-2-middle-profile animate__animated"  v-if="categoriesPage == 'profile1'">
+            <div class="page-3-history" v-for="data in playerTaxiData">
+              <div class="page-3-history-top">
+                <div class="page-3-history-level">
+                  <img src="./images/level-icon.png" alt="">
+                  <h2>Lv.{{data.level}}</h2>
+                </div>
+                <div class="page-3-player-image">
+                  <img src="./images/profileborder.png" alt="">
+                  <img :src="data.image" alt="">
+                </div>
+                <div class="page-3-player-rank">
+                  <img src="./images/rank-icon.png" alt="">
+                  <h2>{{playerRank}}</h2>
+                </div>
+              </div>
+              <div class="page-3-player-name">{{data.name}}</div>
+              <div class="page-3-player-xp">
+                <h2 class="xp-text">{{languages['LEVELPROGRESS']}}</h2>
+                <div class="xp-level-text">
+                  <h2>Lv.{{playerTaxiData[0].level}}</h2>
+                  <h2>Lv.{{(playerTaxiData[0].level + 1)}}</h2>
+                </div>
+                <div class="xp-prog">
+                  <div class="xp-prog-bar" :style="{'width': ''+calculateXp+'%'}"></div>
+                </div>
+              </div>
+              <div class="page-3-player-profile-wrapper">
+                <h2 class="change-text">{{languages['CHANGEPROFILEPHOTO']}}</h2>
+                <div class="page-3-usediscord" @click="photoClick('discord')">
+                  <h2>{{languages['USEDISCORDPROFILE']}}</h2>
+                </div>
+                <div class="page-3-usediscord">
+                  <input type="text" placeholder="Url.." v-model="urlImage" v-on:keyup.enter="photoClick('url')">
+                </div>
+                <div class="page-3-usediscord" @click="photoClick('delete')">
+                  <h2>{{languages['DELETEPROFILEPHOTO']}}</h2>
+                </div>
+              </div>
+            </div>
+            <div class="page-2-middle-main">
+              <div class="page-2-middle-spot-wrapper-swiper" v-show="categoriesPage == 'profile1'"> 
+             
+                 <div class="swiper mySwiper">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide"  v-for="data in achievementsData"  :style="buttonArray[data.mission] ? {'background-image' : 'url(./images/'+ data.activeImage+'.png)'} : {'background-image' : 'url(./images/'+ data.image+'.png)'}"  @click="setHoverAchivements(data.name,data.mission)">
+                      <div class="achivements-wrapper">
+                        <h2 class="achtext1">{{data.name}}</h2>
+                        <h2 class="achtext2">{{data.name}}</h2>
+
+                        <div class="achivements-text">
+                          <h2 :style="buttonArray[data.mission] ? {'color':'white'} : {'color':'gray'}">{{data.description}}</h2>
+                        </div>
+
+                        <div class="achivements-text2">
+                          <h2 :style="buttonArray[data.mission] ? {'color':'white'} : {'color':'gray'}">{{languages['REWARD']}}</h2>
+                        </div>
+
+                        <div class="achivements-text3">
+                          <h2 :style="buttonArray[data.mission] ? {'color':'#D8B401'} : {'color':'rgba(216, 180, 1, 0.33)'}">{{data.price}} $</h2>
+                        </div>
+
+                        <div class="achivements-text4">
+                          <h2 :style="buttonArray[data.mission] ? {'background-color':'#D6B203'} : {'background-color':'rgba(255, 255, 255, 0.13)'}"  >{{buttonArray[data.mission] ? ''+languages['REWARDCLAIMED']+'' : ''+languages['CLAIMREWARD']+'' }}</h2>
+                        </div>
+
+                      </div>
+                    </div>
+                   
+                  </div>
+                  <div class="swiper-pagination"></div>
+                </div> 
+              </div>
+            </div>
+          </div>
+        
+          <div class="page-2-middle-profile animate__animated"   v-show="categoriesPage == 'profile2'">
+           
+            <div class="page-4-history">
+              <div class="page-4-king">
+                <img src="./images/king.png" alt="">
+              </div>
+              <div class="page-4-history-top">
+                <div class="page-4-player-rank">
+                  <img src="./images/rank-icon.png" alt="">
+                  <h2>1nd</h2>
+                </div>
+                <div class="page-4-history-level">
+                  <img src="./images/level-icon.png" alt="">
+                  <h2>Lv.{{firstLeader.level}}</h2>
+                </div>
+                <div class="page-3-player-image">
+                  <img src="./images/profileborder.png" alt="">
+                  <img :src="firstLeader.image" alt="">
+                </div>
+                <div class="page-4-player-name">{{firstLeader.name}}</div>
+              </div>
+            </div>
+            <div class="page-4-middle-main">
+              <div class="page-4-leaderboard" v-if="index < 9" v-for="(data,index) in leaderBoardData">
+                <h2>#{{(index +2)}}</h2>
+                <div class="page-4-leader-wrapper">
+                  <div class="page-4-player-img">
+                    <img :src="data.image" alt="">
+                  </div>
+                  <div class="page-4-player-account">
+                    <h2>{{data.name}}</h2>
+                    <h2>Lv.{{data.level}}</h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="page-2-middle-profile animate__animated"  v-show="categoriesPage == 'profile3'">
+            
+            <div class="page-4-history-cab" v-if="firstHistory.jobdate">,
+              <h2 class="histroy-cab">{{firstHistory.jobdate}}</h2>
+              <div class="page-4-player-img-history-cab"></div>
+              <h2 class="nameText">Downtown</h2>
+              <div class="mileText">
+                <h2>{{languages['Mile']}}</h2>
+                <h2>{{firstHistory.mile}}mil</h2>
+              </div>
+              <div class="earnText">
+                <h2>{{languages['EARNING']}}</h2>
+                <h2>+{{firstHistory.price}}$</h2>
+              </div>
+              <div class="expText">
+                <h2>{{languages['EXP']}}</h2>
+                <h2>+{{firstHistory.xp}}XP</h2>
+              </div>
+              
+            </div>
+            <div class="page-4-middle-main" v-if="historyData">
+              <div class="page-4-leaderboard-history" :style="historybackground(data.way)" v-if="index < 9"  v-for="(data,index) in historyData.slice().reverse()">
+                <h2>{{data.jobdate}}</h2>
+                <div class="page-4-leader-wrapper-history">
+                  <div class="page-4-player-img-history">
+    
+                  </div>
+                  <div class="page-4-player-account-history">
+                    <h2 v-if="data.way == 'DOWNTWON'" >Downtown</h2>
+                    <h2 v-else-if="data.way == 'SANDY SHORES'" >Downtown - Sandy Shores</h2>
+                    <h2 v-else-if="data.way == 'PALETO BAY'" >Downtown - Paleto Bay</h2>
+                    <h2>{{data.mile}} mil</h2>
+                    <h2>+ {{data.price}}$</h2>
+                    <h2>+{{data.xp}}XP</h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+          </div>
+      </div>
+    </div>
+  </body>
+
+  <script src="nui://game/ui/jquery.js" type="text/javascript"></script>
+  <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+  <script src="lib/progressbar.js"></script>
+  <script src="app/script.js"></script>
+ 
+</html>

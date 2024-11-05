@@ -1,0 +1,209 @@
+
+
+@media screen and (width: 2560px) and (height: 1440px) {
+  html {
+    font-size:19px;
+}
+.menu-wrapper{
+   margin-top:10rem; 
+  margin-left:10rem;
+
+}
+.swiper{
+  height:16rem;
+
+}
+.craft-bottom{
+  width:92%;
+}
+}
+
+@media screen and (width: 1920px) and (height: 1440px) {
+html {
+ font-size:16px;
+}
+.menu-wrapper{
+  margin-top:19rem;
+}
+}
+
+
+@media screen and (width: 1768px) and (height: 992px) {
+html {
+ font-size:15px;
+}
+
+}
+
+
+@media screen and (width: 1680px) and (height: 1050px) {
+html {
+ font-size:14.3px;
+}
+
+}
+
+@media screen and (width: 1600px) and (height: 1200px) {
+html {
+    font-size:13px;
+}
+.menu-wrapper{
+   margin-top:10rem; 
+}
+.swiper{
+  height:16rem;
+}
+
+
+}
+
+@media screen and (width: 1600px) and (height: 1024px) {
+ html {
+    font-size:13px;
+}
+.menu-wrapper{
+   margin-top:10rem; 
+}
+.swiper{
+  height:16rem;
+}
+
+
+}
+
+@media screen and (width: 1600px) and (height: 900px) {
+ html {
+    font-size:13px;
+}
+.menu-wrapper{
+   margin-top:1rem; 
+}
+.swiper{
+  height:16rem;
+}
+
+}
+
+@media screen and (width: 1440px) and (height: 900px) {
+  html {
+    font-size:12px;
+}
+.menu-wrapper{
+   margin-top:1rem; 
+}
+.swiper{
+  height:17rem;
+}
+
+}
+
+@media screen and (width: 1400px) and (height: 1050px) {
+  html {
+    font-size:12px;
+}
+.menu-wrapper{
+   margin-top:11rem; 
+}
+.swiper{
+  height:17rem;
+}
+
+}
+@media screen and (width: 1366px) and (height: 768px) {
+  html {
+    font-size:11px;
+}
+.menu-wrapper{
+   margin-top:1rem; 
+}
+.swiper{
+  height:17rem;
+}
+
+}
+
+@media screen and (width: 1360px) and (height: 768px) {
+  html {
+    font-size:11px;
+}
+.menu-wrapper{
+   margin-top:1rem; 
+}
+.swiper{
+  height:17rem;
+}
+
+
+}
+
+@media screen and (width: 1280px) and (height: 1024px) {
+ html {
+    font-size:11px;
+}
+.menu-wrapper{
+   margin-top:12rem; 
+}
+.swiper{
+  height:18rem;
+}
+
+
+}
+
+
+
+@media screen and (width: 1280px) and (height: 960px) {
+ html {
+    font-size:11px;
+}
+.menu-wrapper{
+   margin-top:12rem; 
+}
+.swiper{
+  height:18rem;
+}
+
+
+}
+
+@media screen and (width: 1280px) and (height: 800px) {
+ html {
+    font-size:10px;
+}
+.menu-wrapper{
+   margin-top:3rem; 
+}
+.swiper{
+  height:18rem;
+}
+
+
+}
+@media screen and (width: 1280px) and (height: 768px) {
+ html {
+    font-size:10px;
+}
+.menu-wrapper{
+   margin-top:3rem; 
+}
+.swiper{
+  height:18rem;
+}
+
+
+}
+
+@media screen and (width: 1280px) and (height: 720px) {
+ html {
+    font-size:10px;
+}
+.menu-wrapper{
+   margin-top:3rem; 
+}
+.swiper{
+  height:18rem;
+}
+
+
+
+}

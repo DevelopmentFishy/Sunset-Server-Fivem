@@ -1,0 +1,138 @@
+@font-face {
+    src: url("../fonts/SF-PRO-ROUNDED-BOLD.OTF");
+    font-family: "sf-pro-rounded-bold";
+}
+@font-face {
+    src: url("../fonts/SF-PRO-ROUNDED-MEDIUM.OTF");
+    font-family: "sf-pro-rounded-medium";
+}
+@font-face {
+    src: url("../fonts/SF-PRO-ROUNDED-REGULAR.OTF");
+    font-family: "sf-pro-rounded-regular";
+}
+
+@font-face {
+    font-family: "Gilroy-Bold";
+    src: url("../fonts/GILROY-BOLD.TTF");
+}
+
+@font-face {
+    font-family: "Gilroy-ExtraBold";
+    src: url("../fonts/GILROY-EXTRABOLD.TTF");
+}
+
+@font-face {
+    font-family: "Gilroy-Heavy";
+    src: url("../fonts/GILROY-HEAVY.TTF");
+}
+
+/* @font-face {
+    font-family: "Helvetica";
+    src: url("../fonts/Helvetica-CE-Medium.otf");
+} */
+@font-face {
+    font-family: "Gilroy-SemiBold";
+    src: url("../fonts/GILROY-SEMIBOLD.TTF");
+}
+
+@font-face {
+    font-family: "Gilroy-Medium";
+    src: url("../fonts/GILROY-MEDIUM.TTF");
+}
+
+@font-face {
+    font-family: "Gilroy-Black";
+    src: url("../fonts/GILROY-BLACK.TTF");
+}
+
+body {
+    overflow: hidden;
+    user-select: none;
+    cursor: url("../images/mouseicon.png"), auto;
+}
+
+.text-1 {
+    font-family: "Gilroy-SemiBold";
+
+    color: #ffcd4d;
+    -webkit-text-fill-color: rgba(255, 0, 0, 0); /* Will override color (regardless of order) */
+    -webkit-text-stroke-width: 1.5px;
+    -webkit-text-stroke-color: #ffcd4d;
+}
+
+.text-2 {
+    color: #fff;
+    -webkit-text-fill-color: rgba(44, 104, 58, 1), rgba(255, 228, 165, 1); /* Will override color (regardless of order) */
+    -webkit-text-stroke-width: 1.5px;
+    -webkit-text-stroke-color: #fff;
+}
+
+.mayhemhudsettingspageallsvg {
+    position: absolute;
+    width: 20%;
+    height: 20%;
+    left: 39.5%;
+    top: 37%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.changeCategoryPage-enter-active {
+    animation: changeCategoryPage-enter 0.3s ease forwards;
+}
+.changeCategoryPage-leave-active {
+    animation: changeCategoryPage-leave 0.3s ease forwards;
+}
+
+@keyframes changeCategoryPage-enter {
+    0% {
+        transform: scaleX(0);
+        transform-origin: left;
+        opacity: 0;
+    }
+    100% {
+        transform: scaleX(1);
+        transform-origin: left;
+        opacity: 1;
+    }
+}
+@keyframes changeCategoryPage-leave {
+    0% {
+        transform: scaleX(1);
+        transform-origin: right;
+        opacity: 1;
+    }
+    100% {
+        transform: scaleX(0);
+        transform-origin: right;
+        opacity: 0;
+    }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: all 0.5s ease;
+}
+.fade-enter {
+    opacity: 0;
+    transform: translateY(0);
+}
+
+.fade-enter-to {
+    opacity: 1;
+    transform: translateY(-8px);
+}
+.fade-leave {
+    opacity: 1;
+    transform: translateY(-8px);
+}
+.fade-leave-to {
+    opacity: 0;
+    transform: translateY(60px);
+}

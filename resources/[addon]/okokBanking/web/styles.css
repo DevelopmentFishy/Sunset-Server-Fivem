@@ -1,0 +1,883 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css");
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap');
+
+*,*:focus,*:hover{
+	outline:none;
+}
+
+html {
+	font-size: calc(16 / 19.2 * 1vw);
+}
+
+@media (min-aspect-ratio: 16 / 9) {
+	html {
+		font-size: calc(16 / 10.8 * 1vh);
+	}
+}
+
+body {
+	font-family: 'Tajawal', sans-serif;
+	background: none;
+	user-select: none;
+}
+
+.card {
+	border: none;
+}
+
+.card-body {
+	flex: none;
+}
+
+.main_card {
+	width: 62.5rem;
+	border-radius: 1.25rem;
+	background-color: #202128;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	border: none;
+	display: none;
+	box-shadow: 0rem 0rem 0.313rem 0rem rgba(10, 10, 10, 0.3);
+}
+
+.main_card-body {
+	background-color: transparent;
+	color: #d5d6da;
+	font-size: 0.9375rem;
+	font-weight: 500;
+	vertical-align: middle;
+	font-weight: 600;
+	height: 45rem;
+}
+
+.creditcard-classic_card {
+	border-radius: 0.9375rem;
+	width: 15.5rem;
+	height: 10.5625rem;
+	background: url('img/classic.png');
+	border: none;
+	margin: 0 auto;
+	margin-bottom: 1rem;
+	background-size: 100%;
+}
+
+.creditcard-classic_card-body {
+	background-color: transparent;
+}
+
+.logo {
+	max-width: 6.25rem;
+	max-height: 6.25rem;
+	margin: 0 auto;
+}
+
+hr {
+	color: #3e3f4b;
+	opacity: 1;
+	height: 0.00625rem;
+}
+
+hr:not([size]) {
+	height: 0.00625rem;
+	opacity: 1;
+}
+
+.dataTable-table > thead > tr > th {
+	border-bottom: none;
+}
+
+.dataTable-wrapper.no-footer .dataTable-container {
+	border-bottom: none;
+}
+
+.dataTable-top, .dataTable-bottom {
+	padding: 0 0;
+}
+
+thead {
+	display: none;
+}
+
+tr {
+	background-color: #2e2f36;
+	margin-bottom: 0.625rem;
+	font-size: 1.25rem;
+	transition: .25s;
+}
+
+tr:hover {
+	background-color: #292a31;
+	transition: .25s;
+}
+
+
+td:first-child {
+	border-top-left-radius: 0.625rem;
+	border-bottom-left-radius: 0.625rem;
+}
+
+td:last-child {
+	border-top-right-radius: 0.625rem;
+	border-bottom-right-radius: 0.625rem;
+}
+
+.dataTable-table {
+	border-collapse:separate; 
+	border-spacing: 0rem 0.4375rem;
+}
+
+.sidebar-item {
+	color: #8f9094;
+	font-size: 1rem;
+	padding: 0.625rem;
+	border-radius: 0.625rem;
+	font-weight: 500;
+	transition: 0.4s;
+	width: 9.5rem;
+	margin-bottom: 0.75rem;
+}
+
+.sidebar-item:hover {
+	background-color: #d17f03;
+	cursor: pointer;
+	transition: 0.25s;
+	color: #fff;
+}
+
+.sidebar-title {
+	color: #8d8d8d;
+	font-size: 0.875rem;
+	font-weight: 600;
+}
+
+.selected {
+	color: #fff;
+	background-color: #d17f03;
+	font-weight: 600;
+}
+
+.bi-credit-card:hover {
+	fill: red;
+}
+
+.selected-page {
+	color: #fff;
+	font-size: 1.75rem;
+	margin-left: 0.9375rem;
+}
+
+.username {
+	color: #fff;
+	font-weight: 500;
+	font-size: 1.125rem;
+}
+
+.avatar {
+	border-radius: 50%;
+	width: 2.5rem;
+	margin-left: 0.625rem;
+}
+
+.fa-wifi {
+	transform: rotate(90deg);
+	color: #fff;
+	font-size: 0.875rem;
+}
+
+.btn {
+	font-weight: 500;
+	font-size: 1.125rem;
+	padding: 0.8125rem 1.0625rem;
+	border: none;
+	border-radius: 0.125rem;
+	transition: 0.25s;
+	letter-spacing: 0.0125rem;
+}
+
+.btn:focus {
+	box-shadow: none;
+}
+
+.btn-blue {
+	background-color: #d17f03;
+	color: #e6e6e6;
+}
+
+.btn.btn-blue:hover {
+	background-color: #9c5f03;
+	color: #e6e6e6;
+}
+
+.modal-content {
+	background-color: transparent;
+	border: none;
+}
+
+.modal-body {
+	background-color: #292a31;
+	border-radius: 0.625rem;
+	color: #fff;
+}
+
+.form-control {
+	border: none;
+	background-color: #1d1e24;
+	height: 5rem;
+	font-size: 1.875rem;
+	border-radius: 0.625rem;
+	color: #fff;
+}
+
+.form-control:focus {
+	box-shadow: none;
+	border: none;
+	background-color: #1d1e24;
+	box-shadow: 0rem 0rem 0.3125rem 0.0625rem #d17f03 !important;
+	color: #fff;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+.viewall-badge {
+	background-color: #d17f03 !important;
+	transition: 0.25s;
+}
+
+.viewall-badge:hover {
+	background-color: #9c5f03 !important;
+	transition: 0.25s;
+	cursor: pointer;
+}
+
+.close-button {
+	color: #c7c7c9;
+	position: absolute;
+	right: 1.25rem; 
+	top: 0.9rem;
+	transition: .25s;
+	font-size: 1.6rem;
+	line-height: 1;
+}
+
+.close-button:hover {
+	color: #fff;
+	transition: .25s;
+	cursor: pointer;
+}
+
+.dataTable-input {
+	background-color: #2e2f36;
+	border: none;
+	border-radius: 0.625rem;
+	color: #fff;
+	padding: 0.375rem 0.75rem;
+	font-size: 1.3rem;
+}
+
+.dataTable-pagination .active a, .dataTable-pagination .active a:focus, .dataTable-pagination .active a:hover {
+	background-color: #d17f03;
+	cursor: pointer;
+	transition: .25s;
+}
+
+.dataTable-pagination a {
+	border-radius: 0.313rem;
+	color: #fff;
+	background-color: #2e2f36;
+	transition: .25s;
+	padding: 0.375rem 0.75rem;
+	margin-left: 0.125rem;
+}
+
+.dataTable-pagination a:hover {
+	background-color: #292a31;
+	transition: .25s;
+}
+
+.dataTable-pagination {
+	position: fixed;
+	right: 1rem;
+	bottom: 1rem;
+}
+
+.dataTable-bottom {
+	padding: 0rem 0rem;
+	font-size: 1.125rem;
+}
+
+.dataTable-top > nav:last-child, .dataTable-top > div:last-child, .dataTable-bottom > nav:last-child, .dataTable-bottom > div:last-child {
+	float: none;
+}
+
+.dataTable-top {
+	float: right;
+}
+
+#new_iban {
+	text-transform: uppercase;
+}
+
+::-webkit-input-placeholder { 
+	text-transform: none; 
+}
+
+.atm_card {
+	width: 20rem;
+	border-radius: 1.25rem;
+	background-color: #202128;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	border: none;
+	display: none;
+	box-shadow: 0rem 0rem 0.313rem 0rem rgba(10, 10, 10, 0.3);
+}
+
+.atm_card-body {
+	background-color: transparent;
+	color: #8f9094;
+	font-size: 0.9375rem;
+	font-weight: 500;
+	vertical-align: middle;
+	font-weight: 600;
+}
+
+.dots {
+	width: 50%;
+	justify-content: space-around;
+	padding: 1em;
+	padding-top: 2em;
+}
+
+.dot {
+	position: relative;
+	background: rgba(143, 144, 148, 0.5);
+	border-radius: 50%;
+	width: 1.6em;
+	height: 1.6em;
+	transform: scale3d(0.6, 0.6, 0.6);
+}
+
+.dot.active {
+	-webkit-animation: growDot 0.5s ease;
+	animation: growDot 0.5s ease;
+	-webkit-animation-fill-mode: forwards;
+	animation-fill-mode: forwards;
+}
+
+.dot.wrong {
+	-webkit-animation: wrong 0.9s ease;
+	animation: wrong 0.9s ease;
+}
+
+.dot.correct {
+	-webkit-animation: correct 0.9s ease;
+	animation: correct 0.9s ease;
+}
+
+.dot.clear {
+	-webkit-animation: clear 0.9s ease;
+	animation: clear 0.9s ease;
+}
+
+.numbers {
+	display: flex;
+	flex-flow: row wrap;
+	align-items: center;
+	justify-content: space-around;
+	align-content: flex-end;
+	margin: 0em 0;
+}
+
+.number {
+	position: relative;
+	width: 2.5em;
+	height: 2.5em;
+	margin: 0.5em;
+	text-align: center;
+	line-height: 2.5em;
+	font-weight: 400;
+	font-size: 1.8em;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	transition: all 0.5s ease;
+	border-radius: 0.625rem;
+	border: 0.125rem solid #d17f03;
+}
+.number:hover {
+	background-color: #d17f03;
+	color: #fff;
+	border-radius: 0.625rem;
+	cursor: pointer;
+}
+
+.number:before {
+	content: "";
+	position: absolute;
+	left: -0.125rem;
+	width: 2.5em;
+	height: 2.5em;
+	transition: all 0.5s ease;
+}
+.number.grow {
+	-webkit-animation: grow 0.6s ease;
+	animation: grow 0.6s ease;
+}
+
+@keyframes growDot {
+	100% {
+		background: white;
+		transform: scale3d(0.85, 0.85, 0.85);
+	}
+}
+
+@keyframes grow {
+	50% {
+		transform: scale3d(1.1, 1.1, 1.1);
+	}
+	100% {
+		transform: scale3d(1, 1, 1);
+	}
+}
+
+@keyframes wrong {
+	20% {
+		background: #ff0000;
+		transform: scale3d(0.85, 0.85, 0.85);
+		left: 0;
+	}
+	40% {
+		left: -0.3125rem;
+	}
+	60% {
+		left: 0.625rem;
+	}
+	80% {
+		left: -0.3125rem;
+	}
+}
+
+@keyframes correct {
+	20% {
+		background: #1ebc62;
+		transform: scale3d(0.85, 0.85, 0.85);
+		top: 0;
+	}
+	40% {
+		top: -0.3125rem;
+	}
+	60% {
+		top: 0.625rem;
+	}
+	80% {
+		top: -0.3125rem;
+	}
+}
+
+@keyframes clear {
+	20% {
+		background: #d17f03;
+		transform: scale3d(0.85, 0.85, 0.85);
+		left: 0;
+	}
+}
+
+.load {
+	position: relative;
+	width: 9.375rem;
+	height: 9.375rem;
+	border-radius: 50%;
+	border: 0.625rem solid transparent;
+	border-top: 0.625rem solid #d17f03;
+	border-bottom: 0.625rem solid #d17f03;
+	animation: rotateAntiCW 1.8s linear infinite;
+}
+
+.load::after {
+	content: '';
+	position: absolute;
+	width: 8.125rem;
+	height: 8.125rem;
+	border-radius: 50%;
+	border: 0.625rem solid transparent;
+	border-left: 0.625rem solid #fff;
+	border-right: 0.625rem solid #fff;
+	animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+	0%{transform: rotate(0deg);}
+	100%{transform: rotate(-360deg);}
+}
+
+@keyframes rotateAntiCW {
+	0%{transform: rotate(0deg);}
+	100%{transform: rotate(360deg);}
+}
+
+input[type=password]:not(:placeholder-shown) {
+	font-family: Verdana, sans-serif;
+	font-size: 2.5rem;
+}
+
+.dataTable-table > tbody > tr > td, .dataTable-table > tbody > tr > th, .dataTable-table > tfoot > tr > td, .dataTable-table > tfoot > tr > th, .dataTable-table > thead > tr > td, .dataTable-table > thead > tr > th {
+	vertical-align: top;
+	padding: 0.5rem 0.625rem;
+}
+
+.card-header:first-child {
+	border-radius: calc(0.25rem - 0.0625rem) calc(0.25rem - 0.0625rem) 0 0;
+}
+
+.card-header {
+	border-bottom: none;
+}
+
+#myChart {
+	margin-top: 0!important;
+	margin-top: 0.3125rem;
+	width: 100%;
+}
+
+.dataTable-info {
+	display: none;
+}
+
+#last-t-body .dataTable-bottom .dataTable-pagination {
+	margin-top: 0;
+}
+
+.sidebar-s {
+	border-right: 0.0625rem solid rgba(62, 63, 75);
+	width: 11.0625rem;
+}
+
+.tab-s {
+	width: 82%;
+	display: flex;
+	flex-direction: column;
+	padding-right: calc(var(--bs-gutter-x) * .45);
+}
+
+.wallet-div {
+	font-size: 0.875rem;
+	margin-top: -0.75rem;
+	font-weight: 500;
+	position: absolute;
+	right: 7.1%;
+}
+
+.chart-main {
+	border-right: 0.0625rem solid rgba(62, 63, 75);
+}
+
+.chart-card, .settings-card {
+	background-color: transparent;
+	border-radius: 0.625rem;
+	box-shadow: 0rem 0rem 0.313rem 0rem rgba(10, 10, 10, 0.50);
+}
+
+.card-o-header {
+	background-color: #292a31;
+	border-top-right-radius: 0.625rem !important;
+	border-top-left-radius: 0.625rem !important;
+}
+
+.card-o-title {
+	color: #fff;
+	font-size: 1.125rem;
+}
+
+.chart-card-body {
+	background-color: #1d1e24;
+	border-bottom-left-radius: 0.625rem;
+	border-bottom-right-radius: 0.625rem;
+	padding: 0.6rem 1rem 0.5rem 1rem;
+}
+
+.chart-div {
+	height: 13.107rem;
+	min-height: 13.107rem;
+}
+
+.last-t-card, .actions-card, .settings2-card {
+	background-color: transparent;
+	border-radius: 0.625rem;
+	box-shadow: 0rem 0rem 0.313rem 0rem rgba(10, 10, 10, 0.50);
+	margin-top: 0.75rem;
+}
+
+#view_all_transactions, #view_all_transactions_society, .buy_new_card {
+	position: absolute;
+	font-size: 0.875rem;
+	right: 0.5625rem;
+	top: 0.625rem;
+}
+
+#last-t-body {
+	background-color: #1d1e24;
+	border-bottom-left-radius: 0.625rem;
+	border-bottom-right-radius: 0.625rem;
+	padding: 0.6rem 1rem;
+	padding: 0.51rem 1rem 0.6rem 1rem;
+	height: 18.05rem;
+}
+
+#text_atm {
+	font-size: 1.125rem;
+}
+
+#depositMoney, #withdrawMoney, #transferMoney, .buyccbtn {
+	border-radius: 0.625rem;
+	flex-basis: 100%;
+	margin-top: 1.125rem;
+}
+
+#transfer_iban {
+	margin-top: 1.125rem;
+	text-transform: uppercase;
+}
+
+.w25 {
+	width: 25rem;
+}
+
+.w20p {
+	width: 20%;
+}
+
+.modal-t {
+	font-weight: 600;
+	font-size: 1.875rem;
+}
+
+.ccard-card {
+	background-color: transparent;
+	border-radius: 0.625rem;
+	box-shadow: 0rem 0rem 0.313rem 0rem rgba(10, 10, 10, 0.50);
+}
+
+.ccard-body {
+	background-color: #1d1e24;
+	border-bottom-left-radius: 0.625rem;
+	border-bottom-right-radius: 0.625rem;
+	font-size: 1rem;
+	height: 19.4375rem;
+}
+
+.ccard-name {
+	color: #fff;
+	font-size: 0.75rem;
+	margin-left: 0.3125rem;
+	font-weight: 500;
+}
+
+.mt38p {
+	margin-top: 38%;
+}
+
+.ccard-status {
+	font-weight: 500;
+	color: #fff;
+	line-height: 1;
+}
+
+.ccard-active {
+	color: #fff;
+	font-size: 1.5rem;
+	color: #fff;
+	line-height: 1;
+	text-shadow: 0rem 0rem 0.125rem rgba(255, 255, 255, 0.5);
+}
+
+.ccard-valid {
+	width: 1.5625rem;
+	line-height: 1;
+	margin-right: 2.125rem;
+}
+
+.ccard-thru {
+	color: #fff;
+	font-size: 0.5rem;
+	font-weight: 500;
+	margin-right: 0.1875rem;
+}
+
+.ccard-exp {
+	color: #fff;
+	font-weight: 500;
+	font-size: 1rem;
+}
+
+.ccard-fs {
+	font-size: 1.28rem;
+}
+
+.fff {
+	color: #fff;
+}
+
+.actions-card_body, .settings-card_body {
+	background-color: #1d1e24;
+	border-bottom-left-radius: 0.625rem;
+	border-bottom-right-radius: 0.625rem;
+}
+
+#depositMoneyModal, #withdrawMoneyModal, #transferMoneyModal {
+	border-radius: 0.625rem;
+	flex-basis: 100%;
+}
+
+.mt4375 {
+	margin-top: 0.4375rem;
+}
+
+.lastT-action, .transactions-action {
+	background-color: #1d1e24;
+	padding: 0.3125rem 0.625rem 0.3125rem 0.625rem;
+	border-radius: 0.625rem;
+}
+
+.lastT-name-div {
+	font-weight: 500;
+	font-size: 1rem;
+}
+
+.lastT-name, .transactions-name {
+	color: #d17f03;
+	text-transform: capitalize;
+	font-weight: 600;
+}
+
+.mtm3125 {
+	margin-top: -0.3125rem;
+}
+
+.fw500 {
+	font-weight: 500;
+}
+
+.lastT-received, .transactions-received {
+	color: #2ecc71;
+}
+
+.fs1125 {
+	font-size: 1.125rem;
+}
+
+.fs1875 {
+	font-size: 1.875rem;
+}
+
+.settings-col {
+	flex: 1 1 50%;
+}
+
+.changeiban-card, .changepin-card {
+	background-color: #292a31;
+	border-radius: 0.625rem;
+	color: #fff;
+}
+
+.fs15 {
+	font-size: 1.5rem;
+}
+
+#new_iban {
+	margin-top: 0.75rem;
+	width: 100%;
+}
+
+#change_iban {
+	border-radius: 0.625rem;
+	flex-basis: 100%;
+	margin-top: 0.75rem;
+	width: 100%;
+	font-size: 1.17rem;
+}
+
+.settings_info-card {
+	background-color: #d17f03;
+	border-radius: 0.625rem;
+	color: #fff;
+}
+
+#new_pin {
+	margin-top: 0.75rem;
+	width: 100%;
+}
+
+#change_pin {
+	border-radius: 0.625rem;
+	flex-basis: 100%;
+	margin-top: 0.75rem;
+	width: 100%;
+	font-size: 1.17rem;
+}
+
+.pr05 {
+	padding-right: 0.5rem;
+}
+
+.pl05 {
+	padding-left: 0.5rem;
+}
+
+.stats-title {
+	background-color: #d17f03;
+	border-radius: 0.625rem;
+	color: #fff;
+}
+
+.card-title {
+	font-weight: 600;
+	font-size: 1.25rem;
+}
+
+.fw125 {
+	font-size: 1.25rem;
+}
+
+.transactions-name-div {
+	font-weight: 500;
+}
+
+.ldata-txt {
+	font-size: 2.5rem;
+	color: #fff;
+}
+
+.floatr {
+	float: right;
+}
+
+.btn-dark {
+	background-color: #1d1e24;
+}
+
+.btn-dark:hover {
+	background-color: #1b1c22;
+}
+
+.modal-buycc {
+	width: 35rem;
+}
+
+#transactionsTable {
+	max-width: 100.1%;
+	width: 100.1%;
+	border-spacing: 0rem 0.5rem;
+}
+
+#transactionsData tr {
+	height: 4.55rem;
+}

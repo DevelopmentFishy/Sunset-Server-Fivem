@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+	<meta charset="UTF-8">
+	<head>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+		<link href="https://cdn.jsdelivr.net/npm/simple-datatables@5.0/dist/style.css" rel="stylesheet">
+		<link href="styles.css" rel="stylesheet">
+	</head>
+
+	<body>
+		<div class="selection_menu">
+			<div class="card selection_card">
+				<div class="card-body selection_card-body">
+					<span class="close-button" id="closeSelectionMenu"><i class="fas fa-times"></i></span>
+					<div class="row h-100">
+						<div class="col-md-12 section">
+							<span class="text-center page-title">Factuur menu</span>
+							<hr>
+							<div id="normalMenu">
+								<div class="row" id="menu"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="loading_menu">
+			<div class="card loading_card">
+				<div class="card-body loading_card-body d-flex justify-content-center flex-column align-items-center">
+					<span class="load"></span>
+					<br>
+					<div class="ldata-txt">Loading Data...</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="invoices_menu">
+			<div class="card invoices_card">
+				<div class="card-body invoices_card-body">
+					<span class="close-button" id="closeInvoicesMenu"><i class="fas fa-times"></i></span>
+					<div class="row h-100">
+						<div class="col-md-12 section">
+							<span class="text-center page-title">Mijn facturen</span>
+							<hr>
+							<table id="invoicesTable">
+								<thead>
+									<tr>
+										<th class="text-center">#</th>
+										<th class="text-center">Status</th>
+										<th class="text-center">Auteur</th>
+										<th class="text-center">Hoeveel</th>
+										<th class="text-center">Acties</th>
+									</tr>
+								</thead>
+								<tbody id="invoicesTableData"></tbody>
+							</table>
+							<button type="button" class="btn btn-blue" id="view_invoice_payall" data-bs-dismiss="modal">Betaal alles (812.600€)</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="societyinvoices_menu">
+			<div class="card societyinvoices_card">
+				<div class="card-body societyinvoices_card-body">
+					<span class="close-button" id="closeSocietyInvoicesMenu"><i class="fas fa-times"></i></span>
+					<div class="row h-100">
+						<div class="col-md-12 section">
+							<span class="text-center page-title">Facturen van de maatschappij</span>
+							<hr>
+							<div class="pendingdiv">
+								Te betalen: <span id="totalpending_value">0</span>€</span>
+							</div>
+							<table id="societyInvoicesTable">
+								<thead>
+									<tr>
+										<th class="text-center">#</th>
+										<th class="text-center">Status</th>
+										<th class="text-center">Auteur</th>
+										<th class="text-center">Hoeveel</th>
+										<th class="text-center">Acties</th>
+									</tr>
+								</thead>
+								<tbody id="societyInvoicesTableData">
+									
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="cityinvoices_menu">
+			<div class="card cityinvoices_card">
+				<div class="card-body cityinvoices_card-body">
+					<span class="close-button" id="closeCityInvoicesMenu"><i class="fas fa-times"></i></span>
+					<div class="row h-100">
+						<div class="col-md-12 section">
+							<span class="text-center page-title">Stad facturen</span>
+							<hr>
+							<table id="courtTable">
+								<thead>
+									<tr>
+										<th class="text-center">#</th>
+										<th class="text-center">Status</th>
+										<th class="text-center">Auteur</th>
+										<th class="text-center">Hoeveel</th>
+										<th class="text-center">Acties</th>
+									</tr>
+								</thead>
+								<tbody id="courtTableData">
+									
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="createinvoice_menu">
+			<div class="card createinvoice_card">
+				<div class="card-body createinvoice_card-body">
+					<span class="close-button" id="closeCreateInvoiceMenu"><i class="fas fa-times"></i></span>
+					<div class="row h-100">
+						<div class="col-md-12 section">
+							<span class="text-center page-title">Maak factuur</span>
+							<hr>
+							<div id="invoiceNormal">
+								<div id="createinvoice_options">
+									<input type="text" id="normal_createinvoice_item" class="form-control" placeholder="Item" onkeyup="checkIfEmpty()">
+									<input type="number" id="normal_createinvoice_price" class="form-control mt-3" placeholder="Amount" onkeyup="checkIfEmpty()">
+									<input type="text" id="normal_createinvoice_note" maxlength="255" class="form-control mt-3" placeholder="Note" onkeyup="checkIfEmpty()">
+								</div>
+							</div>
+							<div id="invoiceBillsList">
+								<div class="d-flex" id="invoicesFirstMenu">
+									<button type="button" class="btn btn-blue w-50 me-2 ci-option">JOB</button>
+									<button type="button" id="openCustomInvoice" class="btn btn-odark w-50 ms-2 ci-option">PERSOONLIJK</button>
+								</div>
+								<div id="createinvoice_options" class="mt-3">
+									<select name="stp_item" id="stp_item" class="form-select">
+									</select>
+									<input type="number" id="bill_createinvoice_price" readonly class="form-control mt-3" placeholder="Amount">
+									<input type="text" id="bill_createinvoice_note" maxlength="255" class="form-control mt-3" placeholder="Note" onkeyup="checkIfEmpty()">
+								</div>
+							</div>
+							<div id="invoiceCustom">
+								<div class="d-flex" id="invoicesSecondMenu">
+									<button type="button" id="openBillsListInvoice" class="btn btn-odark w-50 me-2 ci-option">JOB</button>
+									<button type="button" class="btn btn-blue w-50 ms-2 ci-option">PERSOONLIJK</button>
+								</div>
+								<div id="createinvoice_options" class="mt-3">
+									<input type="text" id="custom_createinvoice_item" class="form-control" placeholder="Item" onkeyup="checkIfEmpty()">
+									<input type="text" id="custom_createinvoice_price" class="form-control mt-3" placeholder="Amount" onkeyup="checkIfEmpty()">
+									<input type="text" id="custom_createinvoice_note" maxlength="255" class="form-control mt-3" placeholder="Note" onkeyup="checkIfEmpty()">
+								</div>
+							</div>
+							<div class="d-flex justify-content-center mt-3">
+								<button type="button" class="btn btn-blue w-100" disabled id="createinvoice">MAAK</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="payreference_menu">
+			<div class="card payreference_card">
+				<div class="card-body payreference_card-body">
+					<span class="close-button" id="closePayReferenceMenu"><i class="fas fa-times"></i></span>
+					<div class="row h-100">
+						<div class="col-md-12 section">
+							<span class="text-center page-title">Betaal referentie</span>
+							<hr>
+							<div class="d-flex">
+								<input type="text" id="payreference_search" class="form-control me-1" placeholder="Reference ID">
+								<button type="button" onclick="checkReference()" class="btn btn-blue ms-1" id="payreference_lookup"><i class="fa-solid fa-magnifying-glass"></i> LOOKUP</button>
+							</div>
+							<hr class="mt-3">
+							<div class="text-center payreference_receiver">Ontvanger</div>
+							<div class="text-center mt-1 w-100 payreference_noinfo" id="payreference_receiver">Geen info</div>
+							<div class="text-center payreference_amount">Hoeveel</div>
+							<div class="text-center mt-1 w-100 payreference_noinfo" id="payreference_amount">Geen info</div>
+							<div class="d-flex justify-content-center mt-3">
+								<button type="button" class="btn btn-blue w-100" id="payreference" disabled>BETAAL</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="police_menu">
+			<div class="card police_card">
+				<div class="card-body police_card-body">
+					<span class="close-button" id="closePoliceMenu"><i class="fas fa-times"></i></span>
+					<div class="row h-100">
+						<div class="col-md-12 section">
+							<span class="text-center page-title">Inspecteer de burger</span>
+							<hr>
+							<div class="d-flex">
+								<input type="number" id="police_search" class="form-control me-1" placeholder="Player ID" onkeyup="checkIfEmpty()">
+								<button type="button" onclick="lookcitizen()" class="btn btn-blue ms-1" id="police_lookup"><i class="fa-solid fa-magnifying-glass"></i> LOOKUP</button>
+							</div>
+							<hr class="mt-3">
+							<div class="text-center police_unpaidinvoices">Niet betaalde facturen</div>
+							<div class="text-center mt-1 w-100 police_noinfo" id="police_unpaidinvoices">Geen info</div>
+							<div class="text-center police_unpaidamount">Niet betaalde hoeveelheid</div>
+							<div class="text-center mt-1 w-100 police_noinfo" id="police_unpaidamount">Geen info</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal fade" id="paidviewInvoiceModal">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-body">
+						<div class="view_invoice_title">Factuur #<span id="paid_view_invoice_number">372</span></div>
+						<div class="badge bg-success view_invoice_status"><i class="fas fa-check-circle"></i> Betaalt</div>
+						<div class="view_invoice_sdtf mt-m07">Referentie: <span id="paid_view_invoice_id">OK5D72W3E7</span></div>
+						<div class="view_invoice_sdtf mt-2">Send: <span id="paid_view_invoice_sent">26-06-2022 02:17:35</span></div>
+						<div class="view_invoice_sdtf">Vanwege: <span id="paid_view_invoice_due">30-06-2022 02:17:35</span></div>
+						<div class="view_invoice_sdtf mt-3">Naar: <span id="paid_view_invoice_to">Arthur James</span></div>
+						<div class="view_invoice_sdtf">Van: <span id="paid_view_invoice_from">Tommy Champion</span></div>
+						<hr>
+						<div class="d-flex justify-content-between">
+							<span id="paid_view_invoice_item">Verboden parkeren</span> <span id="paid_view_invoice_item_price">385 €</span>
+						</div>
+						<hr>
+						<div class="d-flex justify-content-between">
+							<span class="subtotal">Subtotaal</span> <span id="paid_view_invoice_subtotal_price">385 €</span>
+						</div>
+						<div class="d-flex justify-content-between">
+							<span class="vat">VAT (<span id="paid_view_invoice_vat_percentage">23</span>%)</span> <span id="paid_view_invoice_vat_price">115 €</span>
+						</div>
+						<div class="d-flex justify-content-between mt-3">
+							<span class="total">TOTAAL</span> <span id="paid_view_invoice_total_price">500 €</span>
+						</div>
+						<div class="d-flex justify-content-center mt-3">
+							<span class="view_invoice_paid">Betaald op: <span id="paid_view_invoice_paid_date">27-06-2022 02:18:15</span></span>
+						</div>
+						<div id="paid_view_invoice_note" class="notes-window mt-3">Notities: Je moet meer opletten volgende keer</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal fade" id="unpaidviewInvoiceModal">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-body">
+						<div class="view_invoice_title">Factuur #<span id="unpaid_view_invoice_number">372</span></div>
+						<div class="badge bg-danger view_invoice_status"><i class="fas fa-times-circle"></i> Niet betaalt</div>
+						<div class="view_invoice_sdtf mt-m07">Referentie ID: <span id="unpaid_view_invoice_id">OK5D72W3E7</span></div>
+						<div class="view_invoice_sdtf">Send: <span id="unpaid_view_invoice_sent">26-06-2022 02:17:35</span></div>
+						<div class="view_invoice_sdtf">Vanwege: <span id="unpaid_view_invoice_due">30-06-2022 02:17:35</span></div>
+						<div class="view_invoice_sdtf mt-3">Naar: <span id="unpaid_view_invoice_to">Tommy Champion</span></div>
+						<div class="view_invoice_sdtf">Van: <span id="unpaid_view_invoice_from">Los Santos Police Department</span></div>
+						<hr>
+						<div class="d-flex justify-content-between">
+							<span id="unpaid_view_invoice_item">Verboden parkeren</span> <span id="unpaid_view_invoice_item_price">385 €</span>
+						</div>
+						<hr>
+						<div class="d-flex justify-content-between">
+							<span class="subtotal">Subtotaal</span> <span id="unpaid_view_invoice_subtotal_price">385 €</span>
+						</div>
+						<div class="d-flex justify-content-between">
+							<span class="vat">VAT (<span id="unpaid_view_invoice_vat_percentage">23</span>%)</span> <span id="unpaid_view_invoice_vat_price">115 €</span>
+						</div>
+						<div class="d-flex justify-content-between mt-3">
+							<span class="total">TOTAAL</span> <span id="unpaid_view_invoice_total_price">500 €</span>
+						</div>
+						<div class="d-flex justify-content-center mt-3" id="pay_button">
+							<button type="button" class="btn btn-blue w-100" id="unpaid_view_invoice_pay" data-bs-dismiss="modal">BETAAL</button>
+						</div>
+						<div id="unpaid_view_invoice_note" class="notes-window mt-3">Notities: Je moet meer opletten volgende keer</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal fade" id="unpaid2viewInvoiceModal">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-body">
+						<div class="view_invoice_title">Factuur #<span id="view_invoice_id">372</span></div>
+						<div class="badge bg-danger view_invoice_status"><i class="fas fa-times-circle"></i> Niet betaalt</div>
+						<div class="view_invoice_sdtf mt-m07">Referentie ID: <span id="view_invoice_sent">OK5D72W3E7</span></div>
+						<div class="view_invoice_sdtf">Send: <span id="view_invoice_sent">26-06-2022 02:17:35</span></div>
+						<div class="view_invoice_sdtf">Vanwege: <span id="view_invoice_due">30-06-2022 02:17:35</span></div>
+						<div class="view_invoice_sdtf mt-3">Naar: <span id="view_invoice_to">Tommy Champion</span></div>
+						<div class="view_invoice_sdtf">Van: <span id="view_invoice_from">Los Santos Police Department</span></div>
+						<hr>
+						<div class="d-flex justify-content-between">
+							<span id="view_invoice_item">Verboden parkeren</span> <span id="view_invoice_item_price">385 €</span>
+						</div>
+						<hr>
+						<div class="d-flex justify-content-between">
+							<span class="subtotal">Subtotaal</span> <span id="view_invoice_subtotal_price">385 €</span>
+						</div>
+						<div class="d-flex justify-content-between">
+							<span class="vat">VAT (<span id="view_invoice_vat_percentage">23</span>%)</span> <span id="view_invoice_vat_price">115 €</span>
+						</div>
+						<div class="d-flex justify-content-between mt-3">
+							<span class="total">TOTAAL</span> <span id="view_invoice_total_price">500 €</span>
+						</div>
+						<div class="d-flex justify-content-center mt-3">
+							<button type="button" class="btn btn-red w-100" id="view_invoice_cancel" data-bs-dismiss="modal">CANCEL</button>
+						</div>
+						<div class="notes-window mt-3">Notities: Je moet meer opletten volgende keer</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal fade" id="selectPlayerToSendInvoiceModal">
+			<div class="modal-dialog modal-dialog-centered selectPlayerToSendInvoice_modal-dialog">
+				<div class="modal-content">
+					<div class="modal-body p-1111" id="nearPlayersDiv"></div>
+				</div>
+			</div>
+		</div>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<script src="https://kit.fontawesome.com/de03e13cb2.js" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/simple-datatables@5.0" crossorigin="anonymous"></script>
+		<script src="scripts.js" type="text/javascript"></script>
+	</body>
+</html>

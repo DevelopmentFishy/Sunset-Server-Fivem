@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Sloth MDT</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+    <!-- <script src="nui://game/ui/jquery.js" type="text/javascript"></script> -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script  src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js" integrity="sha256-eTyxS0rkjpLEo16uXTS0uVCS4815lc40K2iVpWDvdSY=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+ 
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+    <!-- Markdown -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.27.3/ui/trumbowyg.min.css" integrity="sha512-Fm8kRNVGCBZn0sPmwJbVXlqfJmPC13zRsMElZenX6v721g/H7OukJd8XzDEBRQ2FSATK8xNF9UYvzsCtUpfeJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.27.3/plugins/colors/ui/trumbowyg.colors.min.css" integrity="sha512-vw0LMar38zTSJghtmUo0uw000TBbzhsxLZkOgXZG+U4GYEQn+c+FmVf7glhSZUQydrim3pI+/m7sTxAsKhObFA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.27.3/trumbowyg.min.js" integrity="sha512-YJgZG+6o3xSc0k5wv774GS+W1gx0vuSI/kr0E0UylL/Qg/noNspPtYwHPN9q6n59CTR/uhgXfjDXLTRI+uIryg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.27.3/plugins/fontsize/trumbowyg.fontsize.min.js" integrity="sha512-eFYo+lmyjqGLpIB5b2puc/HeJieqGVD+b8rviIck2DLUVuBP1ltRVjo9ccmOkZ3GfJxWqEehmoKnyqgQwxCR+g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.27.3/plugins/fontfamily/trumbowyg.fontfamily.min.js" integrity="sha512-oATdSCPRZu3qFFyxrZ66ma2QbQybLqpRqwLRp2IQEaIABnEHcs2qDf6UOVA/V5LhBvxFxKCNvyVb/yQfwDkFhQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.27.3/plugins/colors/trumbowyg.colors.min.js" integrity="sha512-SHpxBJFbCaHlqGpH13FqtSA+QQkQfdgwtpmcWedAXFCDxAYMgrqj9wbVfwgp9+HgIT6TdozNh2UlyWaXRkiurw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.27.3/plugins/indent/trumbowyg.indent.min.js" integrity="sha512-N89zRHLWXok+vH182YWrgGljMTqIw3lUfseand3N4OqzTtIXkObsRoq3l1vMBkp008c1fb+KGYU/DwJO783cug==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+</head>
+
+<body>
+    <ul class="contextmenu"></ul>
+    <ul class="ccontextmenu"></ul>
+    <div id="draggedItem">
+    </div>
+    <img src="" class="gallery-image-enlarged">
+    <div class="callsign-container" style="display: none">
+        <div class="callsign-inner-container" style="display: none">
+            <div class="callsign-title">Callsign</div>
+            <input type="text" maxlength="5" class="callsign-input" placeholder="69">
+            <div class="callsign-buttons">
+                <div class="callsign-cancel">Annuleer</div>
+                <div class="callsign-submit">Invoeren</div>
+            </div>
+        </div>
+    </div>
+    <div class="radio-container" style="display: none">
+        <div class="radio-inner-container" style="display: none">
+            <div class="radio-title">Radio</div>
+            <input type="number" maxlength="3" class="radio-input" placeholder="0">
+            <div class="radio-buttons">
+                <div class="radio-cancel">Annuleren</div>
+                <div class="radio-submit">Invoeren</div>
+            </div>
+        </div>
+    </div>
+    <div class="dispatch-attached-units">
+        <div class="dispatch-attached-units-container">
+            <div class="dispatch-attached-units-title" data-id="0">Aangekoppelde Eenheden</div>
+            <div class="dispatch-attached-units-holder">
+            </div>
+        </div>
+    </div>
+
+    <div class="respond-calls" style="display:none;">
+        <div class="respond-calls-container" style="display:none;">
+            <div class="respond-calls-title">Call Response</div>
+            <div class="respond-calls-responses">
+            </div>
+            <textarea class="respond-calls-input" type="text" id="respondcalls" name="respondcalls" placeholder="Wat wil je antwoorden?"></textarea>
+        </div>
+    </div>
+
+    <div class="incidents-person-search">
+        <div class="incidents-person-search-container">
+            <div class="incidents-person-search-title">Personen Zoeken</div>
+            <div class="incidents-person-search-name-title">Naam</div>
+            <div style="width: 95%; margin: auto; border-bottom: 2px solid #2C537B;"><input class="incidents-person-search-name-input"></div>
+            <div class="incidents-person-search-holder">
+            </div>
+        </div>
+    </div>
+
+    <div class="convictions-known">
+        <div class="convictions-known-container">
+            <div class="convictions-known-title">Veroordelingen</div>
+            <div class="convictions-holder">
+            </div>
+        </div>
+    </div>
+
+    <div class="incidents-known">
+        <div class="incidents-known-container">
+            <div class="incidents-known-title">Gekende Processen-Verbaal</div>
+            <div class="profile-incidents-holder">
+            </div>
+        </div>
+    </div>
+    <div class="incidents-charges-table" style="display: none;">
+        <div class="incidents-charges-table-container">
+            <div class="incidents-charges-title-container">
+                <div class="incidents-charges-title">Vervolging</div>
+                <div class="incidents-charges-title-description">Gebruik de Zoekfunctie. Linkerspier om straffen toe te voegen, Rechterspier om straffen te verwijderen.</div>
+            </div>
+            <div class="current-charges-container">
+                <div class="current-charges-inner-container">
+                    <div class="current-charges-title">Huidige Straffen</div>
+                </div>
+                <div id="current-charges-holder">
+                    <div class="current-charges-tag">test</div>
+                </div>
+            </div>
+            <div class="offenses-search-area">
+                <input type="text" class="offenses-search" placeholder="Straffen zoeken" id="offenses-search" name="offenses-search">
+            </div>
+            <div class="offenses-main-container"></div>
+        </div>
+    </div>
+    <div class="container-load">
+        <div class="header">
+            <img src="img/sasp_badge.webp" class="badge-logo">
+            <div class="header-left">
+                <div class="header-title" style="color: #caa95d; font-weight: bold; font-size: 18px;">POLITIE LOS SANTOS</div>
+                <div style="color: white; font-weight: lighter; font-size: 16px;">Mobiele Database Terminal</div>
+            </div>
+            <div class="header-middle">
+                <div class="date">Laden...</div>
+                <div class="time">00:00</div>
+            </div>
+            <div class="header-right">
+                <div style="color: white; font-weight: lighter; font-size: 22px;" class="name-shit">Welkom, Laden...
+                </div>
+                <div style="color: lightgray; font-size: 15px;"><span class="fas fa-map-pin header-pin"></span><span class="header-location"></span></div>
+            </div>
+        </div>
+        <div class="loader"></div>
+        <div class="main-container">
+            <div class="nav-menu">
+                <div class="nav-item">Dashboard</div>
+                <div class="nav-item">Profielen</div>
+                <div class="nav-item incidents-nav-item">Processen-Verbaal</div>
+                <div class="nav-item">Verslagen</div>
+                <div class="nav-item map-nav-item">Kaart</div>
+                <div class="nav-item bolo-nav-item">Recherche</div>
+                <div class="nav-item">Rooster</div>
+                <div class="nav-item">Standaard Procedures</div>
+                <div class="nav-item dmv-nav-item">Voertuigen</div>
+                <div class="nav-item weapons-nav-item" data-page=".weapons-page-container">Wapens</div>
+                <div class="nav-item cams-nav-item">Camera's</div>
+                <div class="nav-item">Staff Logs</div>
+            </div>
+        </div>
+    </div>
+    <div class="dashboard-page-container close-all">
+        <div class="header">
+            <img src="img/sasp_badge.webp" class="badge-logo">
+            <div class="header-left">
+                <div class="header-title" style="color: #caa95d; font-weight: bold; font-size: 18px;">POLITIE LOS SANTOS</div>
+                <div style="color: white; font-weight: lighter; font-size: 16px;">Mobiele Database Terminal</div>
+            </div>
+            <div class="header-middle">
+                <div class="date">Laden...</div>
+                <div class="time">00:00</div>
+            </div>
+            <div class="header-right">
+                <div style="color: white; font-weight: lighter; font-size: 22px;" class="name-shit">Welkom, Laden...
+                </div>
+                <div style="color: lightgray; font-size: 15px;"><span class="fas fa-map-pin header-pin"></span><span class="header-location"></span></div>
+            </div>
+        </div>
+        <div class="main-container">
+            <div class="nav-menu">
+                <div class="nav-item active-nav" data-page=".dashboard-page-container">Dashboard</div>
+                <div class="nav-item" data-page=".profile-page-container">Profielen</div>
+                <div class="nav-item incidents-nav-item" data-page=".incidents-page-container">Processen-Verbaal</div>
+                <div class="nav-item" data-page=".reports-page-container">Verslagen</div>
+                <div class="nav-item map-nav-item" data-page=".map-page-container">Kaart</div>
+                <div class="nav-item bolo-nav-item" data-page=".bolos-page-container">Recherche</div>
+                <div class="nav-item penalcode-nav-item" data-page=".penalcode-page-container">Rooster</div>
+                <div class="nav-item sop-nav-item" data-page=".sop-page-container">Standaard Procedures</div>
+                <div class="nav-item dmv-nav-item" data-page=".dmv-page-container">Voertuigen</div>
+                <div class="nav-item weapons-nav-item" data-page=".weapons-page-container">Wapens</div>
+                <div class="nav-item cams-nav-item" data-page=".cams-page-container">Camera's</div>
+                <div class="nav-item" data-page=".stafflogs-page-container">Staff Logs</div>
+            </div>
+            <div style="display: flex; flex-direction: column;">
+                <div class="dispatch-comms-container">
+                    <div style="display: flex;" class="reports-search-title-holder">
+                        <div class="reports-search-title dispatch-title-ofsomesort">Dispatch</div>
+                        <div class="dispatch-comms-refresh">Vernieuw</div>
+                    </div>
+                    <div class="dispatch-items"> </div>
+                    <textarea class="dispatch-input" type="text" id="dispatchmsg" name="dispatchmsg" placeholder="Message #dispatch"></textarea>
+                </div>
+                <div class="reports-container" id="home-reports-container" style="display:none">
+                    <div style="display: flex;" class="reports-search-title-holder">
+                        <div class="reports-search-title">Verslagen</div>
+                        <div class="reports-search-refresh">Vernieuw</div>
+                    </div>
+                    <div class="reports-items">
+                    </div>
+                </div>
+                <div class="warrants-container" id="home-warrants-container">
+                    <div class="warrants-title"> <span class="fas fa-search"></span> Openstaande Aanhoudingsbevelen</div>
+                    <div class="warrants-items">
+
+                    </div>
+                </div>
+            </div>
+
+            <div style="display: flex; flex-direction: column;">
+                <div class="quotes-container">
+                    <div class="quote-title"><span style="color: #caa95d;">Quote</span> van de dag</div>
+                    <div class="quote"><span class="quote-span">De openbare aanklager is geen vijand, noch is hij een vriend</span></div>
+                </div>
+                <div class="bulletin-container">
+                    <div style="display: flex; align-items: center;">
+                        <div class="bulletin-title">Mededelingen</div>
+                        <div class="bulletin-add-btn fas fa-plus"></div>
+                    </div>
+                    <div class="bulletin-items-continer"> </div>
+                </div>
+            </div>
+            <div class="dispatch-container">
+                <div class="dispatch-title"><span class="fas fa-search"></span> Dispatch</div>
+                <div style="display: flex; align-items: center;">
+                    <div class="active-unit-title">Actieve Eenheden</div>
+                    <div class="active-unit-count" id="police-count">0</div>
+                    <div class="active-unit-count" id="bcso-count">0</div> 
+                    <div class="active-unit-count" id="sasp-count">0</div>
+                    <div class="active-unit-count" id="ems-count">0</div>
+                    <div class="active-unit-count" id="doj-count">0</div>
+                    <!-- <div class="active-unit-count" id="fire-count">0</div>  -->
+                </div>
+                <div class="active-unit-list">
+                </div>
+                <div class="calls-title">Recente Oproepen</div>
+                <div class="active-calls-list">
+                    <div class="active-calls-item">
+                        <div class="active-call-inner-container">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="profile-page-container close-all">
+        <div class="header">
+            <img src="img/sasp_badge.webp" class="badge-logo">
+            <div class="header-left">
+                <div class="header-title" style="color: #caa95d; font-weight: bold; font-size: 18px;">POLITIE LOS SANTOS</div>
+                <div style="color: white; font-weight: lighter; font-size: 16px;">Mobiele Database Terminal</div>
+            </div>
+            <div class="header-middle">
+                <div class="date">Laden...</div>
+                <div class="time">00:00</div>
+            </div>
+            <div class="header-right">
+                <div style="color: white; font-weight: lighter; font-size: 22px;" class="name-shit">Welkom, Laden...
+                </div>
+                <div style="color: lightgray; font-size: 15px;"><span class="fas fa-map-pin header-pin"></span><span class="header-location"></span></div>
+            </div>
+        </div>
+        <div class="main-container">
+            <div class="nav-menu">
+                <div class="nav-item" data-page=".dashboard-page-container">Dashboard</div>
+                <div class="nav-item active-nav" data-page=".profile-page-container">Profielen</div>
+                <div class="nav-item incidents-nav-item" data-page=".incidents-page-container">Processen-Verbaal</div>
+                <div class="nav-item" data-page=".reports-page-container">Verslagen</div>
+                <div class="nav-item map-nav-item" data-page=".map-page-container">Kaart</div>
+                <div class="nav-item bolo-nav-item" data-page=".bolos-page-container">Recherche</div>
+                <div class="nav-item penalcode-nav-item" data-page=".penalcode-page-container">Rooster</div>
+                <div class="nav-item sop-nav-item" data-page=".sop-page-container">Standaard Procedures</div>
+                <div class="nav-item dmv-nav-item" data-page=".dmv-page-container">Voertuigen</div>
+                <div class="nav-item weapons-nav-item" data-page=".weapons-page-container">Wapens</div>
+                <div class="nav-item cams-nav-item" data-page=".cams-page-container">Camera's</div>
+                <div class="nav-item" data-page=".stafflogs-page-container">Staff Logs</div>
+            </div>
+            <div class="profile-container">
+                <div class="profile-title"> <span class="fas fa-search"></span> Profielen</div>
+                <div class="profile-search-input"><input id="profile-search-input" type="text"
+                        placeholder="Zoek Persoon..."></div>
+                <div class="profile-items">
+                </div>
+            </div>
+            <div class="manage-profile-container">
+                <div class="manage-profile-title">Profiel</div>
+                <div style="display: flex;">
+                    <div class="manage-profile-editing-title">Aanpassen van profiel ...</div>
+                    <div class="manage-profile-save">Opslaan</div>
+                </div>
+                <div class="manage-profile-active-warrant">ACTIEF AANHOUDINGSBEVEL</div>
+                <div class="manage-profile-info-container">
+                    <img src="img/male.png" class="manage-profile-pic" onerror="this.src='img/not-found.webp'">
+                    <div class="manage-profile-info-inner-container">
+                        <div class="manage-profile-citizenid">Burger ID</div>
+                        <div><span class="fas fa-address-card manage-cid-pic"></span><input type="text" readonly class="manage-profile-citizenid-input"></div>
+                        <div class="line"></div>
+                        <div class="manage-profile-name">Voornaam</div>
+                        <div><span class="fas fa-user manage-cid-pic"></span><input type="text" readonly class="manage-profile-name-input manage-profile-name-input-1"></div>
+                        <div class="line"></div>
+                        <div class="manage-profile-name">Naam</div>
+                        <div><span class="fas fa-user manage-cid-pic"></span><input type="text" readonly class="manage-profile-name-input manage-profile-name-input-2"></div>
+                        <div class="line"></div>
+                        <div class="manage-profile-dob">Geboortedatum</div>
+                        <div><span class="far fa-calendar-alt manage-cid-pic"></span><input type="text" readonly class="manage-profile-dob-input"></div>
+                        <div class="line"></div>
+                        <div class="manage-profile-fingerprint">Vingerafdruk</div>
+                        <div><span class="fas fa-fingerprint manage-cid-pic"></span><input type="text" class="manage-profile-fingerprint-input"></div>
+                        <div class="line"></div>
+                        <div class="manage-profile-phonenumber">Telefoon nummer</div>
+                        <div><span class="fas fa-phone-volume manage-cid-pic"></span><input type="text" readonly class="manage-profile-phonenumber-input"></div>
+                        <div class="line"></div>
+                        <div class="manage-profile-job">Beroep</div>
+                        <div><span class="fas fa-briefcase manage-cid-pic"></span><input type="text" readonly class="manage-profile-job-input"></div>
+                        <div class="line"></div>
+                        <div class="manage-profile-apartment">Adres</div>
+                        <div><span class="fas fa-building manage-cid-pic"></span><input type="text" readonly class="manage-profile-apartment-input"></div>
+                        <div class="line"></div>
+                        <div class="manage-profile-url">URL Profielfoto</div>
+                        <div><span class="fas fa-images manage-cid-pic"></span><input type="text" class="manage-profile-url-input"></div>
+                        <div class="line" style="margin-bottom: 0px;"></div>
+                    </div>
+                </div>
+                <textarea class="manage-profile-info" placeholder="Nuttige informatie.." disabled></textarea>
+            </div>
+            <div class="manage-profile-right-container">
+                <div class="manage-profile-licenses-container display_hidden">
+                    <div class="license-title">Vergunningen <span class="licenses-amount"></span></div>
+                    <div class="licenses-holder"></div>
+                </div>
+                <div class="manage-profile-vehs-container display_hidden">
+                    <div class="vehs-title">Voertuigen</div>
+                    <div class="vehs-holder"></div>
+                </div>
+                <div class="manage-profile-tags-container">
+                    <div style="display: flex; align-items: center;">
+                        <div class="tags-title">Tags</div>
+                        <div class="tags-add-btn fas fa-plus"></div>
+                    </div>
+                    <div class="tags-holder"></div>
+                </div>
+                <div class="manage-profile-houses-container display_hidden">
+                    <div class="houses-title">Onroerend goed</div>
+                    <div class="houses-holder"></div>
+                </div>
+                <div class="manage-profile-gallery-container">
+                    <div style="display: flex; align-items: center;">
+                        <div class="gallery-title">Gallerij</div>
+                        <div class="gallery-add-btn fas fa-plus"></div>
+                    </div>
+                    <div class="gallery-upload-input"><input id="gallery-upload-input" placeholder="Geef URL in ...">
+                    </div>
+                    <div class="gallery-inner-container"></div>
+                </div>
+                <div class="convictions-title"><span class="fas fa-eye"></span> Toon Veroordelingen</div>
+                <div class="profile-incidents-title"><span class="fas fa-eye"></span> Toon Processen-Verbaal</div>
+            </div>
+        </div>
+    </div>
+    <div class="incidents-page-container close-all">
+        <div class="header">
+            <img src="img/sasp_badge.webp" class="badge-logo">
+            <div class="header-left">
+                <div class="header-title" style="color: #caa95d; font-weight: bold; font-size: 18px;">POLITIE LOS SANTOS</div>
+                <div style="color: white; font-weight: lighter; font-size: 16px;">Mobiele Database Terminal</div>
+            </div>
+            <div class="header-middle">
+                <div class="date">Loading...</div>
+                <div class="time">00:00</div>
+            </div>
+            <div class="header-right">
+                <div style="color: white; font-weight: lighter; font-size: 22px;" class="name-shit">Welkom, Laden...
+                </div>
+                <div style="color: lightgray; font-size: 15px;"><span class="fas fa-map-pin header-pin"></span><span class="header-location"></span></div>
+            </div>
+        </div>
+        <div class="main-container">
+            <div class="nav-menu">
+                <div class="nav-item" data-page=".dashboard-page-container">Dashboard</div>
+                <div class="nav-item" data-page=".profile-page-container">Profielen</div>
+                <div class="nav-item incidents-nav-item active-nav" data-page=".incidents-page-container">Processen-Verbaal</div>
+                <div class="nav-item" data-page=".reports-page-container">Verslagen</div>
+                <div class="nav-item map-nav-item" data-page=".map-page-container">Kaart</div>
+                <div class="nav-item bolo-nav-item" data-page=".bolos-page-container">Recherche</div>
+                <div class="nav-item penalcode-nav-item" data-page=".penalcode-page-container">Rooster</div>
+                <div class="nav-item sop-nav-item" data-page=".sop-page-container">Standaard Procedures</div>
+                <div class="nav-item dmv-nav-item" data-page=".dmv-page-container">Voertuigen</div>
+                <div class="nav-item weapons-nav-item" data-page=".weapons-page-container">Wapens</div>
+                <div class="nav-item cams-nav-item" data-page=".cams-page-container">Camera's</div>
+                <div class="nav-item" data-page=".stafflogs-page-container">Staff Logs</div>
+            </div>
+            <div class="incidents-container">
+                <div style="display: flex;" class="reports-search-title-holder">
+                    <div class="incidents-title"> <span class="fas fa-search"></span> Processen-Verbaal</div>
+                    <div class="incidents-search-refresh">Vernieuw</div>
+                </div>
+                <div class="incidents-search-input"><input id="incidents-search-input" placeholder="Zoek Proces-Verbaal...">
+                </div>
+                <div class="modify-charges-label"><span class="fas fa-solid fa-info"></span> Rechterspier om Proces-Verbaal te verwijderen.</div>
+                <div class="incidents-items">
+                </div>
+            </div>
+            <div class="manage-incidents-container">
+                <div style="display: flex;" class="manage-incidents-title-holder">
+                    <div class="manage-incidents-title">Beheer PV</div>
+                        <div class="manage-incidents-create"> <span class="fas fa-plus" style="margin-top: 3.5px;"></span>
+                    </div>
+                    <!-- <div class="manage-incidents-save"><span class="fas fa-save" style="margin-top: 3.5px;"></span></div> -->
+                </div>
+                <div class="manage-incidents-editing-title" data-id=0>Druk op + om een nieuw PV aan te maken</div>
+                <div class="manage-incidents-title-tag">Titel</div>
+                <div class="manage-incidents-title-input"><span class="fas fa-tags"></span> <input placeholder="Noteer hier de titel ..." class="manage-incidents-title-input" id="manage-incidents-title-input"></div>
+                <textarea class="manage-incidents-reports-content"
+                    placeholder="Proces-Verbaal..."></textarea>
+                <div class="manage-incidents-tags-container">
+                    <div style="display: flex; align-items: center; width: 95%;">
+                        <div class="manage-incidents-tags-title">Tags</div>
+                        <div class="manage-incidents-tags-add-btn fas fa-plus"></div>
+                    </div>
+                    <div class="manage-incidents-tags-holder">
+                    </div>
+                </div>
+                <div class="manage-incidents-evidence-container">
+                    <div style="display: flex; align-items: center; width: 95%;">
+                        <div class="manage-incidents-evidence-title">Bewijs</div>
+                        <div class="manage-incidents-evidence-add-btn fas fa-plus"></div>
+                    </div>
+                    <div class="incidents-upload-input"><input id="incidents-upload-input" placeholder="Geef URL in ...">
+                    </div>
+                    <div class="manage-incidents-evidence-holder">
+                    </div>
+                </div>
+            </div>
+            <div class="associated-incidents-container">
+                <div class="associated-incidents-title">Betrokken Personen</div>
+                <div class="manage-incidents-officers-container">
+                    <div style="display: flex; align-items: center; width: 95%;">
+                        <div class="manage-incidents-officers-title">Agenten</div>
+                        <div class="manage-incidents-officers-add-btn fas fa-plus"></div>
+                    </div>
+                    <div class="manage-incidents-officers-holder">
+
+                    </div>
+                </div>
+                <div class="manage-incidents-civilians-container">
+                    <div style="display: flex; align-items: center; width: 95%;">
+                        <div class="manage-incidents-civilians-title">Getuigen</div>
+                        <div class="manage-incidents-civilians-add-btn fas fa-plus"></div>
+                    </div>
+                    <div class="manage-incidents-civilians-holder">
+
+                    </div>
+                </div>
+                <div class="associated-incidents-tags-container">
+                    <div style="display: flex; align-items: center; width: 95%;">
+                        <div class="associated-incidents-tags-title">Verdachten</div>
+                        <div class="associated-incidents-tags-add-btn fas fa-plus"></div>
+                    </div>
+                    <div class="associated-incidents-tags-holder">
+                    </div>
+                </div>
+                <div class="incidents-ghost-holder">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="reports-page-container close-all">
+        <div class="header">
+            <img src="img/sasp_badge.webp" class="badge-logo">
+            <div class="header-left">
+                <div class="header-title" style="color: #caa95d; font-weight: bold; font-size: 18px;">POLITIE LOS SANTOS</div>
+                <div style="color: white; font-weight: lighter; font-size: 16px;">Mobiele Database Terminal</div>
+            </div>
+            <div class="header-middle">
+                <div class="date">Laden...</div>
+                <div class="time">00:00</div>
+            </div>
+            <div class="header-right">
+                <div style="color: white; font-weight: lighter; font-size: 22px;" class="name-shit">Welkom, Laden...
+                </div>
+                <div style="color: lightgray; font-size: 15px;"><span class="fas fa-map-pin header-pin"></span><span class="header-location"></span></div>
+            </div>
+        </div>
+        <div class="main-container">
+            <div class="nav-menu">
+                <div class="nav-item" data-page=".dashboard-page-container">Dashboard</div>
+                <div class="nav-item" data-page=".profile-page-container">Profielen</div>
+                <div class="nav-item incidents-nav-item" data-page=".incidents-page-container">Processen-Verbaal</div>
+                <div class="nav-item  active-nav" data-page=".reports-page-container">Verslagen</div>
+                <div class="nav-item map-nav-item" data-page=".map-page-container">Kaart</div>
+                <div class="nav-item bolo-nav-item" data-page=".bolos-page-container">Recherche</div>
+                <div class="nav-item penalcode-nav-item" data-page=".penalcode-page-container">Rooster</div>
+                <div class="nav-item sop-nav-item" data-page=".sop-page-container">Standaard Procedures</div>
+                <div class="nav-item dmv-nav-item" data-page=".dmv-page-container">Voertuigen</div>
+                <div class="nav-item weapons-nav-item" data-page=".weapons-page-container">Wapens</div>
+                <div class="nav-item cams-nav-item" data-page=".cams-page-container">Camera's</div>
+                <div class="nav-item" data-page=".stafflogs-page-container">Staff Logs</div>
+            </div>
+            <div class="reports-container">
+
+                <div style="display: flex;" class="reports-search-title-holder">
+                    <div class="reports-search-title"> <span class="fas fa-search"></span> Verslagen</div>
+                    <div class="reports-search-refresh">Vernieuw</div>
+                </div>
+                <div class="reports-search-input"><input id="reports-search-input" placeholder="Zoek Verslag ..."> </div>
+                <div class="modify-charges-label"><span class="fas fa-solid fa-info"></span> Rechterspier om Verslag te verwijderen</div>
+                <div class="reports-items">
+                </div>
+            </div>
+            <div class="manage-reports-container">
+                <div style="display: flex;" class="manage-reports-title-holder">
+                    <div class="manage-reports-title">Verslag</div>
+                    <div class="manage-reports-new">Nieuw</div>
+                    <div class="manage-reports-save">Opslaan</div>
+                </div>
+                <div class="manage-reports-editing-title" data-id=0>Druk op NIEUW om een nieuw verslag te maken</div>
+                <div class="manage-reports-input-tag">Titel</div>
+                <div class="manage-reports-input-title">
+                    <span class="fas fa-tags"></span>
+                    <input placeholder="Noteer hier de titel..." id="reporttitle" class="manage-reports-input-title">
+                </div>
+
+                <div class="manage-reports-input-tag">Type</div>
+                <div class="manage-reports-input-type"><span class="fas fa-folder"></span> <input placeholder="Verslag-type: Onderzoek, Klacht, ..." id="reporttype" class="manage-reports-input-type"></div>
+
+                <textarea class="manage-reports-reports-content" id="reportdetail" placeholder="Nuttige informatie..."></textarea>
+            </div>
+
+            <div class="manage-reports-right-container">
+                <div class="manage-reports-tags-container">
+                    <div style="display: flex; align-items: center;">
+                        <div class="manage-reports-title-tag">Tags</div>
+                        <div class="manage-reports-tags-add-btn fas fa-plus"></div>
+                    </div>
+                    <div class="manage-reports-tags-holder"></div>
+                </div>
+                <div class="reports-officers-tags-container">
+                    <div style="display: flex; align-items: center;">
+                        <div class="tags-title" id="reports-officers-involved-tag-title">Agenten</div>
+                        <div class="reports-officers-add-btn fas fa-plus"></div>
+                    </div>
+                    <div class="reports-officers-tags-holder"></div>
+                </div>
+                <div class="reports-civilians-tags-container">
+                    <div style="display: flex; align-items: center;">
+                        <div class="tags-title">Getuigen</div>
+                        <div class="reports-civilians-add-btn fas fa-plus"></div>
+                    </div>
+                    <div class="reports-civilians-tags-holder"></div>
+                </div>
+                <div class="manage-reports-gallery-container">
+                    <div style="display: flex; align-items: center;">
+                        <div class="gallery-title">Gallerij</div>
+                        <div class="reports-gallery-add-btn fas fa-plus"></div>
+                    </div>
+                    <div class="reports-gallery-upload-input"><input id="reports-gallery-upload-input" placeholder="Geef URL in...">
+                    </div>
+                    <div class="reports-gallery-inner-container"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="bolos-page-container close-all">
+        <div class="header">
+            <img src="img/sasp_badge.webp" class="badge-logo">
+            <div class="header-left">
+                <div class="header-title" style="color: #caa95d; font-weight: bold; font-size: 18px;">POLITIE LOS SANTOS</div>
+                <div style="color: white; font-weight: lighter; font-size: 16px;">Mobiele Database Terminal</div>
+            </div>
+            <div class="header-middle">
+                <div class="date">Laden...</div>
+                <div class="time">00:00</div>
+            </div>
+            <div class="header-right">
+                <div style="color: white; font-weight: lighter; font-size: 22px;" class="name-shit">Welkom, Laden...
+                </div>
+                <div style="color: lightgray; font-size: 15px;"><span class="fas fa-map-pin header-pin"></span><span class="header-location"></span></div>
+            </div>
+        </div>
+        <div class="main-container">
+            <div class="nav-menu">
+                <div class="nav-item" data-page=".dashboard-page-container">Dashboard</div>
+                <div class="nav-item" data-page=".profile-page-container">Profielen</div>
+                <div class="nav-item incidents-nav-item" data-page=".incidents-page-container">Processen-Verbaal</div>
+                <div class="nav-item" data-page=".reports-page-container">Verslagen</div>
+                <div class="nav-item map-nav-item" data-page=".map-page-container">Kaart</div>
+                <div class="nav-item bolo-nav-item active-nav" data-page=".bolos-page-container">Recherche</div>
+                <div class="nav-item penalcode-nav-item" data-page=".penalcode-page-container">Rooster</div>
+                <div class="nav-item sop-nav-item" data-page=".sop-page-container">Standaard Procedures</div>
+                <div class="nav-item dmv-nav-item" data-page=".dmv-page-container">Voertuigen</div>
+                <div class="nav-item weapons-nav-item" data-page=".weapons-page-container">Wapens</div>
+                <div class="nav-item cams-nav-item" data-page=".cams-page-container">Camera's</div>
+                <div class="nav-item" data-page=".stafflogs-page-container">Staff Logs</div>
+            </div>
+            <div class="bolos-container">
+
+                <div style="display: flex;" class="bolos-search-title-holder">
+                    <div class="bolos-search-title"> <span class="fas fa-search"></span> Opsporingsbevelen</div>
+                    <div class="bolos-search-refresh">Vernieuw</div>
+                </div>
+                <div class="bolos-search-input"><input id="bolos-search-input" placeholder="Zoek in opsporingsbevelen..."> </div>
+                <div class="bolos-items">
+                </div>
+            </div>
+            <div class="manage-bolos-container">
+                <div style="display: flex;" class="manage-bolos-title-holder">
+                    <div class="manage-bolos-title">Beheer Opsporingsbevel</div>
+                    <div class="manage-bolos-new">Nieuw</div>
+                    <div class="manage-bolos-save">Opslaan</div>
+                </div>
+                <div class="manage-bolos-editing-title" data-id=0>Nieuw Opsporingsbevel aan het maken</div>
+                <div class="manage-bolos-input-tag bolotitle-title">Titel</div>
+                <div class="manage-bolos-input-title">
+                    <span class="fas fa-tags"></span>
+                    <input placeholder="NAAM - ONDERWERP ..." id="bolotitle" class="manage-bolos-input-title">
+                </div>
+
+                <div class="manage-bolos-input-tag boloplate-title">Nummerplaat</div>
+                <div class="manage-bolos-input-plate"><span class="fas fa-address-card"></span> <input placeholder="Noteer hier de nummerplaat..." id="boloplate" class="manage-bolos-input-plate"></div>
+
+                <div class="manage-bolos-input-tag boloowner-title">Eigenaar</div>
+                <div class="manage-bolos-input-owner"><span class="fas fa-bookmark"></span> <input placeholder="Noteer hier de voertuigeigenaar..." id="boloowner" class="manage-bolos-input-owner"></div>
+
+                <div class="manage-bolos-input-tag boloindividual-title">Verdachte</div>
+                <div class="manage-bolos-input-individual"><span class="fas fa-user"></span> <input placeholder="Noteer hier de naam van de verdachte..." id="boloindividual" class="manage-bolos-input-individual"></div>
+
+                <textarea class="manage-bolos-reports-content" id="bolodetail" placeholder="Nuttige informatie..."></textarea>
+            </div>
+
+            <div class="manage-bolos-right-container">
+                <div class="manage-bolos-tags-container">
+                    <div style="display: flex; align-items: center;">
+                        <div class="manage-bolos-title-tag">Tags</div>
+                        <div class="manage-bolos-tags-add-btn fas fa-plus"></div>
+                    </div>
+                    <div class="manage-bolos-tags-holder"></div>
+                </div>
+                <div class="manage-officers-tags-container">
+                    <div style="display: flex; align-items: center;">
+                        <div class="tags-title" id="bolos-officers-involved-tag-title">Agenten</div>
+                        <div class="officers-add-btn fas fa-plus"></div>
+                    </div>
+                    <div class="manage-officers-tags-holder"></div>
+                </div>
+                <div class="manage-bolos-gallery-container">
+                    <div style="display: flex; align-items: center;">
+                        <div class="gallery-title">Gallerij</div>
+                        <div class="bolo-gallery-add-btn fas fa-plus"></div>
+                    </div>
+                    <div class="bolo-gallery-upload-input"><input id="bolo-gallery-upload-input" placeholder="Geef URL in...">
+                    </div>
+                    <div class="bolo-gallery-inner-container"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="penalcode-page-container close-all">
+        <div class="header">
+            <img src="img/sasp_badge.webp" class="badge-logo">
+            <div class="header-left">
+                <div class="header-title" style="color: #caa95d; font-weight: bold; font-size: 18px;">POLITIE LOS SANTOS</div>
+                <div style="color: white; font-weight: lighter; font-size: 16px;">Mobiele Database Terminal</div>
+            </div>
+            <div class="header-middle">
+                <div class="date">Laden...</div>
+                <div class="time">00:00</div>
+            </div>
+            <div class="header-right">
+                <div style="color: white; font-weight: lighter; font-size: 22px;" class="name-shit">Welkome, Laden...
+                </div>
+                <div style="color: lightgray; font-size: 15px;"><span class="fas fa-map-pin header-pin"></span><span class="header-location"></span></div>
+            </div>
+        </div>
+        <div class="main-container">
+            <div class="nav-menu">
+                <div class="nav-item" data-page=".dashboard-page-container">Dashboard</div>
+                <div class="nav-item" data-page=".profile-page-container">Profielen</div>
+                <div class="nav-item incidents-nav-item" data-page=".incidents-page-container">Processen-Verbaal</div>
+                <div class="nav-item" data-page=".reports-page-container">Verslagen</div>
+                <div class="nav-item map-nav-item" data-page=".map-page-container">Kaart</div>
+                <div class="nav-item bolo-nav-item" data-page=".bolos-page-container">Recherche</div>
+                <div class="nav-item penalcode-nav-item active-nav" data-page=".penalcode-page-container">Rooster</div>
+                <div class="nav-item sop-nav-item" data-page=".sop-page-container">Standaard Procedures</div>
+                <div class="nav-item dmv-nav-item" data-page=".dmv-page-container">Voertuigen</div>
+                <div class="nav-item weapons-nav-item" data-page=".weapons-page-container">Wapens</div>
+                <div class="nav-item cams-nav-item" data-page=".cams-page-container">Camera's</div>
+                <div class="nav-item" data-page=".stafflogs-page-container">Staff Logs</div>
+            </div>
+            <div class="penalcode-embed" style="border:none;">
+                <iframe class="roster-iframe" src="" target="_blank"></iframe>
+            </div>
+        </div>
+    </div>
+    <div class="sop-page-container close-all">
+        <div class="header">
+            <img src="img/sasp_badge.webp" class="badge-logo">
+            <div class="header-left">
+                <div class="header-title" style="color: #caa95d; font-weight: bold; font-size: 18px;">POLITIE LOS SANTOS</div>
+                <div style="color: white; font-weight: lighter; font-size: 16px;">Mobiele Database Terminal</div>
+            </div>
+            <div class="header-middle">
+                <div class="date">Loading...</div>
+                <div class="time">00:00</div>
+            </div>
+            <div class="header-right">
+                <div style="color: white; font-weight: lighter; font-size: 22px;" class="name-shit">Welkom, Loading...
+                </div>
+                <div style="color: lightgray; font-size: 15px;"><span class="fas fa-map-pin header-pin"></span><span class="header-location"></span></div>
+            </div>
+        </div>
+        <div class="main-container">
+            <div class="nav-menu">
+                <div class="nav-item" data-page=".dashboard-page-container">Dashboard</div>
+                <div class="nav-item" data-page=".profile-page-container">Profielen</div>
+                <div class="nav-item incidents-nav-item" data-page=".incidents-page-container">Processen-Verbaal</div>
+                <div class="nav-item" data-page=".reports-page-container">Verslagen</div>
+                <div class="nav-item map-nav-item" data-page=".map-page-container">Kaart</div>
+                <div class="nav-item bolo-nav-item" data-page=".bolos-page-container">Recherche</div>
+                <div class="nav-item penalcode-nav-item" data-page=".penalcode-page-container">Rooster</div>
+                <div class="nav-item sop-nav-item active-nav" data-page=".sop-page-container">Standaard Procedures</div>
+                <div class="nav-item dmv-nav-item" data-page=".dmv-page-container">Voertuigen</div>
+                <div class="nav-item weapons-nav-item" data-page=".weapons-page-container">Wapens</div>
+                <div class="nav-item cams-nav-item" data-page=".cams-page-container">Camera's</div>
+                <div class="nav-item" data-page=".stafflogs-page-container">Staff Logs</div>
+            </div>
+            <div class="sop-embed" style="border:none;">
+                <iframe class="sop-iframe" src="" target="_blank"></iframe>
+            </div>
+        </div>
+    </div>
+    <div class="dmv-page-container close-all">
+        <div class="header">
+            <img src="img/sasp_badge.webp" class="badge-logo">
+            <div class="header-left">
+                <div class="header-title" style="color: #caa95d; font-weight: bold; font-size: 18px;">POLITIE LOS SANTOS</div>
+                <div style="color: white; font-weight: lighter; font-size: 16px;">Mobiele Database Terminal</div>
+            </div>
+            <div class="header-middle">
+                <div class="date">Loading...</div>
+                <div class="time">00:00</div>
+            </div>
+            <div class="header-right">
+                <div style="color: white; font-weight: lighter; font-size: 22px;" class="name-shit">Welkom, Loading...
+                </div>
+                <div style="color: lightgray; font-size: 15px;"><span class="fas fa-map-pin header-pin"></span><span class="header-location"></span></div>
+            </div>
+        </div>
+        <div class="main-container">
+            <div class="nav-menu">
+                <div class="nav-item" data-page=".dashboard-page-container">Dashboard</div>
+                <div class="nav-item" data-page=".profile-page-container">Profielen</div>
+                <div class="nav-item incidents-nav-item" data-page=".incidents-page-container">Processen-Verbaal</div>
+                <div class="nav-item" data-page=".reports-page-container">Verslagen</div>
+                <div class="nav-item map-nav-item" data-page=".map-page-container">Kaart</div>
+                <div class="nav-item bolo-nav-item" data-page=".bolos-page-container">Recherche</div>
+                <div class="nav-item penalcode-nav-item" data-page=".penalcode-page-container">Rooster</div>
+                <div class="nav-item sop-nav-item" data-page=".sop-page-container">Standaard Procedures</div>
+                <div class="nav-item dmv-nav-item active-nav" data-page=".dmv-page-container">Voertuigen</div>
+                <div class="nav-item weapons-nav-item" data-page=".weapons-page-container">Wapens</div>
+                <div class="nav-item cams-nav-item" data-page=".cams-page-container">Camera's</div>
+                <div class="nav-item" data-page=".stafflogs-page-container">Staff Logs</div>
+            </div>
+            <div class="dmv-container">
+                <div class="dmv-search-title"> <span class="fas fa-search"></span> DIV</div>
+                <div class="dmv-search-input"><input id="dmv-search-input" placeholder="Zoek Voertuig .."> </div>
+                <div class="dmv-items">
+
+                </div>
+            </div>
+            <div class="vehicle-information-container">
+                <div style="display: flex;" class="vehicle-information-title-holder" data-dbid=0>
+                    <div class="vehicle-information-title">Voertuig Informatie</div>
+                    <div class="vehicle-information-save">Opslaan</div>
+                </div>
+                <div class="vehicle-info-stuff">
+                    <img src="https://pbs.twimg.com/media/EYF7l2GXYAAuDZI?format=jpg&name=large" class="vehicle-info-image" onerror="this.src='img/not-found.webp'">
+                    <div class="vehicle-info-inner-container">
+                        <div class="vehicle-info-plate">Nummerplaat</div>
+                        <div><span class="fas fa-address-card vehicle-info-icon"></span><input type="text" readonly class="vehicle-info-plate-input"></div>
+                        <div class="vehicle-info-line"></div>
+                        <div class="vehicle-info-owner">Eigenaar</div>
+                        <div><span class="fas fa-bookmark vehicle-info-icon"></span><input type="text" readonly class="vehicle-info-owner-input"></div>
+                        <div class="vehicle-info-line"></div>
+                        <div class="vehicle-info-class">Voertuigklasse</div>
+                        <div><span class="fas fa-folder vehicle-info-icon"></span><input type="text" readonly class="vehicle-info-class-input"></div>
+                        <div class="vehicle-info-line"></div>
+                        <div class="vehicle-info-model">Merk / Model</div>
+                        <div><span class="fas fa-car vehicle-info-icon"></span><input type="text" readonly class="vehicle-info-model-input"></div>
+                        <div class="vehicle-info-line"></div>
+                        <div class="vehicle-info-imageurl">URL Afbeelding</div>
+                        <div><span class="fas fa-images vehicle-info-icon"></span><input type="text" class="vehicle-info-imageurl-input"></div>
+                        <div class="vehicle-info-line" style="margin-bottom: 0px;"></div>
+                        <div class="vehicle-info-points">Punten: <span id="vehiclePointsSliderValue">0</span></div>
+                        <div><span class="fa-solid fa-scale-balanced vehicle-info-icon"></span><input id="vehiclePointsSlider" type="range" value="0" min="0" max="30" class="vehicle-info-points-input"/></div>
+                    </div>
+                </div>
+                <div class="vehicle-info-tags-container">
+                    <div class="vehicle-info-tags-title">Gekende Informatie</div>
+                    <div class="vehicle-info-tags-holder">
+                        <div class="vehicle-tags">
+                            <div class="vehicle-tag red-tag">Kleur</div>
+                            <div class="vehicle-tag red-tag">Inbeslagname</div>
+                            <div class="vehicle-tag red-tag">Gezocht</div>
+                            <div class="vehicle-tag red-tag">Gevaarlijk</div>
+                            <div class="vehicle-tag red-tag">Gestolen</div>
+                        </div>
+                    </div>
+                </div>
+                <textarea class="vehicle-info-content" placeholder="Nuttige informatie.."></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="weapons-page-container close-all">
+        <div class="header">
+            <img src="img/sasp_badge.webp" class="badge-logo">
+            <div class="header-left">
+                <div class="header-title" style="color: #caa95d; font-weight: bold; font-size: 18px;">POLITIE LOS SANTOS</div>
+                <div style="color: white; font-weight: lighter; font-size: 16px;">Mobiele Database Terminal</div>
+            </div>
+            <div class="header-middle">
+                <div class="date">Laden...</div>
+                <div class="time">00:00</div>
+            </div>
+            <div class="header-right">
+                <div style="color: white; font-weight: lighter; font-size: 22px;" class="name-shit">Welkom, Loading...
+                </div>
+                <div style="color: lightgray; font-size: 15px;"><span class="fas fa-map-pin header-pin"></span><span class="header-location"></span></div>
+            </div>
+        </div>
+        <div class="main-container">
+            <div class="nav-menu">
+                <div class="nav-item" data-page=".dashboard-page-container">Dashboard</div>
+                <div class="nav-item" data-page=".profile-page-container">Profielen</div>
+                <div class="nav-item incidents-nav-item" data-page=".incidents-page-container">Processen-Verbaal</div>
+                <div class="nav-item" data-page=".reports-page-container">Verslagen</div>
+                <div class="nav-item map-nav-item" data-page=".map-page-container">Kaart</div>
+                <div class="nav-item bolo-nav-item" data-page=".bolos-page-container">Recherche</div>
+                <div class="nav-item penalcode-nav-item" data-page=".penalcode-page-container">Rooster</div>
+                <div class="nav-item sop-nav-item" data-page=".sop-page-container">Standaard Procedures</div>
+                <div class="nav-item dmv-nav-item" data-page=".dmv-page-container">Voertuigen</div>
+                <div class="nav-item weapons-nav-item active-nav" data-page=".weapons-page-container">Wapens</div>
+                <div class="nav-item cams-nav-item" data-page=".cams-page-container">Camera's</div>
+                <div class="nav-item" data-page=".stafflogs-page-container">Staff Logs</div>
+            </div>
+            <div class="weapons-container">
+                <div class="weapons-search-title"> <span class="fas fa-search"></span> Wapens</div>
+                <div class="weapons-search-input"><input id="weapons-search-input" placeholder="Zoek Wapen ..."> </div>
+                <div class="weapons-items">
+
+                </div>
+            </div>
+            <div class="weapon-information-container">
+                <div style="display: flex;" class="weapon-information-title-holder" data-dbid=0>
+                    <div class="weapon-information-title">Wapen Informatie</div>
+                    <div class="weapon-information-new">Nieuw</div>
+                    <div class="weapon-information-save">Opslaan</div>
+                </div>
+                <div class="weapon-info-stuff">
+                    <img src="img/weapons.webp" class="weapon-info-image" onerror="this.src='img/not-found.webp'">
+                    <div class="weapon-info-inner-container">
+                        <div class="weapon-info-serial">Serienummer</div>
+                        <div><span class="fas fa-address-card weapon-info-icon"></span><input type="text" class="weapon-info-serial-input" ></div>
+                        <div class="weapon-info-line"></div>
+                        <div class="vehicle-info-owner">Toegekend aan</div>
+                        <div><span class="fas fa-bookmark weapon-info-icon"></span><input type="text" class="weapon-info-owner-input"></div>
+                        <div class="weapon-info-line"></div>
+                        <div class="weapon-info-model">Model</div>
+                        <div><span class="fa-solid fa-gun weapon-info-icon"></span><input type="text" class="weapon-info-model-input" ></div>
+                        <div class="weapon-info-line"></div>
+                        <div class="weapon-info-class">Wapenklasse</div>
+                        <div><span class="fas fa-folder weapon-info-icon"></span><input type="text" class="weapon-info-class-input"></div>
+                        <div class="weapon-info-line"></div>
+                        <div class="vehicle-info-imageurl">URL Afbeelding</div>
+                        <div><span class="fas fa-images weapon-info-icon"></span><input type="text" class="weapon-info-imageurl-input"></div>
+                        <div class="weapon-info-line" style="margin-bottom: 0px;"></div>
+                    </div>
+                </div>
+                <textarea class="weapon-info-content" placeholder="Nuttige informatie ..."></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="stafflogs-page-container close-all">
+        <div class="header">
+            <img src="img/sasp_badge.webp" class="badge-logo">
+            <div class="header-left">
+                <div class="header-title" style="color: #caa95d; font-weight: bold; font-size: 18px;">POLITIE LOS SANTOS</div>
+                <div style="color: white; font-weight: lighter; font-size: 16px;">Mobiele Database Terminal</div>
+            </div>
+            <div class="header-middle">
+                <div class="date">Loading...</div>
+                <div class="time">00:00</div>
+            </div>
+            <div class="header-right">
+                <div style="color: white; font-weight: lighter; font-size: 22px;" class="name-shit">Welkom, Loading...
+                </div>
+                <div style="color: lightgray; font-size: 15px;"><span class="fas fa-map-pin header-pin"></span><span class="header-location"></span></div>
+            </div>
+        </div>
+        <div class="main-container">
+            <div class="nav-menu">
+                <div class="nav-item" data-page=".dashboard-page-container">Dashboard</div>
+                <div class="nav-item" data-page=".profile-page-container">Profielen</div>
+                <div class="nav-item incidents-nav-item" data-page=".incidents-page-container">Processen-Verbaal</div>
+                <div class="nav-item" data-page=".reports-page-container">Verslagen</div>
+                <div class="nav-item map-nav-item" data-page=".map-page-container">Kaart</div>
+                <div class="nav-item bolo-nav-item" data-page=".bolos-page-container">Recherche</div>
+                <div class="nav-item penalcode-nav-item" data-page=".penalcode-page-container">Rooster</div>
+                <div class="nav-item sop-nav-item" data-page=".sop-page-container">Standaard Procedures</div>
+                <div class="nav-item dmv-nav-item" data-page=".dmv-page-container">Voertuigen</div>
+                <div class="nav-item weapons-nav-item" data-page=".weapons-page-container">Wapens</div>
+                <div class="nav-item cams-nav-item" data-page=".cams-page-container">Camera's</div>
+                <div class="nav-item active-nav" data-page=".stafflogs-page-container">Staff Logs</div>
+            </div>
+            <div class="stafflogs-container">
+                <div class="stafflogs-box-title">Logs</div>
+                <div class="stafflogs-box"></div>
+            </div>
+            <div class="leaderboard-container">
+                <div class="leaderboard-title">Activiteiten Korps</div>
+                <div class="leaderboard-box">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="cams-page-container close-all">
+        <div class="header">
+            <img src="img/sasp_badge.webp" class="badge-logo">
+            <div class="header-left">
+                <div class="header-title" style="color: #caa95d; font-weight: bold; font-size: 18px;">POLITIE LOS SANTOS</div>
+                <div style="color: white; font-weight: lighter; font-size: 16px;">Mobiele Database Terminal</div>
+            </div>
+            <div class="header-middle">
+                <div class="date">Laden...</div>
+                <div class="time">00:00</div>
+            </div>
+            <div class="header-right">
+                <div style="color: white; font-weight: lighter; font-size: 22px;" class="name-shit">Welkom, Laden...
+                </div>
+                <div style="color: lightgray; font-size: 15px;"><span class="fas fa-map-pin header-pin"></span><span class="header-location"></span></div>
+            </div>
+        </div>
+        <div class="main-container">
+            <div class="nav-menu">
+                <div class="nav-item" data-page=".dashboard-page-container">Dashboard</div>
+                <div class="nav-item" data-page=".profile-page-container">Profielen</div>
+                <div class="nav-item incidents-nav-item" data-page=".incidents-page-container">Processen-Verbaal</div>
+                <div class="nav-item" data-page=".reports-page-container">Verslagen</div>
+                <div class="nav-item map-nav-item" data-page=".map-page-container">Kaart</div>
+                <div class="nav-item bolo-nav-item" data-page=".bolos-page-container">Recherche</div>
+                <div class="nav-item penalcode-nav-item" data-page=".penalcode-page-container">Rooster</div>
+                <div class="nav-item sop-nav-item" data-page=".sop-page-container">Standaard Procedures</div>
+                <div class="nav-item dmv-nav-item" data-page=".dmv-page-container">Voertuigen</div>
+                <div class="nav-item weapons-nav-item" data-page=".weapons-page-container">Wapens</div>
+                <div class="nav-item cams-nav-item active nav" data-page=".cams-page-container">Camera's</div>
+                <div class="nav-item" data-page=".stafflogs-page-container">Staff Logs</div>
+            </div>
+            <div class="cams-container">
+                <div class="cams-item">
+                                
+                    <div class="cams-items" id="1"><img class="cams-image" src="img/pacific1.webp">Pacific Bank CAM 1</div>
+                    <div class="cams-items" id="2"><img class="cams-image" src="img/pacific2.webp">Pacific Bank CAM 2</div>
+                    <div class="cams-items" id="3"><img class="cams-image" src="img/pacific3.webp">Pacific Bank CAM 3</div>
+                    <div class="cams-items" id="4"><img class="cams-image" src="img/247Back.webp">Limited Ltd Grove St.</div>
+                    <div class="cams-items" id="5"><img class="cams-image" src="img/liquor.webp">Rob's Liqour Prosperity St.</div>
+                    <div class="cams-items" id="6"><img class="cams-image" src="img/liquor.webp">Rob's Liqour San Andreas Ave.</div>
+                    <div class="cams-items" id="7"><img class="cams-image" src="img/247Back.webp">Limited Ltd Ginger St.</div>
+                    <div class="cams-items" id="8"><img class="cams-image" src="img/247SmallFront.webp">24/7 Supermarkt Innocence Blvd.</div>
+                    <div class="cams-items" id="9"><img class="cams-image" src="img/liquor.webp">Rob's Liqour El Rancho Blvd.</div>
+                    <div class="cams-items" id="10"><img class="cams-image" src="img/247Back.webp">Limited Ltd West Mirror Drive</div>
+                    <div class="cams-items" id="11"><img class="cams-image" src="img/247SmallBack.webp">24/7 Supermarkt Clinton Ave</div>
+                    <div class="cams-items" id="12"><img class="cams-image" src="img/247Back.webp">Limited Ltd Banham Canyon Dr</div>
+                    <div class="cams-items" id="13"><img class="cams-image" src="img/liquor.webp">Rob's Liqour Great Ocean Hwy</div>
+                    <div class="cams-items" id="14"><img class="cams-image" src="img/247SmallBack.webp">24/7 Supermarkt Ineseno Road</div>
+                    <div class="cams-items" id="15"><img class="cams-image" src="img/247SmallBack.webp">24/7 Supermarkt Barbareno Rd.</div>
+                    <div class="cams-items" id="16"><img class="cams-image" src="img/247SmallBack.webp">24/7 Supermarkt Route 68</div>
+                    <div class="cams-items" id="17"><img class="cams-image" src="img/liquor.webp">Rob's Liqour Route 68</div>
+                    <div class="cams-items" id="18"><img class="cams-image" src="img/247SmallFront.webp">24/7 Supermarkt Senora Fwy CAM 1</div>
+                    <div class="cams-items" id="19"><img class="cams-image" src="img/247SmallBack.webp">24/7 Supermarkt Alhambra Dr.</div>
+                    <div class="cams-items" id="20"><img class="cams-image" src="img/247SmallFront.webp">24/7 Supermarkt Senora Fwy CAM 2</div>
+                    <div class="cams-items" id="21"><img class="cams-image" src="img/fleeca.webp">Fleeca Bank Hawick Ave CAM 1</div>
+                    <div class="cams-items" id="22"><img class="cams-image" src="img/fleeca.webp">Fleeca Bank Legion Square CAM 1</div>
+                    <div class="cams-items" id="23"><img class="cams-image" src="img/fleeca.webp">Fleeca Bank Hawick Ave CAM 2</div>
+                    <div class="cams-items" id="24"><img class="cams-image" src="img/fleeca.webp">Fleeca Bank Del Perro Blvd</div>
+                    <div class="cams-items" id="25"><img class="cams-image" src="img/fleeca.webp">Fleeca Bank Great Ocean Hwy</div>
+                    <div class="cams-items" id="26"><img class="cams-image" src="img/paleto.webp">Paleto Bank</div>
+                    <div class="cams-items" id="27"><img class="cams-image" src="img/247SmallBack.webp">Main street </br> Grapeseed</div>
+                    <div class="cams-items" id="28"><img class="cams-image" src="img/247Back.webp">Don's Country Store Paleto Bay CAM 1</div>
+                    <div class="cams-items" id="29"><img class="cams-image" src="img/247SmallFront.webp">Don's Country Store Paleto Bay CAM 2</div>
+                    <div class="cams-items" id="30"><img class="cams-image" src="img/247SmallBack.webp">Don's Country Store Paleto Bay CAM 3</div>
+                    <div class="cams-items" id="31"><img class="cams-image" src="img/val1.webp">Vangelico Jewelery CAM 1</div>
+                    <div class="cams-items" id="32"><img class="cams-image" src="img/val2.webp">Vangelico Jewelery CAM 2</div>
+                    <div class="cams-items" id="33"><img class="cams-image" src="img/val3.webp">Vangelico Jewelery CAM 3</div>
+                    <div class="cams-items" id="34"><img class="cams-image" src="img/val4.webp">Vangelico Jewelery CAM 4</div>
+                    <div class="cams-items" id="35"><img class="cams-image" src="img/ammunation.webp">Ammunation CAM 1</div>
+                    <div class="cams-items" id="36"><img class="cams-image" src="img/gevangCam1.webp">Gevangenis CAM 1</div>
+                    <div class="cams-items" id="37"><img class="cams-image" src="img/gevangCam2.webp">Gevangenis CAM 2</div>
+                    <div class="cams-items" id="38"><img class="cams-image" src="img/gevangCam3.webp">Gevangenis Binnenplaats CAM 1</div>
+                    <div class="cams-items" id="39"><img class="cams-image" src="img/gevangCam4.webp">Gevangenis Binnenplaats CAM 2</div>
+                    <div class="cams-items" id="40"><img class="cams-image" src="img/gevangCam5.webp">Gevangenis Cellblok CAM 1</div>
+                    <div class="cams-items" id="41"><img class="cams-image" src="img/fleeca.webp">Fleeca Bank Route 68 CAM 1</div>
+                    <div class="cams-items" id="42"><img class="cams-image" src="img/247Back.webp">Limited Ltd Innocence B. CAM 1</div>
+                    <div class="cams-items" id="43"><img class="cams-image" src="img/247Back.webp">Limited Ltd Clinton Avenue CAM 1</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="map-page-container close-all">
+        <div class="header">
+            <img src="img/sasp_badge.webp" class="badge-logo">
+            <div class="header-left">
+                <div class="header-title" style="color: #caa95d; font-weight: bold; font-size: 18px;">POLITIE LOS SANTOS</div>
+                <div style="color: white; font-weight: lighter; font-size: 16px;">Mobiele Database Terminal</div>
+            </div>
+            <div class="header-middle">
+                <div class="date">Loading...</div>
+                <div class="time">00:00</div>
+            </div>
+            <div class="header-right">
+                <div style="color: white; font-weight: lighter; font-size: 22px;" class="name-shit">Welkom, Loading...
+                </div>
+                <div style="color: lightgray; font-size: 15px;"><span class="fas fa-map-pin header-pin"></span><span class="header-location"></span></div>
+            </div>
+        </div>
+        <div class="main-container">
+            <div class="nav-menu">
+                <div class="nav-item" data-page=".dashboard-page-container">Dashboard</div>
+                <div class="nav-item" data-page=".profile-page-container">Profielen</div>
+                <div class="nav-item incidents-nav-item" data-page=".incidents-page-container">Processen-Verbaal</div>
+                <div class="nav-item" data-page=".reports-page-container">Verslagen</div>
+                <div class="nav-item map-nav-item active-nav" data-page=".map-page-container">Kaart</div>
+                <div class="nav-item bolo-nav-item" data-page=".bolos-page-container">Recherche</div>
+                <div class="nav-item penalcode-nav-item" data-page=".penalcode-page-container">Rooster</div>
+                <div class="nav-item sop-nav-item" data-page=".sop-page-container">Standaard Procedures</div>
+                <div class="nav-item dmv-nav-item" data-page=".dmv-page-container">Voertuigen</div>
+                <div class="nav-item weapons-nav-item" data-page=".weapons-page-container">Wapens</div>
+                <div class="nav-item cams-nav-item" data-page=".cams-page-container">Camera's</div>
+                <div class="nav-item" data-page=".stafflogs-page-container">Staff Logs</div>
+            </div>
+            <div class="calls-container">
+                <div class="calls-search-title"> <span class="fas fa-search"></span> Oproepen</div>
+                <div class="calls-search-input"><input id="calls-search-input" placeholder="Zoek Oproep..."> </div>
+                <div class="active-calls-list">
+                    <div class="active-calls-item">
+                        <div class="active-call-inner-container">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="map-container">
+                <div style="display: flex;" class="map-title-holder" data-dbid=0>
+                    <div class="map-title">Kaart</div>
+                    <div class="map-clear">Verwijder</div>
+                </div>
+                <div class="map-item" id="map-item"></div>
+            </div>
+        </div>
+    </div>
+    <div class="impound-form" style="display: none;">
+        <form>
+            <i class="far fa-id-card fa-lg"></i><input type="text" class="impound-plate" id="plate" name="plate" placeholder="Nummerplaat" disabled><br>
+            <i class="far fa-sticky-note fa-lg"></i><input type="text" class="impound-linkedreport" id="linkedreport" name="linkedreport" placeholder="Betreft Rapport" required><br>
+            <i class="far fa-money-bill-alt fa-lg"></i><input type="text" class="impound-fee" id="fee" name="fee" placeholder="Boete" required><br>
+            <i class="far fa-clock fa-lg"></i><input type="text" id="time" class="impound-time" name="time" placeholder="Tijd (in mins)" required><br>
+        </form>
+        <div class="impound-buttons">
+            <div class="impound-cancel">Annuleer</div>
+            <div class="impound-submit">Bevestigen</div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>

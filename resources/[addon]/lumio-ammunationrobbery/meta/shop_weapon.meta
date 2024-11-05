@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<WeaponShopItemArray>
+	<weaponShopItems>
+		<Item>
+			<lockHash>CU_WEP_KATANA</lockHash>
+			<nameHash>WEAPON_KATANA</nameHash>
+			<cost value ="14500"/>
+			<ammoCost value="100"/>
+			<textLabel>WT_KATANA</textLabel>
+			<weaponDesc>WTD_KATANA</weaponDesc>
+			<weaponTT>WTT_KATANA</weaponTT>
+			<weaponUppercase>WTU_KATANA</weaponUppercase>
+			<id value = "32"/>
+			<weaponComponents />
+		</Item>
+	</weaponShopItems>
+</WeaponShopItemArray>	

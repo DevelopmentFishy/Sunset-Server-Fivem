@@ -1,0 +1,37 @@
+<CodeWalkerProject>
+  <Name>New CodeWalker Project</Name>
+  <Version value="1" />
+  <YmapFilenames>
+    <Item>dt1_06_strm_0.ymap</Item>
+    <Item>dt1_13.ymap</Item>
+    <Item>dt1_13_long_0.ymap</Item>
+    <Item>dt1_13_strm_0.ymap</Item>
+    <Item>dt1_occl_04.ymap</Item>
+    <Item>dt1_rd1.ymap</Item>
+    <Item>dt1_rd1_critical_1.ymap</Item>
+    <Item>dt1_rd1_long_1.ymap</Item>
+    <Item>dt1_rd1_strm_5.ymap</Item>
+    <Item>dt1_rd1_strm_6.ymap</Item>
+    <Item>hei_dt1_13.ymap</Item>
+    <Item>hei_dt1_13_long_0.ymap</Item>
+    <Item>hei_dt1_13_strm_0.ymap</Item>
+    <Item>hei_dt1_occl_04.ymap</Item>
+    <Item>hei_dt1_rd1.ymap</Item>
+    <Item>hei_dt1_rd1_critical_1.ymap</Item>
+    <Item>hei_dt1_rd1_long_1.ymap</Item>
+    <Item>hei_dt1_rd1_strm_5.ymap</Item>
+    <Item>hei_dt1_rd1_strm_6.ymap</Item>
+    <Item>hei_dt1_23_strm_0.ymap</Item>
+  </YmapFilenames>
+  <YtypFilenames />
+  <YbnFilenames />
+  <YndFilenames />
+  <YnvFilenames />
+  <TrainsFilenames />
+  <ScenarioFilenames />
+  <AudioRelFilenames />
+  <YdrFilenames />
+  <YddFilenames />
+  <YftFilenames />
+  <YtdFilenames />
+</CodeWalkerProject>

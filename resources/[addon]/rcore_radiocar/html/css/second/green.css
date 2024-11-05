@@ -1,0 +1,39 @@
+#second-style-button-green svg{ fill: #aaffaa; }
+#second-style-line-green{ background: #00cc00; }
+#second-style-volume-label-green{ fill: #aaffaa; color: #aaffaa; }
+#second-style-time-label-green{ color: #aaffaa; }
+#second-style-playing-music-green{ color: #80ff80; }
+#second-style-music-list-green{ color: #aaffaa; fill: #aaffaa; }
+
+#second-style-button-green {
+    border: 2px solid #79a379;
+    background: linear-gradient(0deg, rgba(0,204,0,1) 4%, rgba(0,102,0,1) 20%, rgba(0,51,0,1) 70%);
+    transition: background 0.3s ease-out;
+}
+#second-style-button-green:hover {
+    background: linear-gradient(0deg, rgba(0,204,0,1) 16%, rgba(0,102,0,1) 50%, rgba(0,51,0,1) 100%);
+    fill: #3eff3e;
+}
+
+#second-style-container-green{ color: #aaffaa; }
+#second-style-box-green svg{ fill:  #aaffaa; }
+#second-style-play-control-green svg{ fill: #aaffaa; }
+#second-style-music-box-green svg{ fill: #aaffaa !important; }
+#second-style-music-box-green span{ color: #aaffaa; }
+#second-style-edit-song-green svg{ fill:  #aaffaa; }
+#second-style-play-control-green svg:hover{ fill: #00ff00; cursor: pointer; }
+#second-style-button-green:hover, #second-style-button-green:hover svg { fill: #3eff3e; }
+#second-style-container-green ::-webkit-scrollbar-thumb { background: #00cc00; border: 2px solid white; }
+#second-style-container-green ::-webkit-scrollbar-thumb:hover { background: #008800; }
+#second-style-box-green:hover{ color: #00ff00; }
+#second-style-box-green:hover svg{ fill: #00ff00; }
+#second-style-box-green:hover i{ color: #ff7878; }
+#second-style-edit-song-green svg:hover{ fill: #00ff00; }
+#second-style-music-box-green span:hover{ fill: #00ff00; }
+#second-style-music-box-green svg:hover{ fill: #00ff00 !important; }
+
+#non_active_que-green { fill: #aaffaa !important; }
+#active_que-green { fill: #00ff00 !important; }
+
+#active_que-green:hover { fill: #3eff3e !important; }
+#non_active_que-green:hover { fill: #3eff3e !important; }

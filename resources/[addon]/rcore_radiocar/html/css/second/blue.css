@@ -1,0 +1,39 @@
+#second-style-button-blue svg{ fill: #99daff; }
+#second-style-line-blue{ background: #0050c7; }
+#second-style-volume-label-blue{ fill: #94e1fd; color: #94e1fd; }
+#second-style-time-label-blue{ color: #94e1fd; }
+#second-style-playing-music-blue{ color: #647f80; }
+#second-style-music-list-blue{ color: #94e1fd; fill: #94e1fd; }
+
+#second-style-button-blue {
+    border: 2px solid #769a9f;
+    background: linear-gradient(0deg, rgba(0,78,103,1) 4%, rgba(8,32,48,1) 20%, rgba(8,14,15,1) 70%);
+    transition: background 0.3s ease-out;
+}
+#second-style-button-blue:hover {
+    background: linear-gradient(0deg, rgba(0,78,103,1) 16%, rgba(8,32,48,1) 50%, rgba(8,14,15,1) 100%);
+    fill: #3eb8fe;
+}
+
+#second-style-container-blue{ color: #94e1fd; }
+#second-style-box-blue svg{ fill:  #94e1fd; }
+#second-style-play-control-blue svg{ fill: #94e1fd; }
+#second-style-music-box-blue svg{ fill: #94e1fd !important; }
+#second-style-music-box-blue span{ color: #94e1fd; }
+#second-style-edit-song-blue svg{ fill:  #94e1fd; }
+#second-style-play-control-blue svg:hover{ fill: #00bbff; cursor: pointer; }
+#second-style-button-blue:hover, #second-style-button-blue:hover svg { fill: #3eb8fe; }
+#second-style-container-blue ::-webkit-scrollbar-thumb { background: #0051c9; border: 2px solid white; }
+#second-style-container-blue ::-webkit-scrollbar-thumb:hover { background: #023581; }
+#second-style-box-blue:hover{ color: #00bbff; }
+#second-style-box-blue:hover svg{ fill: #00bbff; }
+#second-style-box-blue:hover i{ color: #ff7878; }
+#second-style-edit-song-blue svg:hover{ fill: #00bbff; }
+#second-style-music-box-blue span:hover{ fill: #00bbff; }
+#second-style-music-box-blue svg:hover{ fill: #00bbff !important; }
+
+#non_active_que-blue { fill: #94e1fd !important; }
+#active_que-blue { fill: #00bbff !important; }
+
+#active_que-blue:hover { fill: #3eb8fe !important; }
+#non_active_que-blue:hover { fill: #3eb8fe !important; }

@@ -1,0 +1,265 @@
+.second-style-button svg{
+    height: 100%;
+    width: 100%;
+}
+
+.second-style-line{
+    height: 2px;
+    width: 798px;
+    position: absolute;
+    top: 147px;
+    left: 118px;
+}
+
+.second-style-volume-label{
+    position: absolute;
+    right: 74px;
+    top: 100px;
+    font-size: 20px;
+    display: flex;
+}
+
+.second-style-time-label{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 20px;
+    position: absolute;
+    top: 93px;
+    left: 127px;
+}
+
+.second-style-playing-music {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 1000;
+    font-size: 20px;
+    position: absolute;
+    top: 120px;
+    left: 127px;
+}
+
+.nameSongContainer {
+    max-width: 400px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+@keyframes moveText {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.second-style-music-list{
+    height: 272px;
+    width: 797px;
+    position: absolute;
+    top: 154px;
+    left: 119px;
+    overflow: overlay;
+}
+
+.second-style-button {
+    position: relative;
+    height: 80px;
+    width: 126px;
+    float: left;
+    margin: 15px 3.4px;
+    transition: background 0.3s ease-out;
+}
+
+.second-style-button:hover {
+    cursor: pointer;
+}
+
+.second-style-box-container{
+    position: absolute;
+    height: 100px;
+    width: 814px;
+    bottom: 92px;
+    left: 119px;
+}
+
+.second-style-container{
+	background: url(../img/radio2.png);
+    background-size: 100% 100%;
+
+    height: 620px;
+    width: 980px;
+}
+
+.second-style-box{
+    height: 63px;
+    width: 110.1px;
+    float: left;
+    text-align: center;
+    font-size: 31px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.second-style-box.full svg{
+    height: 60px;
+    display: unset;
+}
+
+
+.second-style-box.full{
+    height: 210px;
+    width: 50%;
+    display: unset;
+}
+
+.second-style-play-control{
+    font-size: 44px;
+    position: absolute;
+    top: 136px;
+    left: 254px;
+    height: 52px;
+    width: 159px;
+}
+
+
+.second-style-play-control svg{
+    text-align: center;
+    height: 40px;
+}
+
+.second-style-play-url{
+    position: absolute;
+    height: 289px;
+    width: 798px;
+    top: 151px;
+    left: 117px;
+}
+
+.second-style-play-url p{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    text-align: center;
+    font-size: 21px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.second-style-play-url input{
+    color: black;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    position: absolute;
+    top: 188px;
+    width: 330px;
+    left: 160px;
+    text-align: center;
+    border: solid 3px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.second-style-music-box{
+    height: 108px;
+    width: 218px;
+    float: left;
+    text-align: center;
+    font-size: 31px;
+    display: block;
+    padding: 25px;
+    margin: 20px 20px;
+}
+
+.second-style-music-box p{
+    font-size: 16px;
+    position: relative;
+    top: 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    text-decoration: underline;
+    height: 27px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    height: 45px;
+}
+
+.second-style-music-box svg{
+    height: 60px;
+}
+
+.second-style-music-box span{
+    position: relative;
+    top: 3px;
+}
+
+.second-style-edit-song p{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 20px;
+	text-align: center;
+}
+
+.second-style-edit-song svg{
+	height: 45px;
+    position: relative;
+    top: 15px;
+    left: 36px;
+}
+
+.second-style-edit-song{
+    position: absolute;
+    height: 193px;
+    width: 179px;
+    top: 17px;
+    left: 44px;
+    right: 0;
+    bottom: 82px;
+    margin: auto;
+}
+
+.color-box-container{
+    position: relative;
+    top: 158px;
+    left: 40px;
+}
+
+.color-box{
+    background: #3f3f3f36;
+    height: 53px;
+    width: 78px;
+    margin: 5px 0px;
+}
+
+.color-box:hover{
+    cursor: pointer;
+}
+
+.second-style-play-control svg:hover{
+    cursor: pointer;
+}
+
+.second-style-box:hover{
+	cursor: pointer;
+}
+
+.second-style-box:hover svg{
+	cursor: pointer;
+}
+
+.second-style-box:hover i{
+	cursor: pointer;
+}
+
+.second-style-edit-song svg:hover{
+	cursor: pointer;
+}
+
+.second-style-music-box span:hover{
+	cursor: pointer;
+}
+
+.second-style-music-box svg:hover{
+	cursor: pointer;
+}

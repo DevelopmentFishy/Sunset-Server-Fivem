@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<CWeaponModelInfo__InitDataList>
+	<InitDatas>
+		<Item>
+		<modelName>sigmcx</modelName> 
+		  <txdName>sigmcx</txdName>  
+		  <ptfxAssetName>NULL</ptfxAssetName>
+		  <lodDist value="75"/>
+		</Item>
+		<Item>
+		<modelName>sigmcx2</modelName> 
+		  <txdName>sigmcx</txdName>  
+		  <ptfxAssetName>NULL</ptfxAssetName>
+		  <lodDist value="75"/>
+		</Item>
+		<Item>
+		<modelName>sigmcx3</modelName> 
+		  <txdName>sigmcx2</txdName>  
+		  <ptfxAssetName>NULL</ptfxAssetName>
+		  <lodDist value="75"/>
+		</Item>
+		<Item>
+		<modelName>sigmcx4</modelName> 
+		  <txdName>sigmcx2</txdName>  
+		  <ptfxAssetName>NULL</ptfxAssetName>
+		  <lodDist value="75"/>
+		</Item>				
+		<Item>
+		<modelName>sigmcx_mag1</modelName> 
+		  <txdName>sigmcx_mags</txdName>  
+		  <ptfxAssetName>NULL</ptfxAssetName>
+		  <lodDist value="75"/>
+		</Item>		
+		<Item>
+		<modelName>sigmcx_mag2</modelName> 
+		  <txdName>sigmcx_mags</txdName>  
+		  <ptfxAssetName>NULL</ptfxAssetName>
+		  <lodDist value="75"/>
+		</Item>		
+		<Item>
+		<modelName>sigmcx_mag3</modelName> 
+		  <txdName>sigmcx_mags</txdName>  
+		  <ptfxAssetName>NULL</ptfxAssetName>
+		  <lodDist value="75"/>
+		</Item>		
+		<Item>
+		<modelName>sigmcx_flsh1</modelName> 
+		  <txdName>sigmcx_misc</txdName>  
+		  <ptfxAssetName>NULL</ptfxAssetName>
+		  <lodDist value="75"/>
+		</Item>		
+		<Item>
+		<modelName>sigmcx_grip1</modelName> 
+		  <txdName>sigmcx_misc</txdName>  
+		  <ptfxAssetName>NULL</ptfxAssetName>
+		  <lodDist value="75"/>
+		</Item>		
+		<Item>
+		<modelName>sigmcx_grip2</modelName> 
+		  <txdName>sigmcx_misc</txdName>  
+		  <ptfxAssetName>NULL</ptfxAssetName>
+		  <lodDist value="75"/>
+		</Item>
+	   <Item>
+		<modelName>sigmcx_scope1</modelName> 
+		  <txdName>sigmcx_misc</txdName>  
+		  <ptfxAssetName>NULL</ptfxAssetName>
+		  <lodDist value="75"/>
+		</Item>
+		<Item>
+		<modelName>sigmcx_scope2</modelName> 
+		  <txdName>sigmcx_misc</txdName>  
+		  <ptfxAssetName>NULL</ptfxAssetName>
+		  <lodDist value="75"/>
+		</Item>	
+		 <Item>
+		<modelName>sigmcx_scope3</modelName> 
+		  <txdName>sigmcx_misc</txdName>  
+		  <ptfxAssetName>NULL</ptfxAssetName>
+		  <lodDist value="75"/>
+		</Item>
+		<Item>
+		<modelName>sigmcx_supp1</modelName> 
+		  <txdName>sigmcx_misc</txdName>  
+		  <ptfxAssetName>NULL</ptfxAssetName>
+		  <lodDist value="75"/>
+		</Item>	
+		 <Item>
+		<modelName>sigmcx_supp2</modelName> 
+		  <txdName>sigmcx_misc</txdName>  
+		  <ptfxAssetName>NULL</ptfxAssetName>
+		  <lodDist value="75"/>
+		</Item>
+		 <Item>
+		<modelName>sigmcx_supp3</modelName> 
+		  <txdName>sigmcx_misc</txdName>  
+		  <ptfxAssetName>NULL</ptfxAssetName>
+		  <lodDist value="75"/>
+		</Item>								
+	</InitDatas>
+</CWeaponModelInfo__InitDataList>

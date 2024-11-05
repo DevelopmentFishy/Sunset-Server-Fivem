@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<CWeaponModelInfo__InitDataList>
+	<InitDatas>
+		  <Item>
+		  <modelName>pdp</modelName>
+		  <txdName>pdp</txdName>
+		  <ptfxAssetName/>
+		  <lodDist value="50"/>
+		</Item>
+		 <Item>
+		  <modelName>pdp_mag1</modelName>
+		  <txdName>pdp</txdName>
+		  <ptfxAssetName/>
+		  <lodDist value="50"/>
+		</Item>
+		 <Item>
+		  <modelName>pdp_mag2</modelName>
+		  <txdName>pdp</txdName>
+		  <ptfxAssetName/>
+		  <lodDist value="50"/>
+		</Item>
+		 <Item>
+		  <modelName>pdp_flsh</modelName>
+		  <txdName>pdp_misc</txdName>
+		  <ptfxAssetName/>
+		  <lodDist value="50"/>
+		</Item>				
+		 <Item>
+		  <modelName>pdp_supp</modelName>
+		  <txdName>pdp_misc</txdName>
+		  <ptfxAssetName/>
+		  <lodDist value="50"/>
+		</Item>
+	</InitDatas>
+</CWeaponModelInfo__InitDataList>
